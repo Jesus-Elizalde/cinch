@@ -10,13 +10,13 @@ def user_exists(form, field):
     email_username = field.data
     user = User.query.filter(or_(User.email == email_username, User.username == email_username)).first()
     if not user:
-        raise ValidationError('Email provided not found.')
+        raise ValidationError('Email or Username provided not found.')
 
 
 def password_matches(form, field):
     # Checking if password matches
     password = field.data
-    email = form.data['email_username']
+    email_username = form.data['email_username']
     user = User.query.filter(or_(User.email == email_username, User.username == email_username)).first()
     if not user:
         raise ValidationError('No such user exists.')
