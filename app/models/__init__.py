@@ -4,3 +4,4 @@ from .business import Business
 from .customer import Customer
 from .category import Category
 from .service import Service
+from .job import Job

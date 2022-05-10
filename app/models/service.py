@@ -1,4 +1,5 @@
 from .db import db
+from .job_service import job_service
 
 class Service(db.Model):
     __tablename__ = 'services'
@@ -13,6 +14,13 @@ class Service(db.Model):
     category_id = db.Column(db.Integer,db.ForeignKey("categories.id"), nullable=False)
 
     category = db.relationship("Category",back_populates="service")
+
+
+    job_service = db.relationship(
+        "Job",
+        secondary=job_service,
+        back_populates=" job_service"
+    )
 
     def to_dict(self):
         return {
