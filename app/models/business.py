@@ -9,7 +9,10 @@ class Business(db.Model):
     street = db.Column(db.String(255))
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
+    country = db.Column(db.String(255))
     postal_code = db.Column(db.String(255))
+    lat = db.Column(db.String(255))
+    long = db.Column(db.String(255))
     website_url = db.Column(db.String(255))
     email = db.Column(db.String(255))
     license_num = db.Column(db.String(255))
@@ -21,15 +24,18 @@ class Business(db.Model):
     updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now(),onupdate=datetime.now())
 
     user = db.relationship("User",back_populates="business")
+    customer = db.relationship("Customer",back_populates="business")
 
-    def to_dic(self):
+    def to_dict(self):
         return {
             'id': self.id,
             'name':self.name,
             'street':self.street,
             'city':self.city,
             'state':self.state,
+            'country':self.country,
             'postal_code':self.postal_code,
+            'coords': [self.lat,self.long],
             'website_url':self.website_url,
             'email':self.email,
             'license_num':self.license_num,
