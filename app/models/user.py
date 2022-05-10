@@ -1,15 +1,24 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(55),nullable=False)
+    last_name = db.Column(db.String(55),nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.String(55),nullable=False)
+    date_joined = db.Column(db.DateTime, nullable=False , default=datetime.now())
+    last_login = db.Column(db.DateTime, nullable=False , default=datetime.now())
+    color = db.Column(db.String(55),nullable=False,default="#00314a")
+
+    business = db.relationship("Business",back_populates="user")
 
     @property
     def password(self):
@@ -26,5 +35,12 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'first_name':self.first_name,
+            'last_name':self.last_name,
+            'email': self.email,
+            'role': self.email,
+            'date_joined':self.date_joined,
+            'last_login':self.last_login,
+            'color':self.color
+
         }
