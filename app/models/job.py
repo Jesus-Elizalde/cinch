@@ -17,10 +17,10 @@ class Job(db.Model):
 
     customer = db.relationship("Customer",back_populates="job")
 
-    job_service = db.relationship(
+    job_services = db.relationship(
         "Service",
         secondary=job_service,
-        back_populates=" job_service"
+        back_populates="job_services"
     )
 
 

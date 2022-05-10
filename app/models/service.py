@@ -16,10 +16,10 @@ class Service(db.Model):
     category = db.relationship("Category",back_populates="service")
 
 
-    job_service = db.relationship(
+    job_services = db.relationship(
         "Job",
         secondary=job_service,
-        back_populates=" job_service"
+        back_populates="job_services"
     )
 
     def to_dict(self):
