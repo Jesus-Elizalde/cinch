@@ -1,1 +1,32 @@
 /* TODO Add site wide styles */
+:root {
+  --users-color: #00314a;
+  --hover-color: #2764ba;
+  --body-color: #e0e0e0;
+  --box-color: white;
+}
+
+body {
+  margin: 0px;
+  width: 100%;
+  /* background-color: var(--body-color); */
+}
+
+.flex_row {
+  display: flex;
+}
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_container {
+  width: 745px;
+  height: 680px;
+  padding: 0px 25px 0px 25px;
+}
+
+.link {
+  color: #2764ba;
+}

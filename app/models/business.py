@@ -20,8 +20,8 @@ class Business(db.Model):
     profile = db.Column(db.Text)
     message = db.Column(db.Text)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
-    created_at = db.Column(db.DateTime,nullable=False,default=datetime.now())
-    updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now(),onupdate=datetime.now())
+    created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
+    updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now())
 
     user = db.relationship("User",back_populates="business")
     customer = db.relationship("Customer",back_populates="business")

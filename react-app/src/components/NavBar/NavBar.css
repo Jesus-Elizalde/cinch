@@ -1,0 +1,23 @@
+nav {
+  justify-content: space-between;
+  background-color: var(--users-color);
+  padding: 0px 15px 0px 15px;
+  height: 74px;
+}
+
+.login_signup_button {
+  width: 65px;
+  height: 35px;
+  color: #fff;
+  background-color: transparent;
+  border: 3.7px solid #fff;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.login_signup_button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

@@ -12,8 +12,8 @@ class Job(db.Model):
     to_time = db.Column(db.Time,nullable=False)
     message = db.Column(db.Text)
     customer_id = db.Column(db.Integer,db.ForeignKey("customers.id"), nullable=False)
-    created_at = db.Column(db.DateTime,nullable=False,default=datetime.now())
-    updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now(),onupdate=datetime.now())
+    created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
+    updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now)
 
     customer = db.relationship("Customer",back_populates="job")
 

@@ -14,8 +14,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(55),nullable=False)
-    date_joined = db.Column(db.DateTime, nullable=False , default=datetime.now())
-    last_login = db.Column(db.DateTime, nullable=False , default=datetime.now())
+    date_joined = db.Column(db.DateTime, nullable=False , default=datetime.now)
+    last_login = db.Column(db.DateTime, nullable=False , default=datetime.now)
     color = db.Column(db.String(55),nullable=False,default="#00314a")
 
     business = db.relationship("Business",back_populates="user")

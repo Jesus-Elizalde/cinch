@@ -22,8 +22,8 @@ class Customer(db.Model):
     job_title = db.Column(db.String(255))
     work_number = db.Column(db.String(255))
     business_id = db.Column(db.Integer,db.ForeignKey("businesses.id"), nullable=False)
-    created_at = db.Column(db.DateTime,nullable=False,default=datetime.now())
-    updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now(),onupdate=datetime.now())
+    created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
+    updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now)
 
     business = db.relationship("Business",back_populates="customer")
     job = db.relationship("Job",back_populates="customer")
