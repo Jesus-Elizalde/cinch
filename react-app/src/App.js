@@ -8,12 +8,15 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 
 import { authenticate } from "./store/session";
+import { getBusinessesDetails } from "./store/business";
 import { ModalProvider } from "./components/Context/Modal";
 import Dashboard from "./components/Dashboard";
 import Schedules from "./components/Schedules";
 import Customers from "./components/Customers";
 import Map from "./components/Map";
 import LandingPage from "./components/LandingPage";
+import Account from "./components/Account";
+import Company from "./components/Account/Company";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,6 +30,10 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
   }, [dispatch]);
 
   if (!loaded) {
@@ -64,6 +71,18 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/map" exact={true}>
             <Map />
+          </ProtectedRoute>
+          <ProtectedRoute path="/account" exact={true}>
+            <Account />
+          </ProtectedRoute>
+          <ProtectedRoute path="/account/company" exact={true}>
+            <Company />
+          </ProtectedRoute>
+          <ProtectedRoute path="/account/employees" exact={true}>
+            <Account />
+          </ProtectedRoute>
+          <ProtectedRoute path="/account/booklists" exact={true}>
+            <Account />
           </ProtectedRoute>
           <Route path="/" exact={true}>
             <Redirect to="/welcome" />

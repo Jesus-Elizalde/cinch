@@ -1,0 +1,10 @@
+.company_container {
+  height: 100%;
+  background-color: red;
+  padding: 50px 420px 0px 165px;
+}
+
+.company_inner_container {
+  background-color: blue;
+  height: 750px;
+}

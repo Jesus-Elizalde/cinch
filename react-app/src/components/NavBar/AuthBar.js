@@ -88,10 +88,10 @@ const AuthBar = () => {
                   <p>{user?.email}</p>
                 </div>
               </div>
-              <div className="flex_row user_dropdown_pair">
+              <NavLink to="/account" className="flex_row user_dropdown_pair">
                 <SettingsIcon />
                 <p>Account Settings</p>
-              </div>
+              </NavLink>
               <div className="flex_row user_dropdown_pair">
                 <SignoutIcon />
                 <Logoutbutton />

@@ -1,0 +1,10 @@
+.main_account_icon_container {
+  padding-top: 50px;
+}
+
+.account_icon_container {
+  width: 316px;
+  height: 155px;
+  align-items: center;
+  margin: 0px 8px 0px 8px;
+}
