@@ -1,0 +1,20 @@
+.input_container {
+  height: 55px;
+
+  margin-bottom: 5px;
+}
+
+.input_container label {
+  font-size: 20px;
+}
+
+.submit_form {
+  width: 95px;
+  height: 30px;
+  margin-top: 10px;
+  background-color: #00314a;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  margin-right: 10px;
+}

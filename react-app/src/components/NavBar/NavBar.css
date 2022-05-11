@@ -21,3 +21,92 @@ nav {
 .login_signup_button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.auth_bar_container {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.main_icons {
+  align-items: center;
+}
+
+.main_icons a {
+  text-decoration: none;
+  color: white;
+  margin: 0px 15px 0px 15px;
+  width: 65px;
+  height: 43px;
+}
+
+.main_icons a:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.main_icons a span {
+  justify-content: center;
+  align-items: center;
+}
+
+.right_icons {
+  align-items: center;
+}
+
+.right_icons button {
+  width: 95px;
+  height: 36px;
+  border: none;
+  color: white;
+  background-color: #2196f3;
+  border-radius: 4px;
+}
+
+.new_button {
+  align-items: center;
+}
+
+.profile_circle {
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.user_dropdown {
+  position: absolute;
+  right: 16px;
+  margin-top: 6px;
+  width: 300px;
+  background-color: white;
+  box-shadow: 0px 0px 12px black;
+  border-radius: 5px;
+}
+
+.user_dropdown_info {
+  align-items: center;
+  padding: 15px;
+  background-color: lightgrey;
+}
+
+.user_dropdown_circle {
+  margin-right: 15px;
+}
+
+/* .user_dropdown_details {
+  height: 10px;
+  overflow-y: scroll;
+} */
+
+.user_dropdown_pair {
+  align-items: center;
+}
+
+.space_margin {
+  margin: 0px 15px 0px 15px;
+}

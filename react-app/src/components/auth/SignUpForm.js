@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 
+import "./Forms.css";
+
 const SignUpForm = ({ modalFcn }) => {
   const { setShowLoginModal, setShowSignupModal } = modalFcn;
-  console.log(setShowLoginModal, setShowSignupModal);
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("");
@@ -16,7 +17,7 @@ const SignUpForm = ({ modalFcn }) => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [role, setRole] = useState("");
   const [color, setColor] = useState("#00314a");
-  const user = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch();
 
   const switchToLogin = () => {
@@ -33,7 +34,9 @@ const SignUpForm = ({ modalFcn }) => {
       if (data) {
         setErrors(data);
       }
+      return;
     }
+    setErrors(["Password doesn't match"]);
   };
 
   const updateUsername = (e) => {
@@ -71,7 +74,7 @@ const SignUpForm = ({ modalFcn }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>First Name</label>
           <input
             type="text"
@@ -80,7 +83,7 @@ const SignUpForm = ({ modalFcn }) => {
             value={firstName}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>Last Name</label>
           <input
             type="text"
@@ -89,7 +92,7 @@ const SignUpForm = ({ modalFcn }) => {
             value={lastName}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>User Name</label>
           <input
             type="text"
@@ -98,7 +101,7 @@ const SignUpForm = ({ modalFcn }) => {
             value={username}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>Email</label>
           <input
             type="text"
@@ -107,7 +110,7 @@ const SignUpForm = ({ modalFcn }) => {
             value={email}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>Password</label>
           <input
             type="password"
@@ -116,7 +119,7 @@ const SignUpForm = ({ modalFcn }) => {
             value={password}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>Repeat Password</label>
           <input
             type="password"
@@ -126,7 +129,7 @@ const SignUpForm = ({ modalFcn }) => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>Role</label>
           <input
             type="text"
@@ -136,7 +139,7 @@ const SignUpForm = ({ modalFcn }) => {
             required={true}
           ></input>
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label>Color</label>
           <input
             type="color"

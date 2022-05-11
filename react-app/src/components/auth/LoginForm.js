@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 
+import "./Forms.css";
+
 const LoginForm = ({ modalFcn }) => {
   const { setShowLoginModal, setShowSignupModal } = modalFcn;
   const [errors, setErrors] = useState([]);
   const [emailUsername, setEmailUsername] = useState("");
   const [password, setPassword] = useState("");
-  const user = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch();
 
   const switchToSignup = () => {
@@ -21,6 +23,15 @@ const LoginForm = ({ modalFcn }) => {
     const data = await dispatch(login(emailUsername, password));
     if (data) {
       setErrors(data);
+    }
+  };
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+      return;
     }
   };
 
@@ -52,7 +63,8 @@ const LoginForm = ({ modalFcn }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+
+        <div className="input_container flex_column">
           <label htmlFor="email">Email / Username</label>
           <input
             name="email"
@@ -60,9 +72,10 @@ const LoginForm = ({ modalFcn }) => {
             placeholder="Email"
             value={emailUsername}
             onChange={updateEmailUsername}
+            className="input_login_signup"
           />
         </div>
-        <div>
+        <div className="input_container flex_column">
           <label htmlFor="password">Password</label>
           <input
             name="password"
@@ -70,8 +83,16 @@ const LoginForm = ({ modalFcn }) => {
             placeholder="Password"
             value={password}
             onChange={updatePassword}
+            className="input_login_signup"
           />
-          <button type="submit">Login</button>
+          <div className="flex_row">
+            <button type="submit" className="submit_form">
+              Login
+            </button>
+            <button type="button" className="submit_form" onClick={demoLogin}>
+              Demo User
+            </button>
+          </div>
         </div>
       </form>
     </div>
