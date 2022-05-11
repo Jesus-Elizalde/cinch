@@ -11,6 +11,10 @@ import User from "./components/User";
 
 import { authenticate } from "./store/session";
 import { ModalProvider } from "./components/Context/Modal";
+import Dashboard from "./components/Dashboard";
+import Schedules from "./components/Schedules";
+import Customers from "./components/Customers";
+import Map from "./components/Map";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +55,18 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true}>
             <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/dashboard" exact={true}>
+            <Dashboard />
+          </ProtectedRoute>
+          <ProtectedRoute path="/schedules" exact={true}>
+            <Schedules />
+          </ProtectedRoute>
+          <ProtectedRoute path="/customers" exact={true}>
+            <Customers />
+          </ProtectedRoute>
+          <ProtectedRoute path="/map" exact={true}>
+            <Map />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true}>
             <h1>My Home Page</h1>

@@ -37,19 +37,19 @@ const AuthBar = () => {
   return (
     <div className="auth_bar_container flex_row">
       <div className="flex_row main_icons">
-        <NavLink to="/home">
+        <NavLink to="/dashboard">
           <span className="flex_column">
             <DashIcon />
             Dash
           </span>
         </NavLink>
-        <NavLink to="/home">
+        <NavLink to="/schedules">
           <span className="flex_column">
             <ScheduleIcon />
             Schedule
           </span>
         </NavLink>
-        <NavLink to="/home">
+        <NavLink to="/customers">
           <span className="flex_column">
             <CustomerIcon />
             Customers
@@ -63,7 +63,7 @@ const AuthBar = () => {
             NEW
           </span>
         </button>
-        <NavLink to="/home" className="space_margin">
+        <NavLink to="/map" className="space_margin">
           <span className="flex_column">
             <MapIcon />
           </span>
