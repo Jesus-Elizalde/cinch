@@ -27,6 +27,7 @@ const SignUpForm = ({ modalFcn }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    // console.log(role);
     if (password === repeatPassword) {
       const data = await dispatch(
         signUp(username, email, password, firstName, lastName, role, color)
@@ -129,24 +130,29 @@ const SignUpForm = ({ modalFcn }) => {
             required={true}
           ></input>
         </div>
-        <div className="input_container flex_column">
-          <label>Role</label>
-          <input
-            type="text"
-            name="role"
-            onChange={(e) => setRole(e.target.value)}
-            value={role}
-            required={true}
-          ></input>
-        </div>
-        <div className="input_container flex_column">
-          <label>Color</label>
-          <input
-            type="color"
-            name="color"
-            onChange={(e) => setColor(e.target.value)}
-            value={color}
-          ></input>
+        <div className="flex_row role_color_box">
+          <div className="input_container flex_column role_box">
+            <label>Role</label>
+            <select
+              name="role"
+              onChange={(e) => setRole(e.target.value)}
+              value={role}
+              required={true}
+            >
+              <option value="owner">Owner</option>
+              <option value="admin">Admin</option>
+              <option value="specialist">Specialist</option>
+            </select>
+          </div>
+          <div className="input_container flex_column">
+            <label>Color</label>
+            <input
+              type="color"
+              name="color"
+              onChange={(e) => setColor(e.target.value)}
+              value={color}
+            ></input>
+          </div>
         </div>
         <button type="submit">Sign Up</button>
       </form>
