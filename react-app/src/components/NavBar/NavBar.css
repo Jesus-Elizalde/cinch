@@ -1,8 +1,11 @@
 nav {
   justify-content: space-between;
   background-color: var(--users-color);
+  /* background-color: transparent; */
   padding: 0px 15px 0px 15px;
   height: 74px;
+  position: sticky;
+  top: 0px;
 }
 
 .login_signup_button {

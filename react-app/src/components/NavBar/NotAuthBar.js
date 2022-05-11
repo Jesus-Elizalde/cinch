@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import { ReactComponent as LogoIcon } from "../../static/svg/logo.svg";
 import LoginForm from "../auth/LoginForm";
@@ -47,7 +48,9 @@ const NotAuthBar = () => {
   const modalFcn = { setShowLoginModal, setShowSignupModal };
   return (
     <>
-      <LogoIcon />
+      <NavLink to="/">
+        <LogoIcon />
+      </NavLink>
       <div className="flex_row">
         <p className="login_signup_button" onClick={openLoginModal}>
           Login

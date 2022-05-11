@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -15,6 +13,7 @@ import Dashboard from "./components/Dashboard";
 import Schedules from "./components/Schedules";
 import Customers from "./components/Customers";
 import Map from "./components/Map";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,11 +43,9 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route path="/login" exact={true}>
-            <p>hello</p>
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm />
+          <Route path="/welcome" exact={true}>
+            {user && <Redirect to="/dashboard" />}
+            <LandingPage />
           </Route>
           <ProtectedRoute path="/users" exact={true}>
             <UsersList />
@@ -68,9 +65,12 @@ function App() {
           <ProtectedRoute path="/map" exact={true}>
             <Map />
           </ProtectedRoute>
-          <ProtectedRoute path="/" exact={true}>
-            <h1>My Home Page</h1>
-          </ProtectedRoute>
+          <Route path="/" exact={true}>
+            <Redirect to="/welcome" />
+          </Route>
+          <Route>
+            <h1>404 page not found</h1>
+          </Route>
         </Switch>
       </BrowserRouter>
     </ModalProvider>
