@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import { signUp } from "../../store/session";
 
 import "./Forms.css";
@@ -15,7 +15,7 @@ const SignUpForm = ({ modalFcn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [role, setRole] = useState("");
+
   const [color, setColor] = useState("#00314a");
 
   const dispatch = useDispatch();
@@ -27,10 +27,10 @@ const SignUpForm = ({ modalFcn }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    // console.log(role);
+
     if (password === repeatPassword) {
       const data = await dispatch(
-        signUp(username, email, password, firstName, lastName, role, color)
+        signUp(username, email, password, firstName, lastName, "owner", color)
       );
       if (data) {
         setErrors(data);
@@ -131,19 +131,6 @@ const SignUpForm = ({ modalFcn }) => {
           ></input>
         </div>
         <div className="flex_row role_color_box">
-          <div className="input_container flex_column role_box">
-            <label>Role</label>
-            <select
-              name="role"
-              onChange={(e) => setRole(e.target.value)}
-              value={role}
-              required={true}
-            >
-              <option value="owner">Owner</option>
-              <option value="admin">Admin</option>
-              <option value="specialist">Specialist</option>
-            </select>
-          </div>
           <div className="input_container flex_column">
             <label>Color</label>
             <input
