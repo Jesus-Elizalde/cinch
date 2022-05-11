@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     date_joined = db.Column(db.DateTime, nullable=False , default=datetime.now)
     last_login = db.Column(db.DateTime, nullable=False , default=datetime.now)
     color = db.Column(db.String(55),nullable=False,default="#00314a")
+    business_id = db.Column(db.Integer,db.ForeignKey("businesses.id"), nullable=False)
 
     business = db.relationship("Business",back_populates="user")
 

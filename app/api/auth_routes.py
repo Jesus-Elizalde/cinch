@@ -65,23 +65,24 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     print(form.data,"++++++++++++++++")
     if form.validate_on_submit():
-        user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password'],
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
-            role=form.data['role'],
-            color=form.data['color']
-        )
-        db.session.add(user)
-        db.session.commit()
         if form.data['role'] == "owner":
-            business = Business(user_id=user.id)
+            business = Business()
             db.session.add(business)
             db.session.commit()
-        login_user(user)
-        return user.to_dict()
+            user = User(
+                username=form.data['username'],
+                email=form.data['email'],
+                password=form.data['password'],
+                first_name=form.data['first_name'],
+                last_name=form.data['last_name'],
+                role=form.data['role'],
+                color=form.data['color'],
+                business_id=business.id
+            )
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
