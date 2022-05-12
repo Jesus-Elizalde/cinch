@@ -1,10 +1,51 @@
 .company_container {
   height: 100%;
-  background-color: red;
+  /* background-color: red; */
   padding: 50px 420px 0px 165px;
 }
 
 .company_inner_container {
-  background-color: blue;
   height: 750px;
+}
+
+.company_name_title {
+  font-size: 24px;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 45px;
+  justify-content: space-between;
+}
+
+.company_grid div {
+  height: 43px;
+  width: 270px;
+  margin-right: 55px;
+  margin-bottom: 25px;
+  /* background-color: gray; */
+}
+
+.company_grid div p {
+  margin: 0px;
+}
+
+.image_company_unedit {
+  width: 171px;
+  height: 136px;
+  /* background-color: purple; */
+  margin-right: 25px;
+  box-shadow: 0px 0px 15px black;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.profile_box {
+  background-color: white;
+  width: 660px;
+  box-shadow: 0px 0px 15px black;
+}
+
+.company_edit_modal {
+  width: 800px;
+  height: 780px;
+  padding: 25px 50px 0px 50px;
 }

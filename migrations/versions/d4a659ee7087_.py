@@ -1,8 +1,8 @@
-"""tables
+"""empty message
 
-Revision ID: 16d58455949d
+Revision ID: d4a659ee7087
 Revises: 
-Create Date: 2022-05-11 14:02:35.670713
+Create Date: 2022-05-11 18:46:08.480980
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '16d58455949d'
+revision = 'd4a659ee7087'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,24 +34,10 @@ def upgrade():
     sa.Column('logo', sa.String(length=255), nullable=True),
     sa.Column('profile', sa.Text(), nullable=True),
     sa.Column('message', sa.Text(), nullable=True),
+    sa.Column('number', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('users',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('first_name', sa.String(length=55), nullable=False),
-    sa.Column('last_name', sa.String(length=55), nullable=False),
-    sa.Column('username', sa.String(length=40), nullable=False),
-    sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('role', sa.String(length=55), nullable=False),
-    sa.Column('date_joined', sa.DateTime(), nullable=False),
-    sa.Column('last_login', sa.DateTime(), nullable=False),
-    sa.Column('color', sa.String(length=55), nullable=False),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('username')
     )
     op.create_table('categories',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -84,6 +70,23 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('first_name', sa.String(length=55), nullable=False),
+    sa.Column('last_name', sa.String(length=55), nullable=False),
+    sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('role', sa.String(length=55), nullable=False),
+    sa.Column('date_joined', sa.DateTime(), nullable=False),
+    sa.Column('last_login', sa.DateTime(), nullable=False),
+    sa.Column('color', sa.String(length=55), nullable=False),
+    sa.Column('business_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['business_id'], ['businesses.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('jobs',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -125,8 +128,8 @@ def downgrade():
     op.drop_table('jobServices')
     op.drop_table('services')
     op.drop_table('jobs')
+    op.drop_table('users')
     op.drop_table('customers')
     op.drop_table('categories')
-    op.drop_table('users')
     op.drop_table('businesses')
     # ### end Alembic commands ###

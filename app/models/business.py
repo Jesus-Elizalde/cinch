@@ -19,6 +19,7 @@ class Business(db.Model):
     logo = db.Column(db.String(255))
     profile = db.Column(db.Text)
     message = db.Column(db.Text)
+    number = db.Column(db.String(255))
     created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
     updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now())
 
@@ -42,6 +43,7 @@ class Business(db.Model):
             'logo':self.logo,
             'profile':self.profile,
             'message':self.message,
+            'number':self.number,
             'created_at':self.created_at,
             'updated_at':self.updated_at
         }
