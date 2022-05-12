@@ -31,9 +31,9 @@ class Customer(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'first_name':self.name,
-            'last_name':self.name,
-            'display_name':self.name,
+            'first_name':self.first_name,
+            'last_name':self.last_name,
+            'display_name':self.display_name,
             'street':self.street,
             'city':self.city,
             'state':self.state,
@@ -46,7 +46,6 @@ class Customer(db.Model):
             'company':self.company,
             'job_title':self.job_title,
             'work_number':self.work_number,
-            'message':self.message,
             'business_id':self.business_id,
             'created_at':self.created_at,
             'updated_at':self.updated_at
