@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
             'first_name':self.first_name,
             'last_name':self.last_name,
             'email': self.email,
-            'role': self.email,
+            'role': self.role,
             'date_joined':self.date_joined,
             'last_login':self.last_login,
             'color':self.color

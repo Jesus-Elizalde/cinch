@@ -1,0 +1,49 @@
+.customer_main_container {
+  padding: 0px 25px 0px 25px;
+}
+
+.title_container {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.8px solid lightgrey;
+}
+
+.main_input_container {
+  align-items: center;
+  background-color: lightgrey;
+  border-radius: 4px;
+}
+.filter_input {
+  width: 150px;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+}
+
+.filter_input:focus {
+  outline-width: 0;
+}
+
+.title_right_side_conatiner div {
+  margin: 0px 10px 0px 10px;
+}
+
+.default_container {
+  align-items: center;
+}
+
+.default_container h2 {
+  margin: 0px 10px 0px 10px;
+}
+
+.mulit_inner_container div {
+  align-items: center;
+}
+
+.mulit_inner_container div input {
+  margin-right: 25px;
+}
+
+.mulit_inner_container div p {
+  margin-right: 50px;
+}
