@@ -54,3 +54,25 @@
 .default_container_hover:hover {
   background-color: lightgrey;
 }
+
+.contact_info_container {
+  border-bottom: 1.5px solid lightgrey;
+  padding-bottom: 50px;
+}
+
+.add_customer_modal {
+  width: 1100px;
+}
+
+.add_customer_input_container input {
+  margin: 15px 55px 15px 0px;
+  height: 35px;
+  width: 175px;
+}
+
+.longer_input_add_space {
+  justify-content: space-between;
+}
+#longer_input_add {
+  width: 414px;
+}

@@ -11,13 +11,17 @@ import { ReactComponent as MulitIcon } from "../../static/svg/mulit.svg";
 
 import "./Customers.css";
 import SingleCustomer from "./SingleCustomer";
+import NewCustomer from "./NewCustomer";
 
 const Customers = () => {
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[user?.id]);
 
   const [filter, setFilter] = useState("");
+
   const [mulitbox, setMulitbox] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+
   const [checkedFirstName, setCheckedFirstName] = useState(true);
   const [checkedLastName, setCheckedLastName] = useState(true);
   const [checkedDisplayName, setCheckedDisplayName] = useState(true);
@@ -45,7 +49,7 @@ const Customers = () => {
   return (
     <div className="flex_column customer_main_container">
       <div className="flex_row title_container">
-        <h1># customers</h1>
+        <h1>{business?.customers.length} customers</h1>
         <div className="flex_row title_right_side_conatiner">
           <div className="flex_row main_input_container">
             <SearchIcon />
@@ -59,7 +63,7 @@ const Customers = () => {
               <SearchClearIcon />
             </div>
           </div>
-          <div>
+          <div onClick={() => setShowAddModal(true)}>
             <AddCustomerIcon />
           </div>
           <div onClick={() => setMulitbox(true)}>
@@ -193,6 +197,11 @@ const Customers = () => {
               </div>
             </div>
           </div>
+        </Modal>
+      )}
+      {showAddModal && (
+        <Modal onClose={() => setShowAddModal(false)}>
+          <NewCustomer />
         </Modal>
       )}
     </div>
