@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { Modal } from "../Context/Modal";
 
@@ -9,8 +10,12 @@ import { ReactComponent as SearchClearIcon } from "../../static/svg/searchclear.
 import { ReactComponent as MulitIcon } from "../../static/svg/mulit.svg";
 
 import "./Customers.css";
+import SingleCustomer from "./SingleCustomer";
 
 const Customers = () => {
+  const user = useSelector((state) => state.session.user);
+  const business = useSelector((state) => state.businesses[user?.id]);
+
   const [filter, setFilter] = useState("");
   const [mulitbox, setMulitbox] = useState(false);
   const [checkedFirstName, setCheckedFirstName] = useState(true);
@@ -18,11 +23,24 @@ const Customers = () => {
   const [checkedDisplayName, setCheckedDisplayName] = useState(true);
   const [checkedAddress, setCheckedAddress] = useState(true);
   const [checkedMobileNumber, setCheckedMobileNumber] = useState(true);
-  const [checkedWorknumber, setCheckedWorknumber] = useState(true);
+  const [checkedHomeNumber, setCheckedHomeNumber] = useState(true);
   const [checkedEmail, setCheckedEmail] = useState(true);
   const [checkedCompany, setCheckedCompany] = useState(true);
   const [checkedJobTitle, setCheckedJobTitle] = useState(true);
   const [checkedWorkNumber, setCheckedWorkNumber] = useState(true);
+
+  const states = {
+    checkedFirstName,
+    checkedLastName,
+    checkedDisplayName,
+    checkedAddress,
+    checkedMobileNumber,
+    checkedHomeNumber,
+    checkedEmail,
+    checkedCompany,
+    checkedJobTitle,
+    checkedWorkNumber,
+  };
 
   return (
     <div className="flex_column customer_main_container">
@@ -60,12 +78,19 @@ const Customers = () => {
           {checkedLastName && <h2>Last Name</h2>}
           {checkedAddress && <h2>Address</h2>}
           {checkedMobileNumber && <h2>Mobile Number</h2>}
-          {checkedWorknumber && <h2>Home Number</h2>}
+          {checkedHomeNumber && <h2>Home Number</h2>}
           {checkedEmail && <h2>Email</h2>}
           {checkedCompany && <h2>Company</h2>}
           {checkedJobTitle && <h2>Job Title</h2>}
           {checkedWorkNumber && <h2>Work Number</h2>}
         </div>
+        {business?.customers.map((customer) => (
+          <SingleCustomer
+            key={customer.id}
+            states={states}
+            customer={customer}
+          />
+        ))}
       </div>
       {mulitbox && (
         <Modal onClose={() => setMulitbox(false)}>
@@ -74,45 +99,95 @@ const Customers = () => {
             <div className="flex_row">
               <div className="flex_column mulit_inner_container">
                 <div className="flex_row">
-                  <input value={checkedDisplayName} type="checkbox" />
+                  <input
+                    value={checkedDisplayName}
+                    checked={checkedDisplayName}
+                    type="checkbox"
+                    onChange={(e) => setCheckedDisplayName(e.target.checked)}
+                  />
                   <p>Display Name</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedFirstName}
+                    checked={checkedFirstName}
+                    type="checkbox"
+                    onChange={(e) => setCheckedFirstName(e.target.checked)}
+                  />
                   <p>First Name</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedLastName}
+                    checked={checkedLastName}
+                    type="checkbox"
+                    onChange={(e) => setCheckedLastName(e.target.checked)}
+                  />
                   <p>Last Name</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedJobTitle}
+                    checked={checkedJobTitle}
+                    type="checkbox"
+                    onChange={(e) => setCheckedJobTitle(e.target.checked)}
+                  />
                   <p>Job Title</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedCompany}
+                    checked={checkedCompany}
+                    type="checkbox"
+                    onChange={(e) => setCheckedCompany(e.target.checked)}
+                  />
                   <p>Company</p>
                 </div>
               </div>
               <div className="flex_column mulit_inner_container">
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedAddress}
+                    checked={checkedAddress}
+                    type="checkbox"
+                    onChange={(e) => setCheckedAddress(e.target.checked)}
+                  />
                   <p>Address</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedMobileNumber}
+                    checked={checkedMobileNumber}
+                    type="checkbox"
+                    onChange={(e) => setCheckedMobileNumber(e.target.checked)}
+                  />
                   <p>Mobile Number</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedHomeNumber}
+                    checked={checkedHomeNumber}
+                    type="checkbox"
+                    onChange={(e) => setCheckedHomeNumber(e.target.checked)}
+                  />
                   <p>Home Number</p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedEmail}
+                    checked={checkedEmail}
+                    type="checkbox"
+                    onChange={(e) => setCheckedEmail(e.target.checked)}
+                  />
                   <p>Email </p>
                 </div>
                 <div className="flex_row">
-                  <input type="checkbox" />
+                  <input
+                    value={checkedWorkNumber}
+                    checked={checkedWorkNumber}
+                    type="checkbox"
+                    onChange={(e) => setCheckedWorkNumber(e.target.checked)}
+                  />
                   <p>Work Number</p>
                 </div>
               </div>

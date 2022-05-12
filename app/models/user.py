@@ -42,6 +42,7 @@ class User(db.Model, UserMixin):
             'role': self.role,
             'date_joined':self.date_joined,
             'last_login':self.last_login,
-            'color':self.color
+            'color':self.color,
+            'business_id':self.business_id
 
         }
