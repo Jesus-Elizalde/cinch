@@ -74,7 +74,7 @@ const Customers = () => {
           </div>
         </div>
       </div>
-      <div className="flex_column">
+      <div className="flex_column customer_inner_main_container ">
         <div className="flex_row default_container">
           <input type="checkbox" />
           {checkedDisplayName && <h2>Display</h2>}
@@ -96,6 +96,7 @@ const Customers = () => {
           />
         ))}
       </div>
+      <div></div>
       {mulitbox && (
         <Modal onClose={() => setMulitbox(false)}>
           <div className="modal_container">
@@ -201,7 +202,10 @@ const Customers = () => {
       )}
       {showAddModal && (
         <Modal onClose={() => setShowAddModal(false)}>
-          <NewCustomer />
+          <NewCustomer
+            closeModal={() => setShowAddModal(false)}
+            businessId={business?.id}
+          />
         </Modal>
       )}
     </div>

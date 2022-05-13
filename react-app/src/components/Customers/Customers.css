@@ -62,6 +62,7 @@
 
 .add_customer_modal {
   width: 1100px;
+  overflow-y: scroll;
 }
 
 .add_customer_input_container input {
@@ -75,4 +76,31 @@
 }
 #longer_input_add {
   width: 414px;
+}
+
+.new_customer_button_group {
+  justify-content: flex-end;
+  border-top: 1.5px solid lightgrey;
+}
+.new_customer_button {
+  border: none;
+  margin: 15px 15px 0px 15px;
+  width: 125px;
+  height: 30px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+.new_customer_button:hover {
+  background-color: lightgrey;
+}
+.new_customer_submit {
+  width: 155px;
+  color: #0f77cc;
+}
+
+.customer_inner_main_container {
+  width: 100%;
+  overflow-x: scroll;
 }

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { newCustomer } from "../../store/business";
 
-const NewCustomer = () => {
+const NewCustomer = ({ closeModal, businessId }) => {
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -15,10 +18,42 @@ const NewCustomer = () => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [zipCode, setZipCode] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  const onSubmit = async () => {
+    const results = {
+      first_name: firstName,
+      last_name: lastName,
+      display_name: displayName,
+      job_title: jobTitle,
+      email,
+      mobile_number: mobileNumber,
+      home_number: homeNumber,
+      work_number: workNumber,
+      company,
+      street,
+      city,
+      state,
+      country,
+      postal_code: zipCode,
+      business_id: businessId,
+    };
+
+    const data = await dispatch(newCustomer(results));
+    if (data) {
+      setErrors(data);
+      console.log(errors);
+      return;
+    }
+    closeModal();
+  };
 
   return (
     <div className="modal_container flex_column add_customer_modal">
       <h1>Add new customer</h1>
+      {errors.map((error) => (
+        <div>{error}</div>
+      ))}{" "}
       <h4>Contact info</h4>
       <div className="flex_row contact_info_container">
         <div className="flex_column">
@@ -115,6 +150,19 @@ const NewCustomer = () => {
               onChange={(e) => setZipCode(e.target.value)}
             />
           </div>
+        </div>
+      </div>
+      <div className="flex_row new_customer_button_group">
+        <div className="flex_row">
+          <button onClick={closeModal} className="new_customer_button ">
+            Cancel
+          </button>
+          <button
+            onClick={onSubmit}
+            className="new_customer_button new_customer_submit"
+          >
+            Create Customer
+          </button>
         </div>
       </div>
     </div>
