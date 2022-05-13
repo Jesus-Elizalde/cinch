@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Modal } from "../Context/Modal";
 
@@ -8,12 +8,15 @@ import { ReactComponent as ThreeDotsIcon } from "../../static/svg/threedots.svg"
 import { ReactComponent as SearchIcon } from "../../static/svg/search.svg";
 import { ReactComponent as SearchClearIcon } from "../../static/svg/searchclear.svg";
 import { ReactComponent as MulitIcon } from "../../static/svg/mulit.svg";
+import { ReactComponent as DeleteIcon } from "../../static/svg/delete.svg";
 
 import "./Customers.css";
 import SingleCustomer from "./SingleCustomer";
 import NewCustomer from "./NewCustomer";
+import { deleteCustomer, getBusinessesDetails } from "../../store/business";
 
 const Customers = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[user?.id]);
 
@@ -21,6 +24,7 @@ const Customers = () => {
 
   const [mulitbox, setMulitbox] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [checkedFirstName, setCheckedFirstName] = useState(true);
   const [checkedLastName, setCheckedLastName] = useState(true);
@@ -32,6 +36,10 @@ const Customers = () => {
   const [checkedCompany, setCheckedCompany] = useState(true);
   const [checkedJobTitle, setCheckedJobTitle] = useState(true);
   const [checkedWorkNumber, setCheckedWorkNumber] = useState(true);
+
+  const [deleteArr, setDeleteArr] = useState([]);
+
+  const checkboxState = { deleteArr, setDeleteArr };
 
   const states = {
     checkedFirstName,
@@ -45,36 +53,99 @@ const Customers = () => {
     checkedJobTitle,
     checkedWorkNumber,
   };
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
+  }, [showAddModal, showDeleteModal]);
+
+  const addAllCustomers = (e) => {
+    if (e.target.checked) {
+      const arr = [];
+      business?.customers.forEach((customer) => arr.push(customer.id));
+      setDeleteArr(arr);
+    } else {
+      setDeleteArr([]);
+    }
+  };
+
+  const deleteCustomerFcn = async () => {
+    for (const id of deleteArr) {
+      const data = await dispatch(deleteCustomer(id));
+    }
+    setShowDeleteModal(false);
+  };
 
   return (
     <div className="flex_column customer_main_container">
-      <div className="flex_row title_container">
-        <h1>{business?.customers.length} customers</h1>
-        <div className="flex_row title_right_side_conatiner">
-          <div className="flex_row main_input_container">
-            <SearchIcon />
-            <input
-              value={filter}
-              placeholder="Search"
-              onChange={(e) => setFilter(e.target.value)}
-              className="filter_input"
-            />
-            <div onClick={() => setFilter("")}>
-              <SearchClearIcon />
+      {deleteArr.length ? (
+        <div className="flex_row title_container">
+          <h1>{deleteArr.length} selected</h1>
+          <div className="flex_row title_right_side_conatiner">
+            <div onClick={() => setShowDeleteModal(true)}>
+              <DeleteIcon />
             </div>
           </div>
-          <div onClick={() => setShowAddModal(true)}>
-            <AddCustomerIcon />
-          </div>
-          <div onClick={() => setMulitbox(true)}>
-            <MulitIcon />
-          </div>
-          <div>
-            <ThreeDotsIcon />
+        </div>
+      ) : (
+        <div className="flex_row title_container">
+          <h1>{business?.customers.length} customers</h1>
+          <div className="flex_row title_right_side_conatiner">
+            <div className="flex_row main_input_container">
+              <SearchIcon />
+              <input
+                value={filter}
+                placeholder="Search"
+                onChange={(e) => setFilter(e.target.value)}
+                className="filter_input"
+              />
+              <div onClick={() => setFilter("")}>
+                <SearchClearIcon />
+              </div>
+            </div>
+            <div onClick={() => setShowAddModal(true)}>
+              <AddCustomerIcon />
+            </div>
+            <div onClick={() => setMulitbox(true)}>
+              <MulitIcon />
+            </div>
+            <div>
+              <ThreeDotsIcon />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex_column customer_inner_main_container ">
+      )}
+
+      <table>
+        <thead>
+          <tr>
+            <input
+              type="checkbox"
+              value={deleteArr.length !== 0}
+              onClick={addAllCustomers}
+            />
+            {checkedDisplayName && <th>Display Name</th>}
+            {checkedFirstName && <th>First Name</th>}
+            {checkedLastName && <th>Last Name</th>}
+            {checkedAddress && <th>Address</th>}
+            {checkedMobileNumber && <th>Mobile Number</th>}
+            {checkedHomeNumber && <th>Home Number</th>}
+            {checkedEmail && <th>Email</th>}
+            {checkedCompany && <th>Company</th>}
+            {checkedJobTitle && <th>Job Title</th>}
+            {checkedWorkNumber && <th>Work Number</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {business?.customers.map((customer) => (
+            <SingleCustomer
+              key={customer.id}
+              states={states}
+              customer={customer}
+              checkboxState={checkboxState}
+            />
+          ))}
+        </tbody>
+      </table>
+      {/* <div className="flex_column customer_inner_main_container ">
         <div className="flex_row default_container">
           <input type="checkbox" />
           {checkedDisplayName && <h2>Display</h2>}
@@ -95,8 +166,8 @@ const Customers = () => {
             customer={customer}
           />
         ))}
-      </div>
-      <div></div>
+      </div> */}
+
       {mulitbox && (
         <Modal onClose={() => setMulitbox(false)}>
           <div className="modal_container">
@@ -206,6 +277,18 @@ const Customers = () => {
             closeModal={() => setShowAddModal(false)}
             businessId={business?.id}
           />
+        </Modal>
+      )}
+      {showDeleteModal && (
+        <Modal onClose={() => setShowDeleteModal(false)}>
+          <div className="flex_column">
+            <h1>Delete customer?</h1>
+            <p>Are you sure? All selected customers will be deleted.</p>
+            <div>
+              <button onClick={deleteCustomerFcn}>Delete</button>
+              <button>Cancel</button>
+            </div>
+          </div>
         </Modal>
       )}
     </div>

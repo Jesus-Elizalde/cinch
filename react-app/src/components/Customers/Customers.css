@@ -32,6 +32,7 @@
   align-items: center;
   height: 50px;
   border-bottom: 1.5px solid lightgrey;
+  width: max-content;
 }
 
 .default_container h2,
@@ -103,4 +104,8 @@
 .customer_inner_main_container {
   width: 100%;
   overflow-x: scroll;
+}
+
+.table_row:hover {
+  background-color: lightgrey;
 }

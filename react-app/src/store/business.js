@@ -1,5 +1,6 @@
 const GET_BUSINESSES = "business/GET_BUSINESSES";
 const EDIT_BUSINESS = "business/EDIT_BUSINESSES";
+const DELETE_CUSTOMER = "business/DELETE_CUSTOMER";
 
 const getBusinesses = (businesses) => ({
   type: GET_BUSINESSES,
@@ -40,6 +41,23 @@ export const newCustomer = (customer) => async (dispatch) => {
     }
   } else {
     return ["An error occurred. Please try again"];
+  }
+};
+
+export const deleteCustomer = (id) => async (dispatch) => {
+  const response = await fetch(`/api/customers/${id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editBusiness(data));
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
 };
 

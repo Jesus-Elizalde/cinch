@@ -1,5 +1,5 @@
 from flask import Blueprint,jsonify,request
-from app.models import db, Customer
+from app.models import db, Customer ,Business
 from app.forms import CustomerForm
 from app.utils import validation_errors_to_error_messages
 
@@ -82,9 +82,13 @@ def customer_put():
 @customer_routes.route("/<int:id>",methods=["DELETE"])
 def delete_customer(id):
     customer = Customer.query.get(id)
+    business_id_temp = customer.business_id
+
     if customer:
         db.session.delete(customer)
         db.session.commit()
-        return {'id': id}
+        business = Business.query.get(business_id_temp)
+
+        return business.to_dict()
     else:
-        return {"error": "customer doesn't exists"}
+        return {"error": "customer doesn't exists"}, 401
