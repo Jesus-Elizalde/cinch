@@ -18,7 +18,8 @@ import { deleteCustomer, getBusinessesDetails } from "../../store/business";
 const Customers = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const business = useSelector((state) => state.businesses[user?.id]);
+
+  const business = useSelector((state) => state.businesses[user?.business_id]);
 
   const [filter, setFilter] = useState("");
 
@@ -276,7 +277,7 @@ const Customers = () => {
         <Modal onClose={() => setShowAddModal(false)}>
           <NewCustomer
             closeModal={() => setShowAddModal(false)}
-            businessId={business?.id}
+            businessId={user?.business_id}
           />
         </Modal>
       )}
