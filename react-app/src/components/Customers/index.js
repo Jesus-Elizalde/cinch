@@ -71,6 +71,7 @@ const Customers = () => {
     for (const id of deleteArr) {
       const data = await dispatch(deleteCustomer(id));
     }
+    setDeleteArr([]);
     setShowDeleteModal(false);
   };
 

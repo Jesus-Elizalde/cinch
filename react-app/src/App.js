@@ -17,6 +17,7 @@ import Map from "./components/Map";
 import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import Company from "./components/Account/Company";
+import SingleCustomerDetails from "./components/Customers/SingleCustomerDetails";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +69,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/customers" exact={true}>
             <Customers />
+          </ProtectedRoute>
+          <ProtectedRoute path="/customers/:id" exact={true}>
+            <SingleCustomerDetails />
           </ProtectedRoute>
           <ProtectedRoute path="/map" exact={true}>
             <Map />

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const SingleCustomer = ({ states, customer, checkboxState }) => {
   const { deleteArr, setDeleteArr } = checkboxState;
@@ -32,7 +33,11 @@ const SingleCustomer = ({ states, customer, checkboxState }) => {
         onChange={addOneCustomers}
       />
       {checkedDisplayName && (
-        <td className="table_td_align">{customer?.display_name}</td>
+        <td className="table_td_align">
+          <NavLink to={`/customers/${customer?.id}`}>
+            {customer?.display_name}
+          </NavLink>
+        </td>
       )}
       {checkedFirstName && (
         <td className="table_td_align">{customer?.first_name}</td>
