@@ -8,6 +8,7 @@ import { ReactComponent as ThreeDotsIcon } from "../../static/svg/threedots.svg"
 import { ReactComponent as PencilIcon } from "../../static/svg/pencil.svg";
 import EditCustomerInfo from "./EditCustomerInfo";
 import EditCustomerMap from "./EditCustomerMap";
+import GoogleMap from "../GoogleMap";
 
 const SingleCustomerDetails = () => {
   const { id } = useParams();
@@ -44,7 +45,13 @@ const SingleCustomerDetails = () => {
           </div>
         </div>
         <div className="flex_column right_customer_edit_column">
-          <div className="customer_edit_map_card"></div>
+          <div className="customer_edit_map_card">
+            <GoogleMap
+              coords={{ lat: 37.422388, lng: -122.0841883 }}
+              size={{ width: "820px", height: "200px" }}
+              zoom={true}
+            />
+          </div>
         </div>
       </div>
       {showInfoModal && (

@@ -2,6 +2,7 @@ from flask import Blueprint,jsonify,request
 from app.models import db, Customer ,Business
 from app.forms import CustomerForm
 from app.utils import validation_errors_to_error_messages
+from app.googlegeo import geocode
 
 customer_routes = Blueprint("customer",__name__)
 
@@ -26,8 +27,10 @@ def customer():
     form = CustomerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        coords = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+form.data["postal_code"])
+
         customer = Customer(
-            first_name=form.data["first_name"],
+        first_name=form.data["first_name"],
         last_name=form.data["last_name"],
         display_name=form.data["display_name"],
         street=form.data["street"],
@@ -35,8 +38,8 @@ def customer():
         state=form.data["state"],
         country=form.data["country"],
         postal_code=form.data["postal_code"],
-        lat=form.data["lat"],
-        long=form.data["long"],
+        lat=coords["lat"],
+        long=coords["lng"],
         mobile_number=form.data["mobile_number"],
         home_number=form.data["home_number"],
         email=form.data["email"],

@@ -11,3 +11,5 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL').replace('postgres://', 'postgresql://')
     SQLALCHEMY_ECHO = True
+    GEOCODER_KEY=os.environ.get("GOOGLE_GEOCODER_API_KEY")
+    MAPS_KEY=os.environ.get("GOOGLE_MAPS_API_KEY")

@@ -18,6 +18,7 @@ import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import Company from "./components/Account/Company";
 import SingleCustomerDetails from "./components/Customers/SingleCustomerDetails";
+import { getKeyDetails } from "./store/apiKey";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,6 +36,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getBusinessesDetails());
+    dispatch(getKeyDetails());
   }, [dispatch]);
 
   if (!loaded) {

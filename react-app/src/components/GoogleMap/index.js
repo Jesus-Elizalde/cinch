@@ -1,0 +1,63 @@
+import React from "react";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  useJsApiLoader,
+} from "@react-google-maps/api";
+
+import "./GoogleMap.css";
+
+import { blueEssence } from "./mapStyles";
+import { useSelector } from "react-redux";
+
+const GoogleMaps = ({ coords, size, zoom }) => {
+  const googleMapKey = useSelector((state) => state.keys.googleApiKey);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: googleMapKey,
+  });
+
+  const containerStyle = {
+    width: size.width,
+    height: size.height,
+  };
+
+  const center = {
+    lat: coords.lat,
+    lng: coords.lng,
+  };
+
+  const options = {
+    styles: blueEssence,
+    disableDefaultUI: true,
+    zoomControl: zoom,
+  };
+
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={15}
+      options={options}
+      // onLoad={onLoad}
+      // onUnmount={onUnmount}
+    >
+      {/* <Marker
+        position={{
+          lat: coords.lat,
+          lng: coords.lng,
+        }}
+        icon={{
+          url: "/f1icon.svg",
+          scaledSize: new window.google.maps.Size(75, 75),
+          origin: new window.google.maps.Point(0, 0),
+        }}
+      /> */}
+    </GoogleMap>
+  ) : (
+    <></>
+  );
+};
+
+export default React.memo(GoogleMaps);

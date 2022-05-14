@@ -43,8 +43,9 @@ const LoginForm = ({ modalFcn }) => {
     setPassword(e.target.value);
   };
   // !to redirct user if logged in
+
   // if (user) {
-  //   return <Redirect to="/" />;
+  //   return <Redirect to="/dashboard" />;
   // }
 
   return (
