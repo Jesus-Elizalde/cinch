@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Modal } from "../Context/Modal";
 
-const EditCustomerMap = () => {
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [zipCode, setZipCode] = useState("");
+const EditCustomerMap = ({ customer }) => {
+  const [street, setStreet] = useState(customer?.street);
+  const [city, setCity] = useState(customer?.city);
+  const [state, setState] = useState(customer?.state);
+  const [country, setCountry] = useState(customer?.country);
+  const [zipCode, setZipCode] = useState(customer?.postal_code);
   const [errors, setErrors] = useState([]);
   return (
     <div className="flex_column">

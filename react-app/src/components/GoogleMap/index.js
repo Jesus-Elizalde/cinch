@@ -11,7 +11,7 @@ import "./GoogleMap.css";
 import { blueEssence } from "./mapStyles";
 import { useSelector } from "react-redux";
 
-const GoogleMaps = ({ coords, size, zoom }) => {
+const GoogleMaps = ({ coords, size, zoom, zoomNum }) => {
   const googleMapKey = useSelector((state) => state.keys.googleApiKey);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -38,22 +38,22 @@ const GoogleMaps = ({ coords, size, zoom }) => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={15}
+      zoom={zoomNum}
       options={options}
       // onLoad={onLoad}
       // onUnmount={onUnmount}
     >
-      {/* <Marker
+      <Marker
         position={{
           lat: coords.lat,
           lng: coords.lng,
         }}
-        icon={{
-          url: "/f1icon.svg",
-          scaledSize: new window.google.maps.Size(75, 75),
-          origin: new window.google.maps.Point(0, 0),
-        }}
-      /> */}
+        // icon={{
+        //   url: "/f1icon.svg",
+        //   scaledSize: new window.google.maps.Size(75, 75),
+        //   origin: new window.google.maps.Point(0, 0),
+        // }}
+      />
     </GoogleMap>
   ) : (
     <></>

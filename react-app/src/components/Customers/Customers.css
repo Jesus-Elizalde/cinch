@@ -145,3 +145,8 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.edit_address_container {
+  justify-content: space-between;
+  align-items: center;
+}

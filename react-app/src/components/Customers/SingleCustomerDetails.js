@@ -47,10 +47,25 @@ const SingleCustomerDetails = () => {
         <div className="flex_column right_customer_edit_column">
           <div className="customer_edit_map_card">
             <GoogleMap
-              coords={{ lat: 37.422388, lng: -122.0841883 }}
+              coords={{ lat: +customer?.coords[0], lng: +customer?.coords[1] }}
               size={{ width: "820px", height: "200px" }}
               zoom={true}
+              zoomNum={13}
             />
+            <div>
+              <div className="flex_row edit_address_container">
+                <div className="flex_column ">
+                  <h4>{customer?.street}</h4>
+                  <p>
+                    {customer?.city} {customer?.state} {customer?.county}{" "}
+                    {customer?.postal_code}
+                  </p>
+                </div>
+                <div onClick={() => setShowMapInfoModal(true)}>
+                  <ThreeDotsIcon />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -63,8 +78,8 @@ const SingleCustomerDetails = () => {
         </Modal>
       )}
       {showMapInfoModal && (
-        <Modal>
-          <EditCustomerMap />
+        <Modal onClose={() => setShowMapInfoModal(false)}>
+          <EditCustomerMap customer={customer} />
         </Modal>
       )}
     </div>
