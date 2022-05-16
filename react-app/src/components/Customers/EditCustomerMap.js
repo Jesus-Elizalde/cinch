@@ -1,16 +1,57 @@
 import React, { useState } from "react";
 import { Modal } from "../Context/Modal";
+import { useDispatch } from "react-redux";
+import { editCustomer } from "../../store/business";
 
-const EditCustomerMap = ({ customer }) => {
+const EditCustomerMap = ({ customer, closeModal }) => {
+  console.log(
+    "🚀 ~ file: EditCustomerMap.js ~ line 7 ~ EditCustomerMap ~ customer",
+    customer
+  );
+  const dispatch = useDispatch();
   const [street, setStreet] = useState(customer?.street);
   const [city, setCity] = useState(customer?.city);
   const [state, setState] = useState(customer?.state);
   const [country, setCountry] = useState(customer?.country);
   const [zipCode, setZipCode] = useState(customer?.postal_code);
   const [errors, setErrors] = useState([]);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const results = {
+      first_name: customer?.first_name,
+      last_name: customer?.last_name,
+      display_name: customer?.display_name,
+      street,
+      city,
+      state,
+      country,
+      postal_code: zipCode,
+      mobile_number: customer?.mobile_number,
+      home_number: customer?.home_number,
+      email: customer?.email,
+      company: customer?.company,
+      job_title: customer?.job_title,
+      work_number: customer?.work_number,
+      id: +customer?.id,
+      business_id: +customer?.business_id,
+    };
+
+    const data = await dispatch(editCustomer(results));
+    if (data) {
+      setErrors(data);
+    }
+    closeModal();
+  };
+
   return (
     <div className="flex_column">
       <h4>Address</h4>
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
       <div className="flex_row ">
         <div className="flex_column">
           <div className="flex_row add_customer_input_container">
@@ -44,7 +85,7 @@ const EditCustomerMap = ({ customer }) => {
           </div>
         </div>
       </div>
-      {/* <div className="flex_row new_customer_button_group">
+      <div className="flex_row new_customer_button_group">
         <div className="flex_row">
           <button onClick={closeModal} className="new_customer_button ">
             Cancel
@@ -53,10 +94,10 @@ const EditCustomerMap = ({ customer }) => {
             onClick={onSubmit}
             className="new_customer_button new_customer_submit"
           >
-            Create Customer
+            Edit Customer
           </button>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

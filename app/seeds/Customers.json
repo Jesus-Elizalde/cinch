@@ -1,0 +1,17 @@
+[
+  {
+    "id": 2,
+    "firstName": "",
+    "lastName": "",
+    "mobileNumber": null,
+    "homeNumber": "",
+    "email": "",
+    "adress": "2888 Alice Ct",
+    "city": "Fremont",
+    "state": "CA",
+    "zipCode": "94539",
+    "price": 60,
+    "createdAt": "2022-04-17 10:56:48.651587-07",
+    "updatedAt": "2022-04-17 10:56:48.651587-07"
+  }
+]

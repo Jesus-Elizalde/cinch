@@ -54,6 +54,7 @@ const Customers = () => {
     checkedJobTitle,
     checkedWorkNumber,
   };
+
   useEffect(() => {
     dispatch(getBusinessesDetails());
   }, [showAddModal, showDeleteModal]);

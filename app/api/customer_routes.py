@@ -6,17 +6,6 @@ from app.googlegeo import geocode
 
 customer_routes = Blueprint("customer",__name__)
 
-# def validation_errors_to_error_messages(validation_errors):
-#     """
-#     Simple function that turns the WTForms validation errors into a simple list
-#     """
-#     errorMessages = []
-#     for field in validation_errors:
-#         for error in validation_errors[field]:
-#             errorMessages.append(f'{field} : {error}')
-#     return errorMessages
-
-
 @customer_routes.route('/')
 def get_all_customer():
     customers = Customer.query.all()
@@ -53,12 +42,15 @@ def customer():
         return customer.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@customer_routes.route('/',methods=['PUT'])
-def customer_put():
+@customer_routes.route('/<int:id>',methods=['PUT'])
+def customer_put(id):
+
     form = CustomerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        customer = Customer.query.get(form.data["business_id"])
+        customer = Customer.query.get(id)
+
+        coords = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+form.data["postal_code"])
 
         customer.first_name=form.data["first_name"]
         customer.last_name=form.data["last_name"]
@@ -68,15 +60,14 @@ def customer_put():
         customer.state=form.data["state"]
         customer.country=form.data["country"]
         customer.postal_code=form.data["postal_code"]
-        customer.lat=form.data["lat"]
-        customer.long=form.data["long"]
+        customer.lat=coords["lat"]
+        customer.long=coords["lng"]
         customer.mobile_number=form.data["mobile_number"]
         customer.home_number=form.data["home_number"]
         customer.email=form.data["email"]
         customer.company=form.data["company"]
         customer.job_title=form.data["job_title"]
         customer.work_number=form.data["work_number"]
-        customer.business_id=form.data["business_id"]
 
         db.session.commit()
         return customer.to_dict()

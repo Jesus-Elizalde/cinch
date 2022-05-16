@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editCustomer } from "../../store/business";
 
 const EditCustomerInfo = ({ customer, closeModal }) => {
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(customer?.first_name);
   const [lastName, setLastName] = useState(customer?.last_name);
   const [displayName, setDisplayName] = useState(customer?.display_name);
@@ -12,11 +15,37 @@ const EditCustomerInfo = ({ customer, closeModal }) => {
   const [company, setCompany] = useState(customer?.company);
   const [errors, setErrors] = useState([]);
 
-  const onSubmit = () => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const resultsTwo = {
+      first_name: firstName,
+      last_name: lastName,
+      display_name: displayName,
+      street: customer?.street,
+      city: customer?.city,
+      state: customer?.state,
+      country: customer?.country,
+      postal_code: customer?.postal_code,
+      mobile_number: mobileNumber,
+      home_number: homeNumber,
+      email,
+      company,
+      job_title: jobTitle,
+      work_number: workNumber,
+      id: +customer?.id,
+      business_id: +customer?.business_id,
+    };
+
+    const data = await dispatch(editCustomer(resultsTwo));
+    if (data) {
+      setErrors(data);
+    }
+    closeModal();
+  };
 
   return (
     <div className="flex_column">
-      <h1>Add new customer</h1>
+      <h1>Edit customer</h1>
       {errors.map((error) => (
         <div>{error}</div>
       ))}{" "}
@@ -93,7 +122,7 @@ const EditCustomerInfo = ({ customer, closeModal }) => {
             onClick={onSubmit}
             className="new_customer_button new_customer_submit"
           >
-            Create Customer
+            Edit Customer
           </button>
         </div>
       </div>

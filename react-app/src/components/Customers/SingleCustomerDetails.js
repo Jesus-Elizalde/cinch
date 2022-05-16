@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { Modal } from "../Context/Modal";
@@ -9,9 +9,11 @@ import { ReactComponent as PencilIcon } from "../../static/svg/pencil.svg";
 import EditCustomerInfo from "./EditCustomerInfo";
 import EditCustomerMap from "./EditCustomerMap";
 import GoogleMap from "../GoogleMap";
+import { getBusinessesDetails } from "../../store/business";
 
 const SingleCustomerDetails = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[user?.id]);
   const customer = business?.customers.filter(
@@ -20,6 +22,10 @@ const SingleCustomerDetails = () => {
 
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [showMapInfoModal, setShowMapInfoModal] = useState(false);
+
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
+  }, [showInfoModal, showMapInfoModal]);
 
   return (
     <div className="flex_column customer_main_container">
@@ -79,7 +85,10 @@ const SingleCustomerDetails = () => {
       )}
       {showMapInfoModal && (
         <Modal onClose={() => setShowMapInfoModal(false)}>
-          <EditCustomerMap customer={customer} />
+          <EditCustomerMap
+            customer={customer}
+            closeModal={() => setShowMapInfoModal(false)}
+          />
         </Modal>
       )}
     </div>
