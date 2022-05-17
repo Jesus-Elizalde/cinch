@@ -20,6 +20,8 @@ import Company from "./components/Account/Company";
 import SingleCustomerDetails from "./components/Customers/SingleCustomerDetails";
 import { getKeyDetails } from "./store/apiKey";
 import PriceBook from "./components/PriceBook";
+import { getCategoriesDetails } from "./store/category";
+import { getServicesDetails } from "./store/service";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +40,8 @@ function App() {
   useEffect(() => {
     dispatch(getBusinessesDetails());
     dispatch(getKeyDetails());
+    dispatch(getCategoriesDetails());
+    dispatch(getServicesDetails());
   }, [dispatch]);
 
   if (!loaded) {

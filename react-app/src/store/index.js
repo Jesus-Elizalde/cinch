@@ -3,11 +3,15 @@ import thunk from "redux-thunk";
 import session from "./session";
 import businesses from "./business";
 import keys from "./apiKey";
+import categories from "./category";
+import services from "./service";
 
 const rootReducer = combineReducers({
   session,
   businesses,
   keys,
+  categories,
+  services,
 });
 
 let enhancer;
