@@ -148,28 +148,6 @@ const Customers = () => {
           ))}
         </tbody>
       </table>
-      {/* <div className="flex_column customer_inner_main_container ">
-        <div className="flex_row default_container">
-          <input type="checkbox" />
-          {checkedDisplayName && <h2>Display</h2>}
-          {checkedFirstName && <h2>First Name</h2>}
-          {checkedLastName && <h2>Last Name</h2>}
-          {checkedAddress && <h2>Address</h2>}
-          {checkedMobileNumber && <h2>Mobile Number</h2>}
-          {checkedHomeNumber && <h2>Home Number</h2>}
-          {checkedEmail && <h2>Email</h2>}
-          {checkedCompany && <h2>Company</h2>}
-          {checkedJobTitle && <h2>Job Title</h2>}
-          {checkedWorkNumber && <h2>Work Number</h2>}
-        </div>
-        {business?.customers.map((customer) => (
-          <SingleCustomer
-            key={customer.id}
-            states={states}
-            customer={customer}
-          />
-        ))}
-      </div> */}
 
       {mulitbox && (
         <Modal onClose={() => setMulitbox(false)}>

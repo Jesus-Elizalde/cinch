@@ -1,0 +1,83 @@
+.new_job_main {
+  padding: 0px 25px 0px 25px;
+}
+
+.new_job_main_banner {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.align_item {
+  align-items: center;
+}
+
+.new_job_customer_box {
+  width: 275.5px;
+  height: 197px;
+  background-color: white;
+  box-shadow: 0px 0px 14px black;
+  border-radius: 4px;
+  padding: 0px 5px 0px 5px;
+  margin-bottom: 40px;
+}
+
+.new_job_customer_container {
+  border-bottom: 1px solid lightgray;
+}
+
+.new_job_search_box input {
+  border: none;
+  background-color: transparent;
+}
+.new_job_search_box input:focus {
+  outline-width: 0;
+}
+
+.new_job_search_box {
+  background-color: lightgrey;
+  width: 240px;
+  border-radius: 4px;
+  margin: 15px 0px 15px 0px;
+}
+
+.new_job__new_customer button {
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #0f77cc;
+}
+
+.new_job_schedule_box {
+  background-color: white;
+  box-shadow: 0px 0px 14px black;
+  width: 275.5px;
+  height: 170px;
+  padding: 0px 5px 0px 5px;
+  border-radius: 4px;
+}
+
+.new_job_schedule_container {
+  border-bottom: 1px solid lightgray;
+}
+
+.new_job_right_input_date {
+  width: 112px;
+  height: 30px;
+  margin: 0px 20px 0px 10px;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 4px;
+}
+
+.new_job_left_input_time {
+  width: 70px;
+  height: 30px;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 4px;
+}
+
+.new_job_right_input_date:focus,
+.new_job_left_input_time:focus {
+  outline-width: 0;
+}

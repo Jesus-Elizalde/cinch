@@ -22,6 +22,7 @@ import { getKeyDetails } from "./store/apiKey";
 import PriceBook from "./components/PriceBook";
 import { getCategoriesDetails } from "./store/category";
 import { getServicesDetails } from "./store/service";
+import NewJob from "./components/Jobs/NewJob";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -79,6 +80,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/customers/:id" exact={true}>
             <SingleCustomerDetails />
+          </ProtectedRoute>
+          <ProtectedRoute path="/jobs/new" exact={true}>
+            <NewJob />
           </ProtectedRoute>
           <ProtectedRoute path="/map" exact={true}>
             <Map />
