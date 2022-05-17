@@ -43,3 +43,27 @@ formatter = generic
 [formatter_generic]
 format = %(levelname)-5.5s [%(name)s] %(message)s
 datefmt = %H:%M:%S
+
+
+
+
+Heating &amp; Air Conditioning Carpet Cleaning Home Cleaning Plumbing
+Electrical Garage Handyman Window &amp; Exterior Cleaning Automotive
+General Contractor Air Duct Cleaning Pest Control Painting Accountant
+Alternative Therapy Appraisal Audio &amp; TV Baby Proof Barber
+Business Services Cabinetry Carpet Repair Concrete &amp; Asphalt
+Cooking Credit Counselor Deck &amp; Patio Demolition Document Storage
+&amp; Destruction Doors Drywall Fencing Financial Planner Fireplace
+&amp; Chimney Fitness Fleets &amp; Trucks Flooring Furniture &amp;
+Upholstery Glass Graphics &amp; Printing Gutters Health &amp; Beauty
+Home Inspection Install &amp; Assemble Insurance Interior &amp;
+Surface Cleaning Janitorial Junk Removal Laundry Lawyer Lender
+Lighting Locksmith Marine Services Massage Medical Mortgage Broker
+Moving Music &amp; Singing Natural Stone Neighborhood Chores Notary
+Organization &amp; Interior Design Parties Pets Photography Pool &amp;
+Spa Property Manager Real Estate Restoration Regulatory &amp;
+Environmental Roof &amp; Attic Rug Cleaning Security Sewer &amp;
+Septic Siding Smart Home Snow Removal Solar &amp; Energy Tax Planner
+Tech Help Transportation Device Repair Tile &amp; Grout Tree Services
+Tutoring Water Heater Water Transfer Printing Water Treatment Well
+Pumps Wildlife Control Windows Wine Caulking &amp; Sealants

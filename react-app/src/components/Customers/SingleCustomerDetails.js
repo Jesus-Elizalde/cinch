@@ -15,7 +15,7 @@ const SingleCustomerDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const business = useSelector((state) => state.businesses[user?.id]);
+  const business = useSelector((state) => state.businesses[user?.business_id]);
   const customer = business?.customers.filter(
     (customer) => customer.id === +id
   )[0];

@@ -19,6 +19,7 @@ import Account from "./components/Account";
 import Company from "./components/Account/Company";
 import SingleCustomerDetails from "./components/Customers/SingleCustomerDetails";
 import { getKeyDetails } from "./store/apiKey";
+import PriceBook from "./components/PriceBook";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -88,7 +89,7 @@ function App() {
             <Account />
           </ProtectedRoute>
           <ProtectedRoute path="/account/booklists" exact={true}>
-            <Account />
+            <PriceBook />
           </ProtectedRoute>
           <Route path="/" exact={true}>
             <Redirect to="/welcome" />
