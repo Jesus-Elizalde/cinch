@@ -11,6 +11,7 @@ import { ReactComponent as SearchClearIcon } from "../../static/svg/searchclear.
 import { ReactComponent as MulitIcon } from "../../static/svg/mulit.svg";
 import { ReactComponent as DeleteIcon } from "../../static/svg/delete.svg";
 import SingleJob from "./SingleJob";
+import { Modal } from "../Context/Modal";
 
 const Schedules = () => {
   const user = useSelector((state) => state.session.user);
@@ -27,10 +28,6 @@ const Schedules = () => {
   const [checkedCustomer, setCheckCustomer] = useState(true);
 
   const [deleteArr, setDeleteArr] = useState([]);
-  console.log(
-    "🚀 ~ file: index.js ~ line 30 ~ Schedules ~ deleteArr",
-    deleteArr
-  );
 
   const checkboxState = { deleteArr, setDeleteArr };
 
@@ -103,6 +100,53 @@ const Schedules = () => {
           ))}
         </tbody>
       </table>
+      {mulitbox && (
+        <Modal onClose={() => setMulitbox(false)}>
+          <div className="modal_container">
+            <h1>Select columns to view</h1>
+            <div className="flex_row">
+              <div className="flex_column mulit_inner_container">
+                <div className="flex_row">
+                  <input
+                    value={checkedCustomer}
+                    checked={checkedCustomer}
+                    type="checkbox"
+                    onChange={(e) => setCheckCustomer(e.target.checked)}
+                  />
+                  <p>Customer</p>
+                </div>
+                <div className="flex_row">
+                  <input
+                    value={checkedFromDate}
+                    checked={checkedFromDate}
+                    type="checkbox"
+                    onChange={(e) => setCheckedFromDate(e.target.checked)}
+                  />
+                  <p>checkedFromDate</p>
+                </div>
+                <div className="flex_row">
+                  <input
+                    value={checkedToDate}
+                    checked={checkedToDate}
+                    type="checkbox"
+                    onChange={(e) => setCheckedToDate(e.target.checked)}
+                  />
+                  <p>checkedToDate</p>
+                </div>
+                <div className="flex_row">
+                  <input
+                    value={checkedMessage}
+                    checked={checkedMessage}
+                    type="checkbox"
+                    onChange={(e) => setCheckedMessage(e.target.checked)}
+                  />
+                  <p>checkedMessage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

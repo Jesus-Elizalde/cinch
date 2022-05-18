@@ -37,12 +37,12 @@ const AuthBar = () => {
   return (
     <div className="auth_bar_container flex_row">
       <div className="flex_row main_icons">
-        <NavLink to="/dashboard">
+        {/* <NavLink to="/dashboard">
           <span className="flex_column">
             <DashIcon />
             Dash
           </span>
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/schedules">
           <span className="flex_column">
             <ScheduleIcon />
@@ -89,10 +89,10 @@ const AuthBar = () => {
                   <p>{user?.email}</p>
                 </div>
               </div>
-              <NavLink to="/account" className="flex_row user_dropdown_pair">
+              {/* <NavLink to="/account" className="flex_row user_dropdown_pair">
                 <SettingsIcon />
                 <p>Account Settings</p>
-              </NavLink>
+              </NavLink> */}
               <div className="flex_row user_dropdown_pair">
                 <SignoutIcon />
                 <Logoutbutton />
