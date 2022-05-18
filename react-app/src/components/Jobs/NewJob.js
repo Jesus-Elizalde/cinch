@@ -37,11 +37,11 @@ const NewJob = () => {
       to_date_time: toDate,
       customer_id: selectedCustomer?.id,
     };
-    console.log("🚀 ~ file: NewJob.js ~ line 35 ~ onSubmit ~ results", results);
 
     const data = await dispatch(newJobDetails(results));
     if (data) {
       setErrors(data);
+      return;
     }
     setErrors([]);
   };
