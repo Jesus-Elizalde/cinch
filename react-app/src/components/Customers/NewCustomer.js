@@ -18,6 +18,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [zipCode, setZipCode] = useState("");
+
   const [errors, setErrors] = useState([]);
 
   const onSubmit = async () => {

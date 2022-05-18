@@ -9,6 +9,10 @@ const SignUpForm = ({ modalFcn }) => {
   const { setShowLoginModal, setShowSignupModal } = modalFcn;
 
   const [errors, setErrors] = useState([]);
+  console.log(
+    "🚀 ~ file: SignUpForm.js ~ line 12 ~ SignUpForm ~ errors",
+    errors
+  );
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
