@@ -14,7 +14,9 @@ def get_all_job():
 def new_job():
     form = JobForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print(form.data,"========")
     if form.validate_on_submit():
+
         job = Job(
             from_date_time = form.data["from_date_time"],
             to_date_time = form.data["to_date_time"],

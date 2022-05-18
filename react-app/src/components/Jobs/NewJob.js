@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
@@ -8,16 +8,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
-import { ReactComponent as AddCustomerIcon } from "../../static/svg/addcustomer.svg";
-import { ReactComponent as SearchIcon } from "../../static/svg/search.svg";
 import { ReactComponent as ScheduleIcon } from "../../static/svg/blackschedule.svg";
 
 import "./NewJob.css";
 import NotSelectedCustomer from "./NotSelectedCustomer";
 
 import SelectedCustomer from "./SelectedCustomer";
+import { newJobDetails } from "../../store/job";
 
 const NewJob = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[user?.business_id]);
 
@@ -25,19 +25,34 @@ const NewJob = () => {
   const [toDate, setToDate] = useState(new Date());
   const [message, setMessage] = useState("");
   const [searchCustomer, setSearchCustomer] = useState("");
-  console.log(
-    "🚀 ~ file: NewJob.js ~ line 25 ~ NewJob ~ searchCustomer",
-    searchCustomer
-  );
 
   const [selectedCustomer, setSelectedCustomer] = useState("");
-  console.log(
-    "🚀 ~ file: NewJob.js ~ line 31 ~ NewJob ~ selectedCustomer",
-    selectedCustomer
-  );
+
+  const [errors, setErrors] = useState([]);
+
+  const onSubmit = async () => {
+    const results = {
+      message,
+      from_date_time: fromDate,
+      to_date_time: toDate,
+      customer_id: selectedCustomer?.id,
+    };
+    console.log("🚀 ~ file: NewJob.js ~ line 35 ~ onSubmit ~ results", results);
+
+    const data = await dispatch(newJobDetails(results));
+    if (data) {
+      setErrors(data);
+    }
+    setErrors([]);
+  };
 
   return (
     <div className="flex_column new_job_main">
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
       <div className="flex_row new_job_main_banner">
         <div className="flex_row align_item">
           <div>
@@ -46,7 +61,7 @@ const NewJob = () => {
           <h2>New job</h2>
         </div>
         <div>
-          <button>Save Job</button>
+          <button onClick={onSubmit}>Save Job</button>
         </div>
       </div>
       <div className="flex_row">

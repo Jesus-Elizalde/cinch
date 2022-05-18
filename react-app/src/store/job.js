@@ -26,7 +26,7 @@ export const getJobsDetailts = () => async (dispatch) => {
   }
 };
 
-export const newJob = (job) => async (dispatch) => {
+export const newJobDetails = (job) => async (dispatch) => {
   const response = await fetch("/api/jobs/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

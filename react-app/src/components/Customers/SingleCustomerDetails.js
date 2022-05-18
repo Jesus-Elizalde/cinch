@@ -57,6 +57,7 @@ const SingleCustomerDetails = () => {
               size={{ width: "820px", height: "200px" }}
               zoom={true}
               zoomNum={13}
+              mode={"marker"}
             />
             <div>
               <div className="flex_row edit_address_container">

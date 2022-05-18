@@ -16,9 +16,10 @@ const SelectedCustomer = ({ setSelectedCustomer, selectedCustomer }) => {
           lat: +selectedCustomer.coords[0],
           lng: +selectedCustomer.coords[1],
         }}
-        size={{ width: "275px", height: "130px" }}
+        size={{ width: "275px", height: "150px" }}
         zoom={false}
         zoomNum={13}
+        mode="street"
       />
       <p>{selectedCustomer.display_name}</p>
       <p>{selectedCustomer.street}</p>

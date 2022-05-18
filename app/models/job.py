@@ -25,12 +25,9 @@ class Job(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'from_date':self.from_date,
-            'from_time':self.from_time,
-            'to_date':self.to_date,
-            'to_time':self.to_time,
+            'from_date_time':self.from_date_time,
+            'to_date_time':self.to_date_time,
             'message':self.message,
-            'service_id':self.service_id,
             'customer_id':self.customer_id,
             'created_at':self.created_at,
             'updated_at':self.updated_at

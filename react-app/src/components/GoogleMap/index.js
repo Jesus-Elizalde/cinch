@@ -4,6 +4,7 @@ import {
   useLoadScript,
   Marker,
   useJsApiLoader,
+  StreetViewPanorama,
 } from "@react-google-maps/api";
 
 import "./GoogleMap.css";
@@ -11,7 +12,7 @@ import "./GoogleMap.css";
 import { blueEssence } from "./mapStyles";
 import { useSelector } from "react-redux";
 
-const GoogleMaps = ({ coords, size, zoom, zoomNum }) => {
+const GoogleMaps = ({ coords, size, zoom, zoomNum, mode }) => {
   const googleMapKey = useSelector((state) => state.keys.googleApiKey);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -43,17 +44,30 @@ const GoogleMaps = ({ coords, size, zoom, zoomNum }) => {
       // onLoad={onLoad}
       // onUnmount={onUnmount}
     >
-      <Marker
-        position={{
-          lat: coords.lat,
-          lng: coords.lng,
-        }}
-        // icon={{
-        //   url: "/f1icon.svg",
-        //   scaledSize: new window.google.maps.Size(75, 75),
-        //   origin: new window.google.maps.Point(0, 0),
-        // }}
-      />
+      {mode === "marker" && (
+        <Marker
+          position={{
+            lat: coords.lat,
+            lng: coords.lng,
+          }}
+          // icon={{
+          //   url: "/f1icon.svg",
+          //   scaledSize: new window.google.maps.Size(75, 75),
+          //   origin: new window.google.maps.Point(0, 0),
+          // }}
+        />
+      )}
+      {mode === "street" && (
+        <StreetViewPanorama
+          position={center}
+          visible={true}
+          // icon={{
+          //   url: "/f1icon.svg",
+          //   scaledSize: new window.google.maps.Size(75, 75),
+          //   origin: new window.google.maps.Point(0, 0),
+          // }}
+        />
+      )}
     </GoogleMap>
   ) : (
     <></>
