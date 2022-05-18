@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
 
 import "./Job.css";
 
@@ -20,8 +19,6 @@ const Schedules = () => {
   const [filter, setFilter] = useState("");
   const [mulitbox, setMulitbox] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
-
-  const columns = [{ field: "customer", headName: "Customer", width: 90 }];
 
   return (
     <div className="flex_column customer_main_container">
@@ -51,14 +48,6 @@ const Schedules = () => {
           </div>
         </div>
       </div>
-      <DataGrid
-        rows={allJobs}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-        disableSelectionOnClick
-      />
     </div>
   );
 };

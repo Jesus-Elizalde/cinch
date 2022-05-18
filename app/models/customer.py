@@ -48,5 +48,6 @@ class Customer(db.Model):
             'work_number':self.work_number,
             'business_id':self.business_id,
             'created_at':self.created_at,
-            'updated_at':self.updated_at
+            'updated_at':self.updated_at,
+            'jobs':[singlejob.to_dict() for singlejob in self.job]
         }
