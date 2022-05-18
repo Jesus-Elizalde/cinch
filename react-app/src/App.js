@@ -23,6 +23,7 @@ import PriceBook from "./components/PriceBook";
 import { getCategoriesDetails } from "./store/category";
 import { getServicesDetails } from "./store/service";
 import NewJob from "./components/Jobs/NewJob";
+import { getJobsDetailts } from "./store/job";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,7 @@ function App() {
     dispatch(getKeyDetails());
     dispatch(getCategoriesDetails());
     dispatch(getServicesDetails());
+    dispatch(getJobsDetailts());
   }, [dispatch]);
 
   if (!loaded) {

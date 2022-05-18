@@ -5,6 +5,7 @@ import businesses from "./business";
 import keys from "./apiKey";
 import categories from "./category";
 import services from "./service";
+import jobs from "./job";
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   keys,
   categories,
   services,
+  jobs,
 });
 
 let enhancer;

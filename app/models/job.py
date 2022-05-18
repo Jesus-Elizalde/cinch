@@ -6,10 +6,8 @@ class Job(db.Model):
     __tablename__ = "jobs"
 
     id = db.Column(db.Integer, primary_key=True)
-    from_date = db.Column(db.Date,nullable=False)
-    from_time = db.Column(db.Time,nullable=False)
-    to_date = db.Column(db.Date,nullable=False)
-    to_time = db.Column(db.Time,nullable=False)
+    from_date_time = db.Column(db.DateTime,nullable=False)
+    to_date_time = db.Column(db.DateTime,nullable=False)
     message = db.Column(db.Text)
     customer_id = db.Column(db.Integer,db.ForeignKey("customers.id"), nullable=False)
     created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)

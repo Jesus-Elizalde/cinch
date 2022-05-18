@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import TimePicker from "rc-time-picker";
+// import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
 
 import DatePicker from "react-datepicker";
@@ -16,7 +16,7 @@ import "./NewJob.css";
 const NewJob = () => {
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
-  const format = "h:mm a";
+  console.log(fromDate, toDate);
   return (
     <div className="flex_column new_job_main">
       <div className="flex_row new_job_main_banner">
@@ -52,37 +52,27 @@ const NewJob = () => {
             </div>
             <div className="flex_row align_item">
               <p>From</p>
-              {/* <input className="new_job_right_input_date" /> */}
               <DatePicker
                 selected={fromDate}
                 onChange={(date) => setFromDate(date)}
+                showTimeSelect
+                dateFormat="MMMM d, yyyy h:mm aa"
                 selectsStart
                 startDate={fromDate}
                 endDate={toDate}
               />
-              <TimePicker
-                minuteStep={15}
-                showSecond={false}
-                format={format}
-                use12Hours
-              />
             </div>
             <div className="flex_row align_item">
               <p>To</p>
-              {/* <input className="new_job_right_input_date" /> */}
               <DatePicker
                 selected={toDate}
                 onChange={(date) => setToDate(date)}
+                showTimeSelect
+                dateFormat="MMMM d, yyyy h:mm aa"
                 selectsEnd
                 startDate={fromDate}
                 endDate={toDate}
                 minDate={fromDate}
-              />
-              <TimePicker
-                minuteStep={15}
-                showSecond={false}
-                format={format}
-                use12Hours
               />
             </div>
           </div>
