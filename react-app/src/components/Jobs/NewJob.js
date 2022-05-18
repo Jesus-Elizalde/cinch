@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 // import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
@@ -12,11 +13,29 @@ import { ReactComponent as SearchIcon } from "../../static/svg/search.svg";
 import { ReactComponent as ScheduleIcon } from "../../static/svg/blackschedule.svg";
 
 import "./NewJob.css";
+import NotSelectedCustomer from "./NotSelectedCustomer";
+
+import SelectedCustomer from "./SelectedCustomer";
 
 const NewJob = () => {
+  const user = useSelector((state) => state.session.user);
+  const business = useSelector((state) => state.businesses[user?.business_id]);
+
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
-  console.log(fromDate, toDate);
+  const [message, setMessage] = useState("");
+  const [searchCustomer, setSearchCustomer] = useState("");
+  console.log(
+    "🚀 ~ file: NewJob.js ~ line 25 ~ NewJob ~ searchCustomer",
+    searchCustomer
+  );
+
+  const [selectedCustomer, setSelectedCustomer] = useState("");
+  console.log(
+    "🚀 ~ file: NewJob.js ~ line 31 ~ NewJob ~ selectedCustomer",
+    selectedCustomer
+  );
+
   return (
     <div className="flex_column new_job_main">
       <div className="flex_row new_job_main_banner">
@@ -32,19 +51,20 @@ const NewJob = () => {
       </div>
       <div className="flex_row">
         <div className="flex_column">
-          <div className="flex_column new_job_customer_box">
-            <div className="flex_row align_item new_job_customer_container">
-              <AddCustomerIcon />
-              <h3>Customer</h3>
-            </div>
-            <div className="flex_row new_job_search_box">
-              <SearchIcon />
-              <input placeholder="Name" />
-            </div>
-            <div className="new_job__new_customer">
-              <button>+ New Customer</button>
-            </div>
-          </div>
+          {!selectedCustomer ? (
+            <NotSelectedCustomer
+              searchCustomer={searchCustomer}
+              setSearchCustomer={setSearchCustomer}
+              business={business}
+              setSelectedCustomer={setSelectedCustomer}
+            />
+          ) : (
+            <SelectedCustomer
+              setSelectedCustomer={setSelectedCustomer}
+              selectedCustomer={selectedCustomer}
+            />
+          )}
+
           <div className="flex_column new_job_schedule_box">
             <div className="flex_row align_item new_job_schedule_container">
               <ScheduleIcon />
