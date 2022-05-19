@@ -81,7 +81,7 @@ const AuthBar = () => {
       </div>
       <div className="flex_row right_icons">
         <div className="space_margin">
-          <button type="button" onClick={() => setShowNewDropdown(true)}>
+          <button type="button" onClick={openNewDropDown}>
             <span className="flex_row new_button">
               <PlusIcon />
               NEW
