@@ -57,7 +57,7 @@ const Customers = () => {
 
   useEffect(() => {
     dispatch(getBusinessesDetails());
-  }, [showAddModal, showDeleteModal]);
+  }, [showAddModal, showDeleteModal, dispatch]);
 
   const addAllCustomers = (e) => {
     if (e.target.checked) {
@@ -71,7 +71,7 @@ const Customers = () => {
 
   const deleteCustomerFcn = async () => {
     for (const id of deleteArr) {
-      const data = await dispatch(deleteCustomer(id));
+      dispatch(deleteCustomer(id));
     }
     setDeleteArr([]);
     setShowDeleteModal(false);
@@ -267,7 +267,7 @@ const Customers = () => {
             <p>Are you sure? All selected customers will be deleted.</p>
             <div>
               <button onClick={deleteCustomerFcn}>Delete</button>
-              <button>Cancel</button>
+              <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
             </div>
           </div>
         </Modal>

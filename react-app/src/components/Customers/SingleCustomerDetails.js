@@ -25,7 +25,7 @@ const SingleCustomerDetails = () => {
 
   useEffect(() => {
     dispatch(getBusinessesDetails());
-  }, [showInfoModal, showMapInfoModal]);
+  }, [showInfoModal, showMapInfoModal, dispatch]);
 
   return (
     <div className="flex_column customer_main_container">

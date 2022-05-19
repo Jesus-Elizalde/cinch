@@ -67,7 +67,7 @@ export const editJobDetails = (job) => async (dispatch) => {
 };
 
 export const deleteJobDetails = (id) => async (dispatch) => {
-  const response = await fetch(`/api/jobs/${id}`);
+  const response = await fetch(`/api/jobs/${id}`, { method: "DELETE" });
   if (response.ok) {
     const data = await response.json();
     dispatch(deleteJob(data));

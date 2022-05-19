@@ -14,6 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
 import { ReactComponent as ScheduleIcon } from "../../static/svg/blackschedule.svg";
 import { ReactComponent as XCircleIcon } from "../../static/svg/circlex.svg";
+import { ReactComponent as NewJobIcon } from "../../static/svg/newjob.svg";
 
 import "./NewJob.css";
 import NotSelectedCustomer from "./NotSelectedCustomer";

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   GoogleMap,
-  useLoadScript,
   Marker,
   useJsApiLoader,
   StreetViewPanorama,

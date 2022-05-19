@@ -1,6 +1,5 @@
 const GET_BUSINESSES = "business/GET_BUSINESSES";
 const EDIT_BUSINESS = "business/EDIT_BUSINESSES";
-const DELETE_CUSTOMER = "business/DELETE_CUSTOMER";
 
 const getBusinesses = (businesses) => ({
   type: GET_BUSINESSES,

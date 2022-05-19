@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logoutbutton from "../auth/LogoutButton";
 
-import { ReactComponent as DashIcon } from "../../static/svg/dash.svg";
 import { ReactComponent as CustomerIcon } from "../../static/svg/customer.svg";
 import { ReactComponent as ScheduleIcon } from "../../static/svg/schedule.svg";
 import { ReactComponent as PlusIcon } from "../../static/svg/plus.svg";
 import { ReactComponent as MapIcon } from "../../static/svg/map.svg";
-import { ReactComponent as SettingsIcon } from "../../static/svg/settings.svg";
 import { ReactComponent as SignoutIcon } from "../../static/svg/signout.svg";
 import { useSelector } from "react-redux";
 

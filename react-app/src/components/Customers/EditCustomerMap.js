@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "../Context/Modal";
+
 import { useDispatch } from "react-redux";
 import { editCustomer } from "../../store/business";
 
