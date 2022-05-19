@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import { DateTime } from "luxon";
+import { prettyDate } from "../../utils/date";
 
 const SingleJob = ({ states, job, checkboxState, business }) => {
   const user = business?.customers.filter(
@@ -34,8 +34,8 @@ const SingleJob = ({ states, job, checkboxState, business }) => {
           </NavLink>
         </td>
       )}
-      {checkedFromDate && <td>{job?.from_date_time}</td>}
-      {checkedToDate && <td>{job?.to_date_time}</td>}
+      {checkedFromDate && <td>{prettyDate(job?.from_date_time)}</td>}
+      {checkedToDate && <td>{prettyDate(job?.to_date_time)}</td>}
       {checkedMessage && <td>{job?.message}</td>}
     </tr>
   );

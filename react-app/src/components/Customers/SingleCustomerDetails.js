@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 
+import { prettyDate } from "../../utils/date";
+
 import { Modal } from "../Context/Modal";
 
 import { ReactComponent as ThreeDotsIcon } from "../../static/svg/threedots.svg";
@@ -46,7 +48,7 @@ const SingleCustomerDetails = () => {
             <div className="customer_edit_info_card flex_column">
               <div className="flex_column customer_edit_created_container">
                 <p>Created</p>
-                <h5>{customer?.created_at}</h5>
+                <h5>{prettyDate(customer?.created_at)}</h5>
               </div>
               <div className="flex_row customer_edit_info_container">
                 <h3>Contact Info</h3>
@@ -94,8 +96,8 @@ const SingleCustomerDetails = () => {
           {customer?.jobs.map((job) => (
             <div className="flex_row job_view_tile">
               <div className="flex_column">
-                <p>{job.from_date_time}</p>
-                <p>{job.to_date_time}</p>
+                <p>{prettyDate(job.from_date_time)}</p>
+                <p>{prettyDate(job.to_date_time)}</p>
               </div>
               <div className="flex_column">
                 <div className="flex_row job_inner_inner_service_container">

@@ -69,7 +69,7 @@ def edit_job(id):
 @job_routes.route('/<int:id>',methods=["DELETE"])
 def delete_job(id):
     job = Job.query.get(id)
-    print(job,"=============================")
+
     if job:
         db.session.delete(job)
         db.session.commit()
