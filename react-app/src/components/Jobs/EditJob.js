@@ -30,18 +30,21 @@ const EditJob = () => {
   const business = useSelector((state) => state.businesses[user?.business_id]);
   const services = useSelector((state) => state.services);
   const job = useSelector((state) => state.jobs[+id]);
-  console.log("🚀 ~ file: EditJob.js ~ line 33 ~ EditJob ~ job", job);
+
   const customer = business?.customers.filter(
     (customer) => customer.id == job?.customer_id
   )[0];
-  console.log("🚀 ~ file: EditJob.js ~ line 37 ~ EditJob ~ customer", customer);
 
-  const [fromDate, setFromDate] = useState(new Date(job?.from_date_time));
-  const [toDate, setToDate] = useState(new Date(job?.to_date_time));
+  const [fromDate, setFromDate] = useState(
+    job?.from_date_time && new Date(job?.from_date_time)
+  );
+  const [toDate, setToDate] = useState(
+    job?.to_date_time && new Date(job?.to_date_time)
+  );
   const [message, setMessage] = useState(job?.message);
   const [searchCustomer, setSearchCustomer] = useState("");
   const [jobIds, setJobIds] = useState(
-    job?.services.map((service) => service.id)
+    job?.services?.map((service) => service.id)
   );
 
   const [selectedCustomer, setSelectedCustomer] = useState(customer);
@@ -61,7 +64,6 @@ const EditJob = () => {
       customer_id: selectedCustomer?.id,
       job_ids: jobIds.join("-"),
     };
-    console.log("🚀 ~ file: NewJob.js ~ line 45 ~ onSubmit ~ results", results);
 
     const data = await dispatch(editJobDetails(results));
     if (data) {
@@ -153,7 +155,7 @@ const EditJob = () => {
               </p>
             </div>
             <div className="flex_column align_item">
-              {jobIds.map((jobId) => (
+              {jobIds?.map((jobId) => (
                 <div className="flex_row nj_outer_service_tile">
                   <div className="flex_column">
                     <p>{services[jobId]?.name}</p>
