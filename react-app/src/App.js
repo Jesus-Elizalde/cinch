@@ -74,7 +74,7 @@ function App() {
           <ProtectedRoute path="/dashboard" exact={true}>
             <Dashboard />
           </ProtectedRoute>
-          <ProtectedRoute path="/schedules" exact={true}>
+          <ProtectedRoute path="/jobs" exact={true}>
             <Schedules />
           </ProtectedRoute>
           <ProtectedRoute path="/customers" exact={true}>

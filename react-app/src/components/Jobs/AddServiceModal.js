@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
 import { ReactComponent as BackArrowIcon } from "../../static/svg/backarrow.svg";
 
-const AddServiceModal = ({ setShowServiceModal }) => {
+const AddServiceModal = ({ setShowServiceModal, setJobIds, jobIds }) => {
+  console.log(
+    "🚀 ~ file: AddServiceModal.js ~ line 8 ~ AddServiceModal ~ jobIds",
+    jobIds
+  );
   const user = useSelector((state) => state.session.user);
   const allCategoriesArr = useSelector((state) =>
     Object.values(state.categories)
@@ -17,6 +21,12 @@ const AddServiceModal = ({ setShowServiceModal }) => {
     .forEach((category) => categoriesArr.push(category));
 
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  const removeId = (id) => {
+    const newArr = [...jobIds];
+
+    setJobIds(jobIds.splice(jobIds.indexOf(id), 1));
+  };
   return (
     <div className="modal_container flex_column">
       {!selectedCategory ? (
@@ -58,13 +68,36 @@ const AddServiceModal = ({ setShowServiceModal }) => {
           </div>
           <div className="flex_column nj_title_service_container">
             {selectedCategory.service_ids.map((serviceId) => (
-              <div className="flex_row nj_service_tiles align_item">
+              <div
+                className="flex_row nj_service_tiles align_item"
+                key={serviceId}
+              >
                 <div className="flex_column">
                   <p>{services[serviceId].name}</p>
                   <p>${services[serviceId].price}</p>
                   <p>{services[serviceId].description}</p>
                 </div>
-                <button className="nj_add_button">Add</button>
+                {!jobIds.includes(services[serviceId].id) ? (
+                  <button
+                    className="nj_add_button"
+                    onClick={() =>
+                      setJobIds([...jobIds, services[serviceId].id])
+                    }
+                  >
+                    Add
+                  </button>
+                ) : (
+                  <button
+                    className="nj_remove_button"
+                    onClick={() =>
+                      setJobIds(
+                        jobIds.filter((id) => +id !== +services[serviceId].id)
+                      )
+                    }
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
             ))}
           </div>

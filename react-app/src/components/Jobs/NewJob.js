@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { NavLink, Redirect, useHistory } from "react-router-dom";
+
 import { Modal } from "../Context/Modal";
 
 // import TimePicker from "rc-time-picker";
@@ -11,6 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
 import { ReactComponent as ScheduleIcon } from "../../static/svg/blackschedule.svg";
+import { ReactComponent as XCircleIcon } from "../../static/svg/circlex.svg";
 
 import "./NewJob.css";
 import NotSelectedCustomer from "./NotSelectedCustomer";
@@ -23,11 +26,15 @@ const NewJob = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[user?.business_id]);
+  const services = useSelector((state) => state.services);
+  console.log("🚀 ~ file: NewJob.js ~ line 27 ~ NewJob ~ services", services);
 
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const [message, setMessage] = useState("");
   const [searchCustomer, setSearchCustomer] = useState("");
+  const [jobIds, setJobIds] = useState([]);
+  jobIds.map((id) => console.log(id));
 
   const [selectedCustomer, setSelectedCustomer] = useState("");
 
@@ -35,13 +42,17 @@ const NewJob = () => {
 
   const [showServiceModal, setShowServiceModal] = useState(false);
 
+  const history = useHistory();
+
   const onSubmit = async () => {
     const results = {
       message,
       from_date_time: fromDate,
       to_date_time: toDate,
       customer_id: selectedCustomer?.id,
+      job_ids: jobIds.join("-"),
     };
+    console.log("🚀 ~ file: NewJob.js ~ line 45 ~ onSubmit ~ results", results);
 
     const data = await dispatch(newJobDetails(results));
     if (data) {
@@ -49,6 +60,7 @@ const NewJob = () => {
       return;
     }
     setErrors([]);
+    history.push("/jobs");
   };
 
   return (
@@ -60,13 +72,15 @@ const NewJob = () => {
       </div>
       <div className="flex_row new_job_main_banner">
         <div className="flex_row align_item">
-          <div>
+          <NavLink to="/jobs">
             <XIcon />
-          </div>
+          </NavLink>
           <h2>New job</h2>
         </div>
         <div>
-          <button onClick={onSubmit}>Save Job</button>
+          <button onClick={onSubmit} className="nj_add_button">
+            Save Job
+          </button>
         </div>
       </div>
       <div className="flex_row">
@@ -129,6 +143,30 @@ const NewJob = () => {
                 Service Price Book
               </p>
             </div>
+            <div className="flex_column align_item">
+              {jobIds.map((jobId) => (
+                <div className="flex_row nj_outer_service_tile">
+                  <div className="flex_column">
+                    <p>{services[jobId]?.name}</p>
+                    <p>{services[jobId]?.description}</p>
+                  </div>
+                  <div className="flex_row align_item">
+                    <div className="flex_column">
+                      <p>${services[jobId]?.price}</p>
+                    </div>
+                    <div
+                      onClick={() =>
+                        setJobIds(
+                          jobIds.filter((id) => +id !== +services[jobId].id)
+                        )
+                      }
+                    >
+                      <XCircleIcon />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -136,6 +174,8 @@ const NewJob = () => {
         <Modal onClose={() => setShowServiceModal(false)}>
           <AddServiceModal
             setShowServiceModal={() => setShowServiceModal(false)}
+            setJobIds={setJobIds}
+            jobIds={jobIds}
           />
         </Modal>
       )}

@@ -1,5 +1,5 @@
 from flask import Blueprint,jsonify,request
-from app.models import Job , db
+from app.models import Job, db , Service
 from app.forms import JobForm
 from app.utils import validation_errors_to_error_messages
 
@@ -14,7 +14,6 @@ def get_all_job():
 def new_job():
     form = JobForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print(form.data,"========")
     if form.validate_on_submit():
 
         job = Job(
@@ -23,8 +22,21 @@ def new_job():
             message = form.data["message"],
             customer_id = form.data["customer_id"]
         )
+
         db.session.add(job)
         db.session.commit()
+
+        service_ids = form.data["job_ids"].split("-")
+
+        for id in service_ids:
+           service = Service.query.get(int(id))
+           job.job_services.append(service)
+
+        db.session.commit()
+
+
+
+
         return job.to_dict()
     return {"errors":validation_errors_to_error_messages(form.errors)},401
 

@@ -162,6 +162,15 @@
   border: none;
   margin-right: 20px;
 }
+.nj_remove_button {
+  width: 95px;
+  height: 36px;
+  background-color: red;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  margin-right: 20px;
+}
 .nj_back_arrow_div {
   margin-right: 10px;
 }
@@ -169,4 +178,10 @@
 .nj_back_arrow_div:active {
   background-color: lightgray;
   border-radius: 50%;
+}
+
+.nj_outer_service_tile {
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  justify-content: space-between;
 }

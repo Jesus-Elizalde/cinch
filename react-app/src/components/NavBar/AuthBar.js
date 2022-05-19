@@ -43,7 +43,7 @@ const AuthBar = () => {
             Dash
           </span>
         </NavLink> */}
-        <NavLink to="/schedules">
+        <NavLink to="/jobs">
           <span className="flex_column">
             <ScheduleIcon />
             {/* Schedule */}
