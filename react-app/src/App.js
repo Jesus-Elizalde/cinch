@@ -62,7 +62,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/welcome" exact={true}>
-            {user && <Redirect to="/dashboard" />}
+            {user && <Redirect to="/customers" />}
             <LandingPage />
           </Route>
           <ProtectedRoute path="/users" exact={true}>

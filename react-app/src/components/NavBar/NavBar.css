@@ -6,6 +6,7 @@ nav {
   height: 74px;
   position: sticky;
   top: 0px;
+  z-index: 10000000;
 }
 
 .login_signup_button {

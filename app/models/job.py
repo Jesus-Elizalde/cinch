@@ -23,6 +23,7 @@ class Job(db.Model):
 
 
     def to_dict(self):
+        print(self.job_services,"++++++++++++++")
         return {
             'id': self.id,
             'from_date_time':self.from_date_time,
@@ -30,5 +31,7 @@ class Job(db.Model):
             'message':self.message,
             'customer_id':self.customer_id,
             'created_at':self.created_at,
-            'updated_at':self.updated_at
+            'updated_at':self.updated_at,
+            "services": [service.to_dict() for service in self.job_services]
+
         }

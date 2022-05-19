@@ -150,3 +150,21 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.job_view_tile {
+  border-bottom: 1px solid lightgrey;
+  justify-content: space-between;
+}
+
+.job_inner_service_container {
+  height: 125px;
+  overflow-y: scroll;
+}
+
+.job_inner_inner_service_container p {
+  margin-right: 15px;
+}
+
+.job_inner_inner_service_container h5 {
+  margin-right: 35px;
+}
