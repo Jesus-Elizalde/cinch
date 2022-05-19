@@ -10,7 +10,7 @@ def seed_customers():
 
     for customer_dict in data:
 
-        new_customer = Customer(first_name=customer_dict["firstName"],display_name="1",email="1",last_name=customer_dict["lastName"],street=customer_dict["adress"],city=customer_dict["city"],state=customer_dict["state"],country="USA",postal_code=customer_dict["zipCode"],mobile_number=customer_dict["price"],business_id=1)
+        new_customer = Customer(first_name=customer_dict["firstName"],display_name="1",email="1",last_name=customer_dict["lastName"],street=customer_dict["adress"],city=customer_dict["city"],state=customer_dict["state"],country="USA",postal_code=customer_dict["zipCode"],mobile_number=customer_dict["price"],home_number=customer_dict["homeNumber"],work_number=customer_dict["homeNumber"],business_id=1)
         db.session.add(new_customer)
 
     db.session.commit()
