@@ -53,6 +53,15 @@ def edit_job(id):
         job.message = form.data["message"]
         job.customer_id = form.data["customer_id"]
 
+        job.job_services = []
+        service_ids = form.data["job_ids"].split("-")
+
+        for id in service_ids:
+           service = Service.query.get(int(id))
+           job.job_services.append(service)
+
+        db.session.commit()
+
         db.session.commit()
         return job.to_dict()
     return {"errors":validation_errors_to_error_messages(form.errors)},401
