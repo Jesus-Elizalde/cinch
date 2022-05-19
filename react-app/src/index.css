@@ -9,7 +9,17 @@
 body {
   margin: 0px;
   width: 100%;
+  font-family: Georgia, "Times New Roman", Times, serif;
   /* background-color: var(--body-color); */
+}
+
+button {
+  border: none;
+  background-color: #2764ba;
+  color: white;
+  margin: 0px 15px 0px 15px;
+  border-radius: 4px;
+  height: 25px;
 }
 
 .flex_row {
