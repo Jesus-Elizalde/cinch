@@ -24,6 +24,7 @@ import { getCategoriesDetails } from "./store/category";
 import { getServicesDetails } from "./store/service";
 import NewJob from "./components/Jobs/NewJob";
 import { getJobsDetailts } from "./store/job";
+import EditJob from "./components/Jobs/EditJob";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -85,6 +86,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/jobs/new" exact={true}>
             <NewJob />
+          </ProtectedRoute>
+          <ProtectedRoute path="/jobs/:id/edit" exact={true}>
+            <EditJob />
           </ProtectedRoute>
           <ProtectedRoute path="/map" exact={true}>
             <Map />

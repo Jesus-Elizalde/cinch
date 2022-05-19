@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import { Modal } from "../Context/Modal";
 
@@ -112,9 +112,9 @@ const SingleCustomerDetails = () => {
                   ))}
                 </div>
               </div>
-              <div>
+              <NavLink to={`/jobs/${job?.id}/edit`}>
                 <ThreeDotsIcon />
-              </div>
+              </NavLink>
             </div>
           ))}
         </div>

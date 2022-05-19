@@ -23,7 +23,6 @@ class Job(db.Model):
 
 
     def to_dict(self):
-        print(self.job_services,"++++++++++++++")
         return {
             'id': self.id,
             'from_date_time':self.from_date_time,
