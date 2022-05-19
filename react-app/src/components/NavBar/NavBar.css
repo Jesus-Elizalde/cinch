@@ -113,3 +113,28 @@ nav {
 .space_margin {
   margin: 0px 15px 0px 15px;
 }
+
+.new_button_container {
+  position: absolute;
+  margin-top: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 4px black;
+  right: 163px;
+  width: 150px;
+  border-radius: 4px;
+}
+
+.new_button_container a {
+  text-decoration: none;
+  color: black;
+}
+
+.align_items {
+  align-items: center;
+}
+.align_items p {
+  margin-left: 15px;
+}
+.align_items svg {
+  margin-left: 8px;
+}
