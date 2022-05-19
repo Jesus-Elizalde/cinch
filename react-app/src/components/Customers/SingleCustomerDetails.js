@@ -48,7 +48,9 @@ const SingleCustomerDetails = () => {
             <div className="customer_edit_info_card flex_column">
               <div className="flex_column customer_edit_created_container">
                 <p>Created</p>
-                <h5>{prettyDate(customer?.created_at)}</h5>
+                <h5>
+                  {customer?.created_at && prettyDate(customer?.created_at)}
+                </h5>
               </div>
               <div className="flex_row customer_edit_info_container">
                 <h3>Contact Info</h3>
@@ -96,8 +98,8 @@ const SingleCustomerDetails = () => {
           {customer?.jobs.map((job) => (
             <div className="flex_row job_view_tile">
               <div className="flex_column">
-                <p>{prettyDate(job.from_date_time)}</p>
-                <p>{prettyDate(job.to_date_time)}</p>
+                <p>{job?.from_date_time && prettyDate(job?.from_date_time)}</p>
+                <p>{job?.to_date_time && prettyDate(job?.to_date_time)}</p>
               </div>
               <div className="flex_column">
                 <div className="flex_row job_inner_inner_service_container">
@@ -108,8 +110,8 @@ const SingleCustomerDetails = () => {
                 <div className="flex_column job_inner_service_container">
                   {job?.services.map((job) => (
                     <div className="flex_row job_inner_inner_service_container">
-                      <p>{job.name}</p>
-                      <p>{job.description}</p>
+                      <p>{job?.name}</p>
+                      <p>{job?.description}</p>
                     </div>
                   ))}
                 </div>

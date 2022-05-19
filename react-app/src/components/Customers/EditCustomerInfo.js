@@ -46,7 +46,7 @@ const EditCustomerInfo = ({ customer, closeModal }) => {
   return (
     <div className="flex_column">
       <h1>Edit customer</h1>
-      {errors.map((error) => (
+      {errors?.map((error) => (
         <div>{error}</div>
       ))}{" "}
       <h4>Contact info</h4>
