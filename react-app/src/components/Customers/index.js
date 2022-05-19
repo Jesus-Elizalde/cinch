@@ -140,7 +140,7 @@ const Customers = () => {
         <tbody>
           {business?.customers.map((customer) => (
             <SingleCustomer
-              key={customer.id}
+              key={customer?.id}
               states={states}
               customer={customer}
               checkboxState={checkboxState}
