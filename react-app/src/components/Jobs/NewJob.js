@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Modal } from "../Context/Modal";
+
 // import TimePicker from "rc-time-picker";
 import "rc-time-picker/assets/index.css";
 
@@ -15,6 +17,7 @@ import NotSelectedCustomer from "./NotSelectedCustomer";
 
 import SelectedCustomer from "./SelectedCustomer";
 import { newJobDetails } from "../../store/job";
+import AddServiceModal from "./AddServiceModal";
 
 const NewJob = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,8 @@ const NewJob = () => {
   const [selectedCustomer, setSelectedCustomer] = useState("");
 
   const [errors, setErrors] = useState([]);
+
+  const [showServiceModal, setShowServiceModal] = useState(false);
 
   const onSubmit = async () => {
     const results = {
@@ -112,8 +117,28 @@ const NewJob = () => {
             </div>
           </div>
         </div>
-        <div className="flex_column"></div>
+        <div className="flex_column">
+          <div className="nj_service_box">
+            <h3>Line items</h3>
+            <div className="flex_row nj_service_box_title">
+              <p>Services</p>
+              <p
+                className="nj_add_service"
+                onClick={() => setShowServiceModal(true)}
+              >
+                Service Price Book
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+      {showServiceModal && (
+        <Modal onClose={() => setShowServiceModal(false)}>
+          <AddServiceModal
+            setShowServiceModal={() => setShowServiceModal(false)}
+          />
+        </Modal>
+      )}
     </div>
   );
 };
