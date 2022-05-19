@@ -23,9 +23,9 @@ const NotSelectedCustomer = ({
             onChange={(e) => setSearchCustomer(e.target.value)}
             placeholder="Name"
           />
-          <div className="new_job_customer_search_results">
-            {searchCustomer &&
-              business?.customers
+          {searchCustomer && (
+            <div className="new_job_customer_search_results">
+              {business?.customers
                 .filter(
                   (customer) =>
                     customer.first_name
@@ -78,7 +78,8 @@ const NotSelectedCustomer = ({
                     </p>
                   </div>
                 ))}
-          </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="new_job__new_customer">

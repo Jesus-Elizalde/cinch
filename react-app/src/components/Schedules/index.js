@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -13,6 +13,7 @@ import { ReactComponent as DeleteIcon } from "../../static/svg/delete.svg";
 import SingleJob from "./SingleJob";
 import { Modal } from "../Context/Modal";
 import { deleteJobDetails } from "../../store/job";
+import { getBusinessesDetails } from "../../store/business";
 
 const Schedules = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,10 @@ const Schedules = () => {
   const [deleteArr, setDeleteArr] = useState([]);
 
   const checkboxState = { deleteArr, setDeleteArr };
+
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
+  }, [dispatch, showDeleteModal]);
 
   const states = {
     checkedFromDate,
@@ -119,6 +124,7 @@ const Schedules = () => {
               states={states}
               job={job}
               checkboxState={checkboxState}
+              business={business}
             />
           ))}
         </tbody>
