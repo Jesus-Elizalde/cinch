@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Modal } from "../Context/Modal";
+import { CSVLink } from "react-csv";
 
 import { ReactComponent as AddCustomerIcon } from "../../static/svg/addcustomer.svg";
 import { ReactComponent as ThreeDotsIcon } from "../../static/svg/threedots.svg";
@@ -9,6 +10,7 @@ import { ReactComponent as SearchIcon } from "../../static/svg/search.svg";
 import { ReactComponent as SearchClearIcon } from "../../static/svg/searchclear.svg";
 import { ReactComponent as MulitIcon } from "../../static/svg/mulit.svg";
 import { ReactComponent as DeleteIcon } from "../../static/svg/delete.svg";
+import { ReactComponent as DownloadIcon } from "../../static/svg/download.svg";
 
 import "./Customers.css";
 import SingleCustomer from "./SingleCustomer";
@@ -26,6 +28,7 @@ const Customers = () => {
   const [mulitbox, setMulitbox] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showMoreDropdown, setShowMoreDropdown] = useState(false);
 
   const [checkedFirstName, setCheckedFirstName] = useState(true);
   const [checkedLastName, setCheckedLastName] = useState(true);
@@ -56,6 +59,19 @@ const Customers = () => {
   };
 
   useEffect(() => {
+    if (!showMoreDropdown) return;
+
+    const hideMoreDropdown = () => {
+      if (!showMoreDropdown) return;
+      setShowMoreDropdown(false);
+    };
+
+    document.addEventListener("click", hideMoreDropdown);
+
+    return () => document.removeEventListener("click", hideMoreDropdown);
+  }, [showMoreDropdown]);
+
+  useEffect(() => {
     dispatch(getBusinessesDetails());
   }, [showAddModal, showDeleteModal, dispatch]);
 
@@ -76,6 +92,23 @@ const Customers = () => {
     setDeleteArr([]);
     setShowDeleteModal(false);
   };
+
+  const headers = [
+    { label: "Display Name", key: "display_name" },
+    { label: "First Name", key: "first_name" },
+    { label: "Last Name", key: "last_name" },
+    { label: "Email", key: "email" },
+    { label: "Mobile Number", key: "mobile_number" },
+    { label: "Home Number", key: "home_number" },
+    { label: "Street", key: "street" },
+    { label: "City", key: "city" },
+    { label: "State", key: "state" },
+    { label: "Country", key: "country" },
+    { label: "Postal Code", key: "postal_code" },
+    { label: "Company", key: "company" },
+    { label: "Job Title", key: "job_title" },
+    { label: "Work Number", key: "work_number" },
+  ];
 
   return (
     <div className="flex_column customer_main_container">
@@ -111,7 +144,21 @@ const Customers = () => {
               <MulitIcon />
             </div>
             <div>
-              <ThreeDotsIcon />
+              <div onClick={() => setShowMoreDropdown(true)}>
+                <ThreeDotsIcon />
+              </div>
+              {showMoreDropdown && (
+                <div className="flex_column more_dropdown_container">
+                  {business?.customers && (
+                    <div className="flex_row ">
+                      <DownloadIcon />
+                      <CSVLink data={business?.customers} headers={headers}>
+                        Download Customers list
+                      </CSVLink>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
