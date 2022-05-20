@@ -26,7 +26,7 @@ class Customer(db.Model):
     updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now)
 
     business = db.relationship("Business",back_populates="customer")
-    job = db.relationship("Job",back_populates="customer")
+    job = db.relationship("Job",back_populates="customer",cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
