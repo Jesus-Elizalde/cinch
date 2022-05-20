@@ -54,6 +54,7 @@
 
 .default_container_hover:hover {
   background-color: lightgrey;
+  cursor: pointer;
 }
 
 .contact_info_container {
@@ -96,6 +97,7 @@
 
 .new_customer_button:hover {
   background-color: lightgrey;
+  cursor: pointer;
 }
 .new_customer_submit {
   width: 155px;
@@ -109,6 +111,7 @@
 
 .table_row:hover {
   background-color: lightgrey;
+  cursor: pointer;
 }
 
 .customer_edit_inner_container {
@@ -187,4 +190,9 @@
 
 .more_dropdown_container div {
   align-items: center;
+}
+
+.all_customers_table_container {
+  width: 100%;
+  overflow-x: scroll;
 }

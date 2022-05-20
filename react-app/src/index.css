@@ -40,3 +40,11 @@ button {
 .link {
   color: #2764ba;
 }
+
+th,
+td {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}

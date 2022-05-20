@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
-import { useDispatch } from "react-redux";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+
+import { useDispatch, useSelector } from "react-redux";
 import { editCustomer } from "../../store/business";
 
 const EditCustomerMap = ({ customer, closeModal }) => {
-  console.log(
-    "🚀 ~ file: EditCustomerMap.js ~ line 7 ~ EditCustomerMap ~ customer",
-    customer
-  );
   const dispatch = useDispatch();
+  const googleMapKey = useSelector((state) => state.keys.googleApiKey);
   const [street, setStreet] = useState(customer?.street);
   const [city, setCity] = useState(customer?.city);
   const [state, setState] = useState(customer?.state);
   const [country, setCountry] = useState(customer?.country);
   const [zipCode, setZipCode] = useState(customer?.postal_code);
   const [errors, setErrors] = useState([]);
+  const [value, setValue] = useState("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -52,6 +52,14 @@ const EditCustomerMap = ({ customer, closeModal }) => {
           <div key={ind}>{error}</div>
         ))}
       </div>
+      {/* {googleMapKey && (
+        <GooglePlacesAutocomplete
+          apiKey={googleMapKey}
+          selectProps={{
+            value,
+            onChange: setValue,
+          }} */}
+      {/* /> )} */}
       <div className="flex_row ">
         <div className="flex_column">
           <div className="flex_row add_customer_input_container">

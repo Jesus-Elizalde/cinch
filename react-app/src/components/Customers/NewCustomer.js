@@ -101,7 +101,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
               onChange={(e) => setDisplayName(e.target.value)}
             />
             <input
-              placeholder="Home Phone"
+              placeholder="Home Phone (optional)"
               value={homeNumber}
               onChange={(e) => setHomeNumber(e.target.value)}
             />

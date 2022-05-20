@@ -260,58 +260,6 @@
     "userAgent": "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.1 Safari/535.1"
   },
   {
-    "id": 6,
-    "firstName": "Alison",
-    "lastName": "Reichert",
-    "maidenName": "Franecki",
-    "age": 21,
-    "gender": "female",
-    "email": "jtreleven5@nhs.uk",
-    "phone": "+351 527 735 3642",
-    "username": "jtreleven5",
-    "password": "zY1nE46Zm",
-    "birthDate": "1969-07-21",
-    "image": "https://robohash.org/laboriosamfacilisrem.png?size=50x50&set=set1",
-    "bloodGroup": "A+",
-    "height": 149,
-    "weight": 105.7,
-    "eyeColor": "Amber",
-    "hair": { "color": "Blond", "type": "Straight" },
-    "domain": "bandcamp.com",
-    "ip": "49.201.206.36",
-    "address": {
-      "address": "18 Densmore Drive",
-      "city": "Essex",
-      "coordinates": { "lat": 44.492953, "lng": -73.101883 },
-      "postalCode": "05452",
-      "state": "VT"
-    },
-    "macAddress": "6C:34:D0:4B:4E:81",
-    "university": "Universidade da Beira Interior",
-    "bank": {
-      "cardExpire": "03/22",
-      "cardNumber": "345675888286047",
-      "cardType": "americanexpress",
-      "currency": "Euro",
-      "iban": "LB69 1062 QCY5 XS5T VOKU KJFG XP4S"
-    },
-    "company": {
-      "address": {
-        "address": "6231 North 67th Avenue",
-        "city": "Glendale",
-        "coordinates": { "lat": 33.5279666, "lng": -112.2022551 },
-        "postalCode": "85301",
-        "state": "AZ"
-      },
-      "department": "Accounting",
-      "name": "D'Amore and Sons",
-      "title": "Civil Engineer"
-    },
-    "ein": "78-3192791",
-    "ssn": "158-68-0184",
-    "userAgent": "Mozilla/5.0 (Windows; U; Windows NT 6.0; nb-NO) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5"
-  },
-  {
     "id": 7,
     "firstName": "Oleta",
     "lastName": "Abbott",

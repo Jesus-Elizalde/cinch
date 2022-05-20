@@ -1,8 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 
 const SingleCustomer = ({ states, customer, checkboxState }) => {
   const { deleteArr, setDeleteArr } = checkboxState;
+  const history = useHistory();
 
   const {
     checkedFirstName,
@@ -33,34 +34,84 @@ const SingleCustomer = ({ states, customer, checkboxState }) => {
         onChange={addOneCustomers}
       />
       {checkedDisplayName && (
-        <td className="table_td_align">
-          <NavLink to={`/customers/${customer?.id}`}>
-            {customer?.display_name}
-          </NavLink>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.display_name}
         </td>
       )}
       {checkedFirstName && (
-        <td className="table_td_align">{customer?.first_name}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.first_name}
+        </td>
       )}
       {checkedLastName && (
-        <td className="table_td_align">{customer?.last_name}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.last_name}
+        </td>
       )}
-      {checkedAddress && <td className="table_td_align">{customer?.street}</td>}
+      {checkedAddress && (
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.street}
+        </td>
+      )}
       {checkedMobileNumber && (
-        <td className="table_td_align">{customer?.mobile_number}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.mobile_number}
+        </td>
       )}
       {checkedHomeNumber && (
-        <td className="table_td_align">{customer?.home_number}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.home_number}
+        </td>
       )}
-      {checkedEmail && <td className="table_td_align">{customer?.email}</td>}
+      {checkedEmail && (
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.email}
+        </td>
+      )}
       {checkedCompany && (
-        <td className="table_td_align">{customer?.company}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.company}
+        </td>
       )}
       {checkedJobTitle && (
-        <td className="table_td_align">{customer?.job_title}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.job_title}
+        </td>
       )}
       {checkedWorkNumber && (
-        <td className="table_td_align">{customer?.work_number}</td>
+        <td
+          className="table_td_align"
+          onClick={() => history.push(`/customers/${customer?.id}`)}
+        >
+          {customer?.work_number}
+        </td>
       )}
     </tr>
   );

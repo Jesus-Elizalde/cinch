@@ -75,6 +75,8 @@ const Customers = () => {
     dispatch(getBusinessesDetails());
   }, [showAddModal, showDeleteModal, dispatch]);
 
+  useEffect(() => {}, [filter]);
+
   const addAllCustomers = (e) => {
     if (e.target.checked) {
       const arr = [];
@@ -164,37 +166,39 @@ const Customers = () => {
         </div>
       )}
 
-      <table>
-        <thead>
-          <tr>
-            <input
-              type="checkbox"
-              value={deleteArr.length !== 0}
-              onClick={addAllCustomers}
-            />
-            {checkedDisplayName && <th>Display Name</th>}
-            {checkedFirstName && <th>First Name</th>}
-            {checkedLastName && <th>Last Name</th>}
-            {checkedAddress && <th>Address</th>}
-            {checkedMobileNumber && <th>Mobile Number</th>}
-            {checkedHomeNumber && <th>Home Number</th>}
-            {checkedEmail && <th>Email</th>}
-            {checkedCompany && <th>Company</th>}
-            {checkedJobTitle && <th>Job Title</th>}
-            {checkedWorkNumber && <th>Work Number</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {business?.customers.map((customer) => (
-            <SingleCustomer
-              key={customer?.id}
-              states={states}
-              customer={customer}
-              checkboxState={checkboxState}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div className="all_customers_table_container">
+        <table>
+          <thead>
+            <tr>
+              <input
+                type="checkbox"
+                value={deleteArr.length !== 0}
+                onClick={addAllCustomers}
+              />
+              {checkedDisplayName && <th>Display Name</th>}
+              {checkedFirstName && <th>First Name</th>}
+              {checkedLastName && <th>Last Name</th>}
+              {checkedAddress && <th>Address</th>}
+              {checkedMobileNumber && <th>Mobile Number</th>}
+              {checkedHomeNumber && <th>Home Number</th>}
+              {checkedEmail && <th>Email</th>}
+              {checkedCompany && <th>Company</th>}
+              {checkedJobTitle && <th>Job Title</th>}
+              {checkedWorkNumber && <th>Work Number</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {business?.customers.map((customer) => (
+              <SingleCustomer
+                key={customer?.id}
+                states={states}
+                customer={customer}
+                checkboxState={checkboxState}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {mulitbox && (
         <Modal onClose={() => setMulitbox(false)}>

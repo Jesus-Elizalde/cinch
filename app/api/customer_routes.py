@@ -50,7 +50,7 @@ def customer_put(id):
     if form.validate_on_submit():
         customer = Customer.query.get(id)
 
-        geolocation = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+form.data["postal_code"])
+        geolocation = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"])
 
         customer.first_name=form.data["first_name"]
         customer.last_name=form.data["last_name"]
