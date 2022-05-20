@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { newCustomer } from "../../store/business";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
 const NewCustomer = ({ closeModal, businessId }) => {
+  const googleMapKey = useSelector((state) => state.keys.googleApiKey);
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,9 +19,26 @@ const NewCustomer = ({ closeModal, businessId }) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [zipCode, setZipCode] = useState("");
+
+  const [value, setValue] = useState("");
 
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    if (!value) return;
+
+    const addressArr = value.label.split(", ");
+
+    if (addressArr.length < 4) {
+      setErrors(["Address not valid"]);
+      return;
+    }
+
+    setStreet(addressArr[0]);
+    setCity(addressArr[1]);
+    setState(addressArr[2]);
+    setCountry(addressArr[3]);
+  }, [value]);
 
   const onSubmit = async () => {
     const results = {
@@ -36,7 +55,6 @@ const NewCustomer = ({ closeModal, businessId }) => {
       city,
       state,
       country,
-      postal_code: zipCode,
       business_id: businessId,
     };
 
@@ -92,11 +110,12 @@ const NewCustomer = ({ closeModal, businessId }) => {
             <input
               placeholder="Email"
               id="longer_input_add"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
-              placeholder="Work Phone"
+              placeholder="Work Phone (optional)"
               value={workNumber}
               onChange={(e) => setWorkNumber(e.target.value)}
             />
@@ -105,14 +124,14 @@ const NewCustomer = ({ closeModal, businessId }) => {
         <div className="flex_column">
           <div className="add_customer_input_container">
             <input
-              placeholder="Company"
+              placeholder="Company (optional)"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
             />
           </div>
           <div className="add_customer_input_container">
             <input
-              placeholder="Job Title"
+              placeholder="Job Title (optional)"
               value={jobTitle}
               onChange={(e) => setjobTitle(e.target.value)}
             />
@@ -120,39 +139,13 @@ const NewCustomer = ({ closeModal, businessId }) => {
         </div>
       </div>
       <h4>Address</h4>
-      <div className="flex_row ">
-        <div className="flex_column">
-          <div className="flex_row add_customer_input_container">
-            <input
-              placeholder="Street"
-              value={street}
-              onChange={(e) => setStreet(e.target.value)}
-            />
-            <input
-              placeholder="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </div>
-          <div className="flex_row add_customer_input_container">
-            <input
-              placeholder="State"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-            />
-            <input
-              placeholder="Country"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-            <input
-              placeholder="Zip"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
-            />
-          </div>
-        </div>
-      </div>
+      <GooglePlacesAutocomplete
+        apiKey={googleMapKey}
+        selectProps={{
+          value,
+          onChange: setValue,
+        }}
+      />
       <div className="flex_row new_customer_button_group">
         <div className="flex_row">
           <button onClick={closeModal} className="new_customer_button ">

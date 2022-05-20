@@ -91,6 +91,7 @@
   border-radius: 4px;
   text-transform: uppercase;
   background-color: transparent;
+  color: black;
 }
 
 .new_customer_button:hover {
