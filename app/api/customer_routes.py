@@ -16,7 +16,7 @@ def customer():
     form = CustomerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        coords = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+form.data["postal_code"])
+        geolocation = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"])
 
         customer = Customer(
         first_name=form.data["first_name"],
@@ -26,9 +26,9 @@ def customer():
         city=form.data["city"],
         state=form.data["state"],
         country=form.data["country"],
-        postal_code=form.data["postal_code"],
-        lat=coords["lat"],
-        long=coords["lng"],
+        postal_code=geolocation["zipcode"],
+        lat=geolocation["coords"]["lat"],
+        long=geolocation["coords"]["lng"],
         mobile_number=form.data["mobile_number"],
         home_number=form.data["home_number"],
         email=form.data["email"],
@@ -50,7 +50,7 @@ def customer_put(id):
     if form.validate_on_submit():
         customer = Customer.query.get(id)
 
-        coords = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+form.data["postal_code"])
+        geolocation = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+form.data["postal_code"])
 
         customer.first_name=form.data["first_name"]
         customer.last_name=form.data["last_name"]
@@ -59,9 +59,9 @@ def customer_put(id):
         customer.city=form.data["city"]
         customer.state=form.data["state"]
         customer.country=form.data["country"]
-        customer.postal_code=form.data["postal_code"]
-        customer.lat=coords["lat"]
-        customer.long=coords["lng"]
+        customer.postal_code=geolocation["zipcode"]
+        customer.lat=geolocation["coords"]["lat"]
+        customer.long=geolocation["coords"]["lng"]
         customer.mobile_number=form.data["mobile_number"]
         customer.home_number=form.data["home_number"]
         customer.email=form.data["email"]
