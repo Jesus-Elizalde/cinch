@@ -80,6 +80,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="first_name"
+            maxLength="255"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
           ></input>
@@ -89,6 +90,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="first_name"
+            maxLength="255"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
           ></input>
@@ -98,6 +100,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="username"
+            maxLength="255"
             onChange={updateUsername}
             value={username}
           ></input>
@@ -107,6 +110,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="email"
+            maxLength="255"
             onChange={updateEmail}
             value={email}
           ></input>
