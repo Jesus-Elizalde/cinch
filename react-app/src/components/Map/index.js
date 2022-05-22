@@ -4,7 +4,7 @@ import MuliGoogleMap from "../GoogleMap/MuliGoogleMap";
 
 const Map = () => {
   const user = useSelector((state) => state.session.user);
-  const business = useSelector((state) => state.businesses[user?.id]);
+  const business = useSelector((state) => state.businesses[user?.business_id]);
 
   return (
     <MuliGoogleMap
