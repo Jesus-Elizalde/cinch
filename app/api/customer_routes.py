@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,request
 from app.models import db, Customer ,Business
-from app.forms import CustomerForm
+from app.forms import CustomerForm,EditCustomerForm
 from app.utils import validation_errors_to_error_messages
 from app.googlegeo import geocode
 
@@ -45,7 +45,7 @@ def customer():
 @customer_routes.route('/<int:id>',methods=['PUT'])
 def customer_put(id):
 
-    form = CustomerForm()
+    form = EditCustomerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         customer = Customer.query.get(id)

@@ -74,7 +74,7 @@ const SingleCustomerDetails = () => {
               />
               <div>
                 <div className="flex_row edit_address_container">
-                  <div className="flex_column ">
+                  <div className="flex_column edit_customer_modal">
                     <h4>{customer?.street}</h4>
                     <p>
                       {customer?.city} {customer?.state} {customer?.county}{" "}

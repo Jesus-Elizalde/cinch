@@ -196,3 +196,7 @@
   width: 100%;
   overflow-x: scroll;
 }
+
+.edit_customer_modal {
+  padding: 0px 25px 0px 25px;
+}

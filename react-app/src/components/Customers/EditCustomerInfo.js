@@ -39,15 +39,16 @@ const EditCustomerInfo = ({ customer, closeModal }) => {
     const data = await dispatch(editCustomer(resultsTwo));
     if (data) {
       setErrors(data);
+      return;
     }
     closeModal();
   };
 
   return (
-    <div className="flex_column">
+    <div className="flex_column edit_customer_modal">
       <h1>Edit customer</h1>
       {errors.map((error) => (
-        <div>{error}</div>
+        <div key={error}>{error}</div>
       ))}{" "}
       <h4>Contact info</h4>
       <div className="flex_row contact_info_container">
