@@ -21,8 +21,6 @@ const NewCustomer = ({ closeModal, businessId }) => {
   const [country, setCountry] = useState("");
   const [zipCode, setZipCode] = useState("");
 
-  // const [value, setValue] = useState("");
-
   const [errors, setErrors] = useState([]);
 
   const onSubmit = async () => {
@@ -66,11 +64,13 @@ const NewCustomer = ({ closeModal, businessId }) => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
+              maxLength="25"
             />
             <input
               placeholder="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+              maxLength="25"
             />
             <input
               placeholder="Mobile phone"
@@ -84,6 +84,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
               id="longer_input_add"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
+              maxLength="25"
             />
             <input
               placeholder="Home Phone (optional)"
@@ -112,6 +113,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
               placeholder="Company (optional)"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
+              maxLength="25"
             />
           </div>
           <div className="add_customer_input_container">
@@ -119,6 +121,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
               placeholder="Job Title (optional)"
               value={jobTitle}
               onChange={(e) => setjobTitle(e.target.value)}
+              maxLength="25"
             />
           </div>
         </div>
