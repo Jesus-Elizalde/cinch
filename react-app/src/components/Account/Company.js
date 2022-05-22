@@ -9,7 +9,6 @@ const Company = () => {
   const business = useSelector((state) => state.businesses[user?.id]);
 
   const [showEditModal, setShowEditModal] = useState(false);
-  console.log("🚀 ~ file: Company.js ~ line 8 ~ Company ~ business", business);
   return (
     <div className="company_container">
       <div className="company_inner_container flex_column">

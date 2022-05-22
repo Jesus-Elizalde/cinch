@@ -5,10 +5,6 @@ import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
 import { ReactComponent as BackArrowIcon } from "../../static/svg/backarrow.svg";
 
 const AddServiceModal = ({ setShowServiceModal, setJobIds, jobIds }) => {
-  console.log(
-    "🚀 ~ file: AddServiceModal.js ~ line 8 ~ AddServiceModal ~ jobIds",
-    jobIds
-  );
   const user = useSelector((state) => state.session.user);
   const allCategoriesArr = useSelector((state) =>
     Object.values(state.categories)
