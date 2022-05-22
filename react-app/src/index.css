@@ -20,6 +20,7 @@ button {
   margin: 0px 15px 0px 15px;
   border-radius: 4px;
   height: 25px;
+  cursor: pointer;
 }
 
 .flex_row {
@@ -39,6 +40,7 @@ button {
 
 .link {
   color: #2764ba;
+  cursor: pointer;
 }
 
 th,

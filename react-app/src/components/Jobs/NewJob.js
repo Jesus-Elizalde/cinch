@@ -141,10 +141,10 @@ const NewJob = () => {
                 className="nj_add_service"
                 onClick={() => setShowServiceModal(true)}
               >
-                Service Price Book
+                Add Service +
               </p>
             </div>
-            <div className="flex_column align_item">
+            <div className="flex_column align_item service_box_container_x">
               {jobIds.map((jobId) => (
                 <div className="flex_row nj_outer_service_tile">
                   <div className="flex_column">
@@ -167,6 +167,20 @@ const NewJob = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <p>Message (optional) </p>
+            <div className="flex_row">
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="message_input"
+              />
+
+              {message.length <= 500 ? (
+                <p className="color_green">{message.length}/500 Chars</p>
+              ) : (
+                <p className="color_red">{message.length}/500 Chars</p>
+              )}
             </div>
           </div>
         </div>

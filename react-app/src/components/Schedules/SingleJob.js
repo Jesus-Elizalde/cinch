@@ -1,11 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { prettyDate } from "../../utils/date";
 
 const SingleJob = ({ states, job, checkboxState, business }) => {
   const user = business?.customers.filter(
     (customer) => customer.id === job?.customer_id
   );
+  const history = useHistory();
   const { deleteArr, setDeleteArr } = checkboxState;
 
   const { checkedFromDate, checkedToDate, checkedMessage, checkedCustomer } =
@@ -28,15 +29,25 @@ const SingleJob = ({ states, job, checkboxState, business }) => {
         onChange={addOneJob}
       />
       {checkedCustomer && (
-        <td>
-          <NavLink to={`/customers/${user[0]?.id}`}>
-            {user[0]?.display_name}
-          </NavLink>
+        <td onClick={() => history.push(`/customers/${user[0]?.id}`)}>
+          {user[0]?.display_name}
         </td>
       )}
-      {checkedFromDate && <td>{prettyDate(job?.from_date_time)}</td>}
-      {checkedToDate && <td>{prettyDate(job?.to_date_time)}</td>}
-      {checkedMessage && <td>{job?.message}</td>}
+      {checkedFromDate && (
+        <td onClick={() => history.push(`/customers/${user[0]?.id}`)}>
+          {prettyDate(job?.from_date_time)}
+        </td>
+      )}
+      {checkedToDate && (
+        <td onClick={() => history.push(`/customers/${user[0]?.id}`)}>
+          {prettyDate(job?.to_date_time)}
+        </td>
+      )}
+      {checkedMessage && (
+        <td onClick={() => history.push(`/customers/${user[0]?.id}`)}>
+          {job?.message}
+        </td>
+      )}
     </tr>
   );
 };

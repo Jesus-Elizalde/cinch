@@ -20,6 +20,7 @@ nav {
   justify-content: center;
   align-items: center;
   margin-left: 15px;
+  cursor: pointer;
 }
 
 .login_signup_button:hover {
@@ -80,6 +81,7 @@ nav {
   align-items: center;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .user_dropdown {
@@ -138,4 +140,8 @@ nav {
 }
 .align_items svg {
   margin-left: 8px;
+}
+
+.new_customer_pointer {
+  cursor: pointer;
 }

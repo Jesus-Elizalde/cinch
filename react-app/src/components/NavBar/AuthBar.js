@@ -96,7 +96,7 @@ const AuthBar = () => {
                 </div>
               </NavLink>
               <div
-                className="flex_row align_items"
+                className="flex_row align_items new_customer_pointer"
                 onClick={() => setShowAddModal(true)}
               >
                 <NewCustomerIcon />

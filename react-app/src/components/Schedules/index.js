@@ -77,7 +77,7 @@ const Schedules = () => {
         </div>
       ) : (
         <div className="flex_row title_container">
-          <h1> {allJobs.length} Jobs</h1>
+          <h1> {allJobs.length} jobs</h1>
           <div className="flex_row title_right_side_conatiner">
             <div className="flex_row main_input_container">
               <SearchIcon />
@@ -97,38 +97,40 @@ const Schedules = () => {
             <div onClick={() => setMulitbox(true)}>
               <MulitIcon />
             </div>
-            <div>
+            {/* <div>
               <ThreeDotsIcon />
-            </div>
+            </div> */}
           </div>
         </div>
       )}
 
-      <table>
-        <thead>
-          <tr>
-            <input
-              type="checkbox"
-              value={deleteArr.length !== 0}
-              onClick={addAllJob}
-            />
-            {checkedCustomer && <th>customer</th>}
-            {checkedFromDate && <th>from_date_time</th>}
-            {checkedToDate && <th>to_date_time</th>}
-            {checkedMessage && <th>message</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {allJobs.map((job) => (
-            <SingleJob
-              states={states}
-              job={job}
-              checkboxState={checkboxState}
-              business={business}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div className="all_customers_table_container">
+        <table>
+          <thead>
+            <tr>
+              <input
+                type="checkbox"
+                value={deleteArr.length !== 0}
+                onClick={addAllJob}
+              />
+              {checkedCustomer && <th>Customer</th>}
+              {checkedFromDate && <th>From Date and Time</th>}
+              {checkedToDate && <th>To Date and Time</th>}
+              {checkedMessage && <th>Message</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {allJobs.map((job) => (
+              <SingleJob
+                states={states}
+                job={job}
+                checkboxState={checkboxState}
+                business={business}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
       {mulitbox && (
         <Modal onClose={() => setMulitbox(false)}>
           <div className="modal_container">
@@ -173,6 +175,7 @@ const Schedules = () => {
                 </div>
               </div>
             </div>
+            <button onClick={() => setMulitbox(false)}>Exit</button>
           </div>
         </Modal>
       )}

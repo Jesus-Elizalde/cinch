@@ -145,7 +145,9 @@ const SignUpForm = ({ modalFcn }) => {
             ></input>
           </div>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="submit_form">
+          Sign Up
+        </button>
       </form>
     </div>
   );

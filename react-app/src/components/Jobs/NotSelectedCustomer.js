@@ -82,9 +82,9 @@ const NotSelectedCustomer = ({
           )}
         </div>
       </div>
-      <div className="new_job__new_customer">
+      {/* <div className="new_job__new_customer">
         <button>+ New Customer</button>
-      </div>
+      </div> */}
     </div>
   );
 };

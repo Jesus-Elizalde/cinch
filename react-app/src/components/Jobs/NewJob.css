@@ -188,3 +188,23 @@
   border-bottom: 1px solid lightgrey;
   justify-content: space-between;
 }
+
+.service_box_container_x {
+  height: 450px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+
+.message_input {
+  max-width: 450px;
+  max-height: 70px;
+  margin-right: 25px;
+}
+
+.color_green {
+  color: green;
+}
+
+.color_red {
+  color: red;
+}
