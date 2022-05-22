@@ -16,7 +16,7 @@ def customer():
     form = CustomerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        geolocation = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"])
+        geolocation = geocode(form.data["street"]+" "+form.data["city"]+" "+form.data["state"]+" "+form.data["country"]+" "+ form.data["postal_code"])
 
         customer = Customer(
         first_name=form.data["first_name"],

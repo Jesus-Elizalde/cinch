@@ -19,26 +19,11 @@ const NewCustomer = ({ closeModal, businessId }) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
+  const [zipCode, setZipCode] = useState("");
 
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
 
   const [errors, setErrors] = useState([]);
-
-  useEffect(() => {
-    if (!value) return;
-
-    const addressArr = value.label.split(", ");
-
-    if (addressArr.length < 4) {
-      setErrors(["Address not valid"]);
-      return;
-    }
-
-    setStreet(addressArr[0]);
-    setCity(addressArr[1]);
-    setState(addressArr[2]);
-    setCountry(addressArr[3]);
-  }, [value]);
 
   const onSubmit = async () => {
     const results = {
@@ -55,6 +40,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
       city,
       state,
       country,
+      postal_code: zipCode,
       business_id: businessId,
     };
 
@@ -139,13 +125,46 @@ const NewCustomer = ({ closeModal, businessId }) => {
         </div>
       </div>
       <h4>Address</h4>
-      <GooglePlacesAutocomplete
+      <div className="flex_row ">
+        <div className="flex_column">
+          <div className="flex_row add_customer_input_container">
+            <input
+              placeholder="Street"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+            <input
+              placeholder="City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div className="flex_row add_customer_input_container">
+            <input
+              placeholder="State"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+            <input
+              placeholder="Country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+            <input
+              placeholder="Zip"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+      {/* <GooglePlacesAutocomplete
         apiKey={googleMapKey}
         selectProps={{
           value,
           onChange: setValue,
         }}
-      />
+      /> */}
       <div className="flex_row new_customer_button_group">
         <div className="flex_row">
           <button onClick={closeModal} className="new_customer_button ">

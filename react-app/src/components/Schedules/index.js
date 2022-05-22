@@ -87,14 +87,14 @@ const Schedules = () => {
                 onChange={(e) => setFilter(e.target.value)}
                 className="filter_input"
               />
-              <div onClick={() => setFilter("")}>
+              <div onClick={() => setFilter("")} className="clicker">
                 <SearchClearIcon />
               </div>
             </div>
             <NavLink to="/jobs/new">
               <NewJobIcon />
             </NavLink>
-            <div onClick={() => setMulitbox(true)}>
+            <div onClick={() => setMulitbox(true)} className="clicker">
               <MulitIcon />
             </div>
             {/* <div>
@@ -120,7 +120,7 @@ const Schedules = () => {
             </tr>
           </thead>
           <tbody>
-            {allJobs.map((job) => (
+            {allJobs.reverse().map((job) => (
               <SingleJob
                 states={states}
                 job={job}

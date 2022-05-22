@@ -188,7 +188,7 @@ const Customers = () => {
             </tr>
           </thead>
           <tbody>
-            {business?.customers.map((customer) => (
+            {business?.customers.reverse().map((customer) => (
               <SingleCustomer
                 key={customer?.id}
                 states={states}
