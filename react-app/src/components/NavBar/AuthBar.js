@@ -13,11 +13,13 @@ import { ReactComponent as InfoIcon } from "../../static/svg/infoicon.svg";
 import { ReactComponent as LinkinIcon } from "../../static/svg/linkin.svg";
 import { ReactComponent as GithubIcon } from "../../static/svg/github.svg";
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../Context/Modal";
 import NewCustomer from "../Customers/NewCustomer";
+import { getBusinessesDetails } from "../../store/business";
 
 const AuthBar = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showNewDropdown, setShowNewDropdown] = useState(false);
@@ -29,6 +31,10 @@ const AuthBar = () => {
 
     setShowUserDropdown(true);
   };
+
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
+  }, [showAddModal]);
 
   useEffect(() => {
     if (!showUserDropdown) return;
