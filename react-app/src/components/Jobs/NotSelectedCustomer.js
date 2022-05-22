@@ -67,11 +67,11 @@ const NotSelectedCustomer = ({
                 )
                 .map((customer) => (
                   <div
-                    className="flex_row"
+                    className="flex_row filters_nj_container"
                     onClick={() => setSelectedCustomer(customer)}
                     key={customer.id}
                   >
-                    <p>{customer.display_name}</p>
+                    <p className="filters_name">{customer.display_name}</p>
                     <p>
                       {customer.street} {customer.city} {customer.state}{" "}
                       {customer.country}

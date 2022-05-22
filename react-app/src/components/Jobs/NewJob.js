@@ -106,7 +106,7 @@ const NewJob = () => {
               <h3>Schedule</h3>
             </div>
             <div className="flex_row align_item">
-              <p>From</p>
+              <p className="filters_name">From</p>
               <DatePicker
                 selected={fromDate}
                 onChange={(date) => setFromDate(date)}
@@ -118,7 +118,7 @@ const NewJob = () => {
               />
             </div>
             <div className="flex_row align_item">
-              <p>To</p>
+              <p className="filters_name">To</p>
               <DatePicker
                 selected={toDate}
                 onChange={(date) => setToDate(date)}
@@ -176,10 +176,10 @@ const NewJob = () => {
                 className="message_input"
               />
 
-              {message.length <= 500 ? (
-                <p className="color_green">{message.length}/500 Chars</p>
+              {message?.length <= 500 ? (
+                <p className="color_green">{message?.length}/500 Chars</p>
               ) : (
-                <p className="color_red">{message.length}/500 Chars</p>
+                <p className="color_red">{message?.length}/500 Chars</p>
               )}
             </div>
           </div>

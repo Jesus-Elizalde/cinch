@@ -208,3 +208,11 @@
 .color_red {
   color: red;
 }
+
+.filters_name {
+  margin-right: 10px;
+}
+
+.filters_nj_container {
+  padding: 5px 5px 5px 5px;
+}
