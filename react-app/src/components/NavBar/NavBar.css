@@ -145,3 +145,20 @@ nav {
 .new_customer_pointer {
   cursor: pointer;
 }
+
+.info_modal_container {
+  align-items: center;
+}
+
+.info_modal_container div {
+  margin-bottom: 25px;
+}
+
+.info_modal_title {
+  align-items: center;
+}
+
+.info_modal_title p {
+  margin-right: 15px;
+  cursor: pointer;
+}

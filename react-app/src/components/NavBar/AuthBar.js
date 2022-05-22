@@ -10,6 +10,9 @@ import { ReactComponent as SignoutIcon } from "../../static/svg/signout.svg";
 import { ReactComponent as NewCustomerIcon } from "../../static/svg/addcustomer.svg";
 import { ReactComponent as NewJobIcon } from "../../static/svg/newjob.svg";
 import { ReactComponent as InfoIcon } from "../../static/svg/infoicon.svg";
+import { ReactComponent as LinkinIcon } from "../../static/svg/linkin.svg";
+import { ReactComponent as GithubIcon } from "../../static/svg/github.svg";
+import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
 import { useSelector } from "react-redux";
 import { Modal } from "../Context/Modal";
 import NewCustomer from "../Customers/NewCustomer";
@@ -19,6 +22,7 @@ const AuthBar = () => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [showNewDropdown, setShowNewDropdown] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   const openUserDropdown = () => {
     if (showUserDropdown) return;
@@ -111,7 +115,7 @@ const AuthBar = () => {
             <MapIcon />
           </span>
         </NavLink>
-        <div>
+        <div onClick={() => setShowInfoModal(true)}>
           <InfoIcon />
         </div>
         <div>
@@ -152,6 +156,28 @@ const AuthBar = () => {
             closeModal={() => setShowAddModal(false)}
             businessId={user?.business_id}
           />
+        </Modal>
+      )}
+      {showInfoModal && (
+        <Modal onClose={() => setShowInfoModal(false)}>
+          <div className="modal_padding flex_column info_modal_container">
+            <div className="flex_row info_modal_title">
+              <p onClick={() => setShowInfoModal(false)}>
+                <XIcon />
+              </p>
+              <h3>Info Links:</h3>
+            </div>
+            <a href="https://github.com/Jesus-Elizalde/cinch">
+              <div className="flex_row">
+                <GithubIcon />
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/jesus-elizalde-83282118b/">
+              <div className="flex_row">
+                <LinkinIcon />
+              </div>
+            </a>
+          </div>
         </Modal>
       )}
     </div>
