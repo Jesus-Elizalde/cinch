@@ -58,7 +58,7 @@ const Schedules = () => {
 
   const deleteJobFnc = async () => {
     for (const id of deleteArr) {
-      dispatch(deleteJobDetails(id));
+      const data = await dispatch(deleteJobDetails(id));
     }
     setDeleteArr([]);
     setShowDeleteModal(false);
@@ -79,7 +79,7 @@ const Schedules = () => {
         <div className="flex_row title_container">
           <h1> {allJobs.length} jobs</h1>
           <div className="flex_row title_right_side_conatiner">
-            <div className="flex_row main_input_container">
+            {/* <div className="flex_row main_input_container">
               <SearchIcon />
               <input
                 value={filter}
@@ -90,7 +90,7 @@ const Schedules = () => {
               <div onClick={() => setFilter("")} className="clicker">
                 <SearchClearIcon />
               </div>
-            </div>
+            </div> */}
             <NavLink to="/jobs/new">
               <NewJobIcon />
             </NavLink>

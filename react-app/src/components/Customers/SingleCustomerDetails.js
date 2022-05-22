@@ -59,6 +59,34 @@ const SingleCustomerDetails = () => {
                 </div>
               </div>
             </div>
+            <div>
+              <div>
+                <p>Display Name: {customer?.display_name}</p>
+              </div>
+              <div>
+                <p>
+                  Name: {customer?.first_name} {customer?.last_name}
+                </p>
+              </div>
+              <div>
+                <p>Email: {customer?.email}</p>
+              </div>
+              <div>
+                <p>Moblie Number: {customer?.mobile_number}</p>
+              </div>
+              <div>
+                <p>Home Number: {customer?.home_number}</p>
+              </div>
+              <div>
+                <p>Work Number: {customer?.work_number}</p>
+              </div>
+              <div>
+                <p>Company: {customer?.company}</p>
+              </div>
+              <div>
+                <p>Job Title: {customer?.job_title}</p>
+              </div>
+            </div>
           </div>
           <div className="flex_column right_customer_edit_column">
             <div className="customer_edit_map_card">

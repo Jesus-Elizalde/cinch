@@ -9,6 +9,7 @@ import { ReactComponent as MapIcon } from "../../static/svg/map.svg";
 import { ReactComponent as SignoutIcon } from "../../static/svg/signout.svg";
 import { ReactComponent as NewCustomerIcon } from "../../static/svg/addcustomer.svg";
 import { ReactComponent as NewJobIcon } from "../../static/svg/newjob.svg";
+import { ReactComponent as InfoIcon } from "../../static/svg/infoicon.svg";
 import { useSelector } from "react-redux";
 import { Modal } from "../Context/Modal";
 import NewCustomer from "../Customers/NewCustomer";
@@ -110,6 +111,9 @@ const AuthBar = () => {
             <MapIcon />
           </span>
         </NavLink>
+        <div>
+          <InfoIcon />
+        </div>
         <div>
           <div
             className="profile_circle flex_row space_margin"

@@ -89,7 +89,7 @@ const Customers = () => {
 
   const deleteCustomerFcn = async () => {
     for (const id of deleteArr) {
-      dispatch(deleteCustomer(id));
+      const data = await dispatch(deleteCustomer(id));
     }
     setDeleteArr([]);
     setShowDeleteModal(false);
@@ -188,14 +188,65 @@ const Customers = () => {
             </tr>
           </thead>
           <tbody>
-            {business?.customers.reverse().map((customer) => (
-              <SingleCustomer
-                key={customer?.id}
-                states={states}
-                customer={customer}
-                checkboxState={checkboxState}
-              />
-            ))}
+            {!filter
+              ? business?.customers
+                  .reverse()
+                  .map((customer) => (
+                    <SingleCustomer
+                      key={customer?.id}
+                      states={states}
+                      customer={customer}
+                      checkboxState={checkboxState}
+                    />
+                  ))
+              : business?.customers
+                  .filter(
+                    (customer) =>
+                      customer.first_name
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.last_name
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.display_name
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.email
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.street
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.city
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.state
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.country
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.postal_code
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.mobile_number
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.home_number
+                        .toLowerCase()
+                        .includes(filter.toLowerCase()) ||
+                      customer.work_number
+                        .toLowerCase()
+                        .includes(filter.toLowerCase())
+                  )
+                  .map((customer) => (
+                    <SingleCustomer
+                      key={customer?.id}
+                      states={states}
+                      customer={customer}
+                      checkboxState={checkboxState}
+                    />
+                  ))}
           </tbody>
         </table>
       </div>
@@ -313,7 +364,7 @@ const Customers = () => {
       )}
       {showDeleteModal && (
         <Modal onClose={() => setShowDeleteModal(false)}>
-          <div className="flex_column">
+          <div className="flex_column modal_padding">
             <h1>Delete customer?</h1>
             <p>Are you sure? All selected customers will be deleted.</p>
             <div>

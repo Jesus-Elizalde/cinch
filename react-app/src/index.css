@@ -54,3 +54,7 @@ td {
 .clicker {
   cursor: pointer;
 }
+
+.modal_padding {
+  padding: 0px 25px 10px 25px;
+}
