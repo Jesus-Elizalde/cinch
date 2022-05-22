@@ -28,14 +28,12 @@ const NewJob = () => {
   const user = useSelector((state) => state.session.user);
   const business = useSelector((state) => state.businesses[user?.business_id]);
   const services = useSelector((state) => state.services);
-  console.log("🚀 ~ file: NewJob.js ~ line 27 ~ NewJob ~ services", services);
 
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const [message, setMessage] = useState("");
   const [searchCustomer, setSearchCustomer] = useState("");
   const [jobIds, setJobIds] = useState([]);
-  jobIds.map((id) => console.log(id));
 
   const [selectedCustomer, setSelectedCustomer] = useState("");
 
@@ -53,7 +51,6 @@ const NewJob = () => {
       customer_id: selectedCustomer?.id,
       job_ids: jobIds.join("-"),
     };
-    console.log("🚀 ~ file: NewJob.js ~ line 45 ~ onSubmit ~ results", results);
 
     const data = await dispatch(newJobDetails(results));
     if (data) {

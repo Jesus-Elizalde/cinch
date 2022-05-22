@@ -47,7 +47,6 @@ const NewCustomer = ({ closeModal, businessId }) => {
     const data = await dispatch(newCustomer(results));
     if (data) {
       setErrors(data);
-      console.log(errors);
       return;
     }
     closeModal();
