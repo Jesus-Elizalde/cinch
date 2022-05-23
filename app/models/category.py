@@ -19,5 +19,6 @@ class Category(db.Model):
             'name':self.name,
             'image':self.image,
             'business_id':self.business_id,
-            'service_ids':[service_id.id for service_id in self.service]
+            'service_ids':[service_id.id for service_id in self.service],
+            'services': [bus.to_dict() for bus in self.service]
         }

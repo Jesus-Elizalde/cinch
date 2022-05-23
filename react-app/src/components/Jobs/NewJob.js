@@ -24,6 +24,7 @@ import { newJobDetails } from "../../store/job";
 import AddServiceModal from "./AddServiceModal";
 import { getBusinessesDetails } from "../../store/business";
 import { getCategoriesDetails } from "../../store/category";
+import { getServicesDetails } from "../../store/service";
 
 const NewJob = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,8 @@ const NewJob = () => {
   useEffect(() => {
     dispatch(getBusinessesDetails());
     dispatch(getCategoriesDetails());
-  }, [showServiceModal]);
+    dispatch(getServicesDetails());
+  }, [showServiceModal, jobIds]);
 
   return (
     <div className="flex_column new_job_main">
@@ -149,8 +151,8 @@ const NewJob = () => {
               </p>
             </div>
             <div className="flex_column align_item service_box_container_x">
-              {jobIds.map((jobId) => (
-                <div className="flex_row nj_outer_service_tile">
+              {jobIds?.map((jobId) => (
+                <div key={jobId} className="flex_row nj_outer_service_tile">
                   <div className="flex_column">
                     <p>{services[jobId]?.name}</p>
                     <p>{services[jobId]?.description}</p>
