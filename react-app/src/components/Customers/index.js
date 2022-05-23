@@ -189,18 +189,15 @@ const Customers = () => {
           </thead>
           <tbody>
             {!filter
-              ? business?.customers
-                  .reverse()
-                  .map((customer) => (
-                    <SingleCustomer
-                      key={customer?.id}
-                      states={states}
-                      customer={customer}
-                      checkboxState={checkboxState}
-                    />
-                  ))
+              ? business?.customers.map((customer) => (
+                  <SingleCustomer
+                    key={customer?.id}
+                    states={states}
+                    customer={customer}
+                    checkboxState={checkboxState}
+                  />
+                ))
               : business?.customers
-                  .reverse()
                   .filter(
                     (customer) =>
                       customer.first_name
