@@ -40,6 +40,7 @@ const EditCustomerMap = ({ customer, closeModal }) => {
     const data = await dispatch(editCustomer(results));
     if (data) {
       setErrors(data);
+      return;
     }
     closeModal();
   };

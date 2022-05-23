@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavLink, Redirect, useHistory } from "react-router-dom";
@@ -22,6 +22,8 @@ import NotSelectedCustomer from "./NotSelectedCustomer";
 import SelectedCustomer from "./SelectedCustomer";
 import { newJobDetails } from "../../store/job";
 import AddServiceModal from "./AddServiceModal";
+import { getBusinessesDetails } from "../../store/business";
+import { getCategoriesDetails } from "../../store/category";
 
 const NewJob = () => {
   const dispatch = useDispatch();
@@ -60,6 +62,11 @@ const NewJob = () => {
     setErrors([]);
     history.push("/jobs");
   };
+
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
+    dispatch(getCategoriesDetails());
+  }, [showServiceModal]);
 
   return (
     <div className="flex_column new_job_main">

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { getCategoriesDetails } from "../../store/category";
+import { getServicesDetails } from "../../store/service";
 
 import { signUp } from "../../store/session";
 
@@ -24,6 +26,11 @@ const SignUpForm = ({ modalFcn }) => {
     setShowLoginModal(true);
     setShowSignupModal(false);
   };
+
+  useEffect(() => {
+    dispatch(getCategoriesDetails());
+    dispatch(getServicesDetails());
+  }, [dispatch]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -80,7 +87,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="first_name"
-            maxLength="255"
+            maxLength="25"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
           ></input>
@@ -90,7 +97,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="first_name"
-            maxLength="255"
+            maxLength="25"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
           ></input>
@@ -100,7 +107,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="username"
-            maxLength="255"
+            maxLength="25"
             onChange={updateUsername}
             value={username}
           ></input>
@@ -110,7 +117,7 @@ const SignUpForm = ({ modalFcn }) => {
           <input
             type="text"
             name="email"
-            maxLength="255"
+            maxLength="65"
             onChange={updateEmail}
             value={email}
           ></input>
@@ -122,6 +129,7 @@ const SignUpForm = ({ modalFcn }) => {
             name="password"
             onChange={updatePassword}
             value={password}
+            maxLength="150"
           ></input>
         </div>
         <div className="input_container flex_column">
@@ -132,6 +140,7 @@ const SignUpForm = ({ modalFcn }) => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            maxLength="150"
           ></input>
         </div>
         <div className="flex_row role_color_box">

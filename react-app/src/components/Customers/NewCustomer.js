@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newCustomer } from "../../store/business";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+// import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
 const NewCustomer = ({ closeModal, businessId }) => {
   const googleMapKey = useSelector((state) => state.keys.googleApiKey);
@@ -90,6 +90,7 @@ const NewCustomer = ({ closeModal, businessId }) => {
               placeholder="Home Phone (optional)"
               value={homeNumber}
               onChange={(e) => setHomeNumber(e.target.value)}
+              maxLength="25"
             />
           </div>
           <div className="flex_row add_customer_input_container longer_input_add_space">
@@ -99,11 +100,13 @@ const NewCustomer = ({ closeModal, businessId }) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              maxLength="75"
             />
             <input
               placeholder="Work Phone (optional)"
               value={workNumber}
               onChange={(e) => setWorkNumber(e.target.value)}
+              maxLength="25"
             />
           </div>
         </div>
@@ -134,11 +137,13 @@ const NewCustomer = ({ closeModal, businessId }) => {
               placeholder="Street"
               value={street}
               onChange={(e) => setStreet(e.target.value)}
+              maxLength="75"
             />
             <input
               placeholder="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              maxLength="75"
             />
           </div>
           <div className="flex_row add_customer_input_container">
@@ -146,16 +151,19 @@ const NewCustomer = ({ closeModal, businessId }) => {
               placeholder="State"
               value={state}
               onChange={(e) => setState(e.target.value)}
+              maxLength="75"
             />
             <input
               placeholder="Country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
+              maxLength="75"
             />
             <input
               placeholder="Zip"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}
+              maxLength="10"
             />
           </div>
         </div>

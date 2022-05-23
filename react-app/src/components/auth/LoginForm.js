@@ -74,6 +74,7 @@ const LoginForm = ({ modalFcn }) => {
             value={emailUsername}
             onChange={updateEmailUsername}
             className="input_login_signup"
+            maxLength="65"
           />
         </div>
         <div className="input_container flex_column">
@@ -85,6 +86,7 @@ const LoginForm = ({ modalFcn }) => {
             value={password}
             onChange={updatePassword}
             className="input_login_signup"
+            maxLength="150"
           />
           <div className="flex_row">
             <button type="submit" className="submit_form">
