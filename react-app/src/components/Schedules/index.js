@@ -120,7 +120,7 @@ const Schedules = () => {
             </tr>
           </thead>
           <tbody>
-            {allJobs.reverse().map((job) => (
+            {allJobs.map((job) => (
               <SingleJob
                 states={states}
                 job={job}
