@@ -200,6 +200,7 @@ const Customers = () => {
                     />
                   ))
               : business?.customers
+                  .reverse()
                   .filter(
                     (customer) =>
                       customer.first_name
