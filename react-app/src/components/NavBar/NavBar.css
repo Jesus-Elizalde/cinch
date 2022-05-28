@@ -162,3 +162,7 @@ nav {
   margin-right: 15px;
   cursor: pointer;
 }
+
+.svgIcon {
+  filter: var(--svg-color);
+}

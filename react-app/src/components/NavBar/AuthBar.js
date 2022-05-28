@@ -77,13 +77,13 @@ const AuthBar = () => {
           </span>
         </NavLink> */}
         <NavLink to="/customers">
-          <span className="flex_column">
+          <span className="flex_column svgIcon">
             <CustomerIcon />
             Customers
           </span>
         </NavLink>
         <NavLink to="/jobs">
-          <span className="flex_column">
+          <span className="flex_column svgIcon">
             <ScheduleIcon />
             {/* Schedule */}
             Jobs
@@ -117,12 +117,14 @@ const AuthBar = () => {
           )}
         </div>
         <NavLink to="/map" className="space_margin">
-          <span className="flex_column">
+          <span className="flex_column svgIcon">
             <MapIcon />
           </span>
         </NavLink>
         <div onClick={() => setShowInfoModal(true)}>
-          <InfoIcon />
+          <span className="flex_column svgIcon">
+            <InfoIcon />
+          </span>
         </div>
         <div>
           <div

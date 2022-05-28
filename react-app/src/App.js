@@ -26,6 +26,8 @@ import NewJob from "./components/Jobs/NewJob";
 import { getJobsDetailts } from "./store/job";
 import EditJob from "./components/Jobs/EditJob";
 
+import chroma from "chroma-js";
+
 function App() {
   const [loaded, setLoaded] = useState(false);
 
@@ -53,8 +55,25 @@ function App() {
   }
 
   document.documentElement.style.setProperty("--users-color", "#00314a");
+  document.documentElement.style.setProperty(
+    "--svg-color",
+    "brightness(0) saturate(100%) invert(0%) sepia(83%) saturate(7500%) hue-rotate(290deg) brightness(81%) contrast(113%)"
+  );
   if (user) {
     document.documentElement.style.setProperty("--users-color", user?.color);
+    // document.documentElement.style.setProperty(
+    //   "--svg-color",
+    //   "brightness(0) saturate(100%) invert(0%) sepia(83%) saturate(7500%) hue-rotate(290deg) brightness(81%) contrast(113%)"
+    // );
+    chroma(user?.color).luminance() >= 0.6
+      ? document.documentElement.style.setProperty(
+          "--svg-color",
+          "brightness(0) saturate(100%) invert(0%) sepia(83%) saturate(7500%) hue-rotate(290deg) brightness(81%) contrast(113%)"
+        )
+      : document.documentElement.style.setProperty(
+          "--svg-color",
+          "brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%) hue-rotate(299deg) brightness(113%) contrast(100%)"
+        );
   }
 
   return (
