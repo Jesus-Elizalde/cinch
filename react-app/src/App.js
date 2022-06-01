@@ -27,6 +27,7 @@ import { getJobsDetailts } from "./store/job";
 import EditJob from "./components/Jobs/EditJob";
 
 import chroma from "chroma-js";
+import Schedule from "./components/Schedule";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -99,6 +100,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/customers" exact={true}>
             <Customers />
+          </ProtectedRoute>
+          <ProtectedRoute path="/schedule" exact={true}>
+            <Schedule />
           </ProtectedRoute>
           <ProtectedRoute path="/customers/:id" exact={true}>
             <SingleCustomerDetails />
