@@ -13,6 +13,7 @@ import { ReactComponent as InfoIcon } from "../../static/svg/infoicon.svg";
 import { ReactComponent as LinkinIcon } from "../../static/svg/linkin.svg";
 import { ReactComponent as GithubIcon } from "../../static/svg/github.svg";
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
+import { ReactComponent as CustomerMIcon } from "../../static/svg/moneycustomer.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../Context/Modal";
 import NewCustomer from "../Customers/NewCustomer";
@@ -84,7 +85,7 @@ const AuthBar = () => {
         </NavLink>
         <NavLink to="/jobs">
           <span className="flex_column svgIcon">
-            <ScheduleIcon />
+            <CustomerMIcon />
             {/* Schedule */}
             Jobs
           </span>

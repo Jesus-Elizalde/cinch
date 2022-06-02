@@ -29,6 +29,7 @@ class Job(db.Model):
             'to_date_time':self.to_date_time,
             'message':self.message,
             'customer_id':self.customer_id,
+            'customer_name': self.customer.first_name+ " "+self.customer.last_name,
             'created_at':self.created_at,
             'updated_at':self.updated_at,
             "services": [service.to_dict() for service in self.job_services]

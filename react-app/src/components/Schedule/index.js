@@ -22,29 +22,40 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteJobDetails, editJobDetails } from "../../store/job";
+import { getBusinessesDetails } from "../../store/business";
 
 const Schedule = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
 
   const rawJobs = useSelector((state) => Object.values(state.jobs));
   console.log("🚀 ~ file: index.js ~ line 30 ~ Schedule ~ rawJobs", rawJobs);
+  const business = useSelector((state) => state.businesses[user?.business_id]);
+  const filteredArr = [];
+  business?.customers.forEach((customer) => filteredArr.push(...customer.jobs));
+  console.log(filteredArr);
 
-  const jobs = rawJobs?.map((job) => {
+  const jobs = filteredArr?.map((job) => {
     return {
       startDate: new Date(job.from_date_time),
       endDate: new Date(job.to_date_time),
-      title: `${job.customer_id}`,
+      title: `${job.customer_name}`,
       id: job.id,
       notes: job.message,
       customer_id: job.customer_id,
       job_ids: job.services.map((service) => service.id).join("-"),
     };
   });
+  console.log("🚀 ~ file: index.js ~ line 49 ~ jobs ~ jobs", jobs);
 
   const [data, setData] = useState([]);
 
   const [currentViewName, setCurrentViewName] = useState("work-week");
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    dispatch(getBusinessesDetails());
+  }, [dispatch]);
 
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) {
@@ -104,20 +115,20 @@ const Schedule = () => {
         <WeekView
           name="work-week"
           displayName="Work Week"
-          excludedDays={[0, 7]}
-          startDayHour={7}
-          endDayHour={19}
+          // excludedDays={[0, 7]}
+          // startDayHour={7}
+          // endDayHour={19}
         />
+        <DayView />
         <MonthView />
-        <DayView startDayHour={9} endDayHour={17} />
         <Toolbar />
         <DateNavigator />
         <TodayButton />
         <Appointments />
         <ViewSwitcher />
         <ConfirmationDialog ignoreCancel />
-        <AppointmentTooltip showOpenButton showDeleteButton />
-        <AppointmentForm />
+        <AppointmentTooltip showDeleteButton />
+        {/* <AppointmentForm /> */}
       </Scheduler>
     </Paper>
   );
