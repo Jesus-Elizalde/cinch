@@ -28,6 +28,7 @@ import EditJob from "./components/Jobs/EditJob";
 
 import chroma from "chroma-js";
 import Schedule from "./components/Schedule";
+import LoginPage from "./components/auth/LoginPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -82,7 +83,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route path="/welcome" exact={true}>
+          <Route path="/ " exact={true}>
             {user && <Redirect to="/customers" />}
             <LandingPage />
           </Route>
@@ -95,6 +96,9 @@ function App() {
           <ProtectedRoute path="/dashboard" exact={true}>
             <Dashboard />
           </ProtectedRoute>
+          <Route path="/login" exact={true}>
+            <LoginPage />
+          </Route>
           <ProtectedRoute path="/jobs" exact={true}>
             <Schedules />
           </ProtectedRoute>
