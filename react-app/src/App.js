@@ -83,7 +83,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route path="/ " exact={true}>
+          <Route path="/welcome" exact={true}>
             {user && <Redirect to="/customers" />}
             <LandingPage />
           </Route>
