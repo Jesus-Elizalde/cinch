@@ -29,6 +29,7 @@ import EditJob from "./components/Jobs/EditJob";
 import chroma from "chroma-js";
 import Schedule from "./components/Schedule";
 import LoginPage from "./components/auth/LoginPage";
+import Estimates from "./components/Estimates";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -113,6 +114,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/jobs/new" exact={true}>
             <NewJob />
+          </ProtectedRoute>
+          <ProtectedRoute path="/jobs/estimates" exact={true}>
+            <Estimates />
           </ProtectedRoute>
           <ProtectedRoute path="/jobs/:id/edit" exact={true}>
             <EditJob />

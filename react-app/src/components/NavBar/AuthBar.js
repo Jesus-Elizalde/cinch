@@ -121,6 +121,12 @@ const AuthBar = () => {
                 <NewCustomerIcon />
                 <p>Customer</p>
               </div>
+              <NavLink to="/jobs/estimates">
+                <div className="flex_row align_items">
+                  <NewJobIcon />
+                  <p>Estimates</p>
+                </div>
+              </NavLink>
             </div>
           )}
         </div>
