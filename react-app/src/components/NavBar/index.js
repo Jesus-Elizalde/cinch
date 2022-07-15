@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 
 import "./Navbar.css";
 import { SidebarData } from "./SidebarData";
 
 import { IconContext } from "react-icons/lib";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/session";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -39,6 +45,12 @@ const NavBar = () => {
                 </li>
               );
             })}
+            <li className="nav-text">
+              <Link to="#" onClick={onLogout}>
+                <FaSignOutAlt />
+                <span>Sign Out</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       </IconContext.Provider>

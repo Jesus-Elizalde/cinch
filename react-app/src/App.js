@@ -35,10 +35,10 @@ function App() {
   return (
     <ModalProvider>
       <BrowserRouter>
-        <NavBar />
+        {user && <NavBar />}
         <Switch>
           <Route path="/welcome" exact={true}>
-            {user && <Redirect to="/home" />}
+            {user && <Redirect to="/dashboard" />}
             <LandingPage />
           </Route>
           <ProtectedRoute

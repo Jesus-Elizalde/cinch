@@ -1,4 +1,5 @@
 import React from "react";
+import LoginForm from "../auth/LoginForm";
 
 import "./LandingPage.css";
 const LandingPage = () => {
@@ -27,6 +28,7 @@ const LandingPage = () => {
           workforce or grow revenue, we have a solution.
         </h4>
       </div>
+      <LoginForm />
     </div>
   );
 };

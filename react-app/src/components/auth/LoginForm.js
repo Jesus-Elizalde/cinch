@@ -5,18 +5,17 @@ import { login } from "../../store/session";
 
 import "./Forms.css";
 
-const LoginForm = ({ modalFcn }) => {
-  const { setShowLoginModal, setShowSignupModal } = modalFcn;
+const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [emailUsername, setEmailUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
-  const switchToSignup = () => {
-    setShowSignupModal(true);
-    setShowLoginModal(false);
-  };
+  // const switchToSignup = () => {
+  //   setShowSignupModal(true);
+  //   setShowLoginModal(false);
+  // };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -51,12 +50,12 @@ const LoginForm = ({ modalFcn }) => {
   return (
     <div className="modal_container">
       <h1>Login</h1>
-      <p>
+      {/* <p>
         Don't have an account?{" "}
         <span onClick={switchToSignup} className="link">
           Sign Up
         </span>
-      </p>
+      </p> */}
 
       <form onSubmit={onLogin}>
         <div>
