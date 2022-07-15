@@ -1,62 +1,35 @@
 /* TODO Add site wide styles */
 :root {
   --users-color: #00314a;
-  --hover-color: #2764ba;
-  --body-color: #e0e0e0;
+  --hover-color: lightgrey;
+  --body-color: #edede9;
+  --primary-color: #0bbbd4;
   --box-color: white;
   --svg-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%)
     hue-rotate(299deg) brightness(113%) contrast(100%);
+  --border-bottom-color: grey;
 }
 
-body {
+/* body {
   margin: 0px;
   width: 100%;
   font-family: Georgia, "Times New Roman", Times, serif;
-  /* background-color: var(--body-color); */
+  background-color: var(--body-color);
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-button {
-  border: none;
-  background-color: #2764ba;
-  color: white;
-  margin: 0px 15px 0px 15px;
-  border-radius: 4px;
-  height: 25px;
-  cursor: pointer;
-}
-
-.flex_row {
+.home,
+.about,
+.contact {
   display: flex;
-}
-
-.flex_column {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal_container {
-  width: 745px;
-  height: 680px;
-  padding: 0px 25px 0px 25px;
-}
-
-.link {
-  color: #2764ba;
-  cursor: pointer;
-}
-
-th,
-td {
-  padding-top: 5px;
-  padding-bottom: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.clicker {
-  cursor: pointer;
-}
-
-.modal_padding {
-  padding: 0px 25px 10px 25px;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
