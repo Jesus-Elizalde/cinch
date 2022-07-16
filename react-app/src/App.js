@@ -15,6 +15,8 @@ import Estimates from "./pages/Estimates";
 import Settings from "./pages/Settings";
 import CustomerPage from "./pages/Customer";
 import { getKeyDetails } from "./store/apiKey";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +48,8 @@ function App() {
              */}
             <LandingPage />
           </Route>
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
           <ProtectedRoute
             path="/dashboard"
             exact={true}
