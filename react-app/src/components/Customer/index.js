@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import SearchBar from "../utils/SearchBar";
 
 import "./Customer.css";
+import CustomerTable from "./CustomerTable";
 
 const Customer = () => {
   const user = useSelector((state) => state.session.user);
@@ -27,6 +28,9 @@ const Customer = () => {
       </div>
       <div className="customer_total_group">
         {customers.length} Total Customers
+      </div>
+      <div>
+        <CustomerTable />
       </div>
     </div>
   );
