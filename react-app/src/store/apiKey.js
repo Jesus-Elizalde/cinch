@@ -22,8 +22,8 @@ export default function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_KEY:
-      newState = { ...state };
-      newState["googleApiKey"] = action.key;
+      newState = { ...state, ...action.key };
+
       return newState;
 
     default:

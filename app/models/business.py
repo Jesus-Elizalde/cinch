@@ -46,6 +46,4 @@ class Business(db.Model):
             'number':self.number,
             'created_at':self.created_at,
             'updated_at':self.updated_at,
-            "employees" : [employee.to_dict() for employee in self.user ],
-            "customers" : [client.to_dict() for client in self.customer ]
         }

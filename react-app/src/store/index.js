@@ -6,10 +6,12 @@ import keys from "./apiKey";
 import categories from "./category";
 import services from "./service";
 import jobs from "./job";
+import customers from "./customer";
 
 const rootReducer = combineReducers({
   session,
   businesses,
+  customers,
   keys,
   categories,
   services,

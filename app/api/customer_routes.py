@@ -11,6 +11,11 @@ def get_all_customer():
     customers = Customer.query.all()
     return jsonify([customer.to_dict() for customer in customers])
 
+@customer_routes.route("/business_id/<int:business_id>")
+def get_customer_by_business(business_id):
+    customers = Customer.query.join(Business).filter(Business.id == business_id)
+    return jsonify([customer.to_dict() for customer in customers])
+
 @customer_routes.route('/',methods=['POST'])
 def customer():
     form = CustomerForm()

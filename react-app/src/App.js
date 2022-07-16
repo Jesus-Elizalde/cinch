@@ -13,6 +13,7 @@ import Jobs from "./pages/Jobs";
 import Invoices from "./pages/Invoices";
 import Estimates from "./pages/Estimates";
 import Settings from "./pages/Settings";
+import { getKeyDetails } from "./store/apiKey";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -24,6 +25,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getKeyDetails());
       setLoaded(true);
     })();
   }, [dispatch]);

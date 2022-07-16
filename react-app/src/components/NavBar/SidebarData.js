@@ -1,16 +1,23 @@
-import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { FiSettings } from "react-icons/fi";
+import { MdSpaceDashboard } from "react-icons/md";
 import {
   FaPeopleCarry,
   FaFileInvoiceDollar,
   FaFileInvoice,
 } from "react-icons/fa";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { AiFillSetting } from "react-icons/ai";
 
 export const SidebarData = [
   {
     title: "DashBoard",
     path: "/dashboard",
-    icon: <MdOutlineSpaceDashboard />,
+    icon: <MdSpaceDashboard />,
+    cName: "nav-text",
+  },
+  {
+    title: "Customers",
+    path: "/customers",
+    icon: <BsFillPeopleFill />,
     cName: "nav-text",
   },
   {
@@ -34,7 +41,7 @@ export const SidebarData = [
   {
     title: "Settings",
     path: "/settings",
-    icon: <FiSettings />,
+    icon: <AiFillSetting />,
     cName: "nav-text",
   },
 ];
