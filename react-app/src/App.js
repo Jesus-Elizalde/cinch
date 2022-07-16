@@ -5,7 +5,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import { authenticate } from "./store/session";
 import { ModalProvider } from "./components/Context/Modal";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./pages/LandingPage";
 import NavBar from "./components/NavBar";
 
 import DashBoard from "./pages/DashBoard";
@@ -42,6 +42,8 @@ function App() {
         <Switch>
           <Route path="/welcome" exact={true}>
             {user && <Redirect to="/dashboard" />}
+            {/* <LandingPage />
+             */}
             <LandingPage />
           </Route>
           <ProtectedRoute

@@ -36,6 +36,7 @@ body {
 
 .space_between {
   justify-content: space-between;
+  align-items: center;
 }
 
 .home,

@@ -24,3 +24,8 @@
   background-color: var(--button-background-color);
   color: var(--primary-color);
 }
+.button_outline {
+  /* background-color: var(--button-background-color); */
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}

@@ -13,6 +13,7 @@ const Button = ({ style, value, onClickFunc }) => {
     if (style === 1) return "main_button button_simple";
     if (style === 2) return "main_button button_inverse";
     if (style === 3) return "main_button button_main";
+    if (style === 4) return "main_button button_outline";
   };
   return (
     <button onClick={onClickFunc} className={classNamePicker()}>

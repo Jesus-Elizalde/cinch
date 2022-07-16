@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(55),nullable=False)
-    profile_picture = db.Column(db.String(255),nullable=False,default=" ")
+    profile_picture = db.Column(db.String(255),nullable=False,default="https://cinchbucket.s3.us-west-1.amazonaws.com/blank-profile.png")
     light_mode = db.Column(db.String(55),nullable=False,default="light")
     login_mode = db.Column(db.Boolean,nullable=False,default=False)
 
