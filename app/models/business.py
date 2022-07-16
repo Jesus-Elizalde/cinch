@@ -6,6 +6,7 @@ class Business(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
+    mobile = db.Column(db.Boolean,nullable=False,default=False)
     street = db.Column(db.String(255))
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
@@ -15,17 +16,19 @@ class Business(db.Model):
     long = db.Column(db.String(255))
     website_url = db.Column(db.String(255))
     email = db.Column(db.String(255))
-    license_num = db.Column(db.String(255))
-    logo = db.Column(db.String(255))
+    license_number = db.Column(db.String(255))
+    logo = db.Column(db.String(255),nullable=False,default=" ")
     profile = db.Column(db.Text)
     message = db.Column(db.Text)
-    number = db.Column(db.String(255))
+    phone_number = db.Column(db.String(255))
+
+    edited_by = db.Column(db.String(10))
+    date_created = db.Column(db.Date)
     created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
     updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now())
 
-    user = db.relationship("User",back_populates="business")
-    customer = db.relationship("Customer",back_populates="business")
-    category = db.relationship('Category',back_populates='business')
+    users = db.relationship("User",back_populates="businesses")
+    customers = db.relationship("Customer",back_populates="businesses")
 
     def to_dict(self):
         return {

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db,Business, Category, Service
+from app.models import User, db,Business
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -71,40 +71,40 @@ def sign_up():
             db.session.add(business)
             db.session.commit()
 
-            category1 = Category(name="Service Call",business_id=business.id)
-            category2 = Category(name="Diagnose and Repair",business_id=business.id)
-            category3 = Category(name="Install",business_id=business.id)
-            db.session.add(category1)
-            db.session.add(category2)
-            db.session.add(category3)
-            db.session.commit()
+            # category1 = Category(name="Service Call",business_id=business.id)
+            # category2 = Category(name="Diagnose and Repair",business_id=business.id)
+            # category3 = Category(name="Install",business_id=business.id)
+            # db.session.add(category1)
+            # db.session.add(category2)
+            # db.session.add(category3)
+            # db.session.commit()
 
-            service1 = Service(name="Diagnose a problem",description="Have an appliance problem? Have an expert come over to diagnose what is going on.",cost=5.00,price=25.00,category_id=category1.id)
+            # service1 = Service(name="Diagnose a problem",description="Have an appliance problem? Have an expert come over to diagnose what is going on.",cost=5.00,price=25.00,category_id=category1.id)
 
-            service2 = Service(name="Refrigerator",description="Diagnose and repair your existing refrigerator or freezer.",cost=25.00,price=125.00,category_id=category2.id)
-            service3 = Service(name="Washing Machine",description="Diagnose and repair your existing washing machine.",cost=25.00,price=125.00,category_id=category2.id)
-            service4 = Service(name="Dryer",description="Diagnose and repair your existing gas or electric dryer.",cost=25.00,price=125.00,category_id=category2.id)
-            service5 = Service(name="Gas or Electric Oven",description="Repair your existing gas or electric oven.",cost=15.00,price=65.00,category_id=category2.id)
-            service6 = Service(name="Cooktop",description="Diagnose and repair your existing cooktop.",cost=5.00,price=50.00,category_id=category2.id)
-            service7 = Service(name="Trash Compactor",description="Diagnose and repair your existing trash compactor",cost=5.00,price=55.00,category_id=category2.id)
+            # service2 = Service(name="Refrigerator",description="Diagnose and repair your existing refrigerator or freezer.",cost=25.00,price=125.00,category_id=category2.id)
+            # service3 = Service(name="Washing Machine",description="Diagnose and repair your existing washing machine.",cost=25.00,price=125.00,category_id=category2.id)
+            # service4 = Service(name="Dryer",description="Diagnose and repair your existing gas or electric dryer.",cost=25.00,price=125.00,category_id=category2.id)
+            # service5 = Service(name="Gas or Electric Oven",description="Repair your existing gas or electric oven.",cost=15.00,price=65.00,category_id=category2.id)
+            # service6 = Service(name="Cooktop",description="Diagnose and repair your existing cooktop.",cost=5.00,price=50.00,category_id=category2.id)
+            # service7 = Service(name="Trash Compactor",description="Diagnose and repair your existing trash compactor",cost=5.00,price=55.00,category_id=category2.id)
 
-            service8 = Service(name="Washer / Dryer",description="Hookup and install an owner purchased washer and/or dryer.",cost=525.00,price=625.00,category_id=category3.id)
-            service9 = Service(name="Dishwasher",description="Hookup and install an owner purchased Dishwasher",cost=250.00,price=350.00,category_id=category3.id)
-            service10 = Service(name="Oven",description="Hookup and install an owner supplied gas or electric oven. Installation in same spot as existing and does not include new circuit run to appliance.",cost=250.00,price=350.00,category_id=category3.id)
-            service11 = Service(name="Built-in Microwave",description="Demo and remove old range hood. Install new owner supplied range hood.",cost=150.00,price=200.00,category_id=category3.id)
+            # service8 = Service(name="Washer / Dryer",description="Hookup and install an owner purchased washer and/or dryer.",cost=525.00,price=625.00,category_id=category3.id)
+            # service9 = Service(name="Dishwasher",description="Hookup and install an owner purchased Dishwasher",cost=250.00,price=350.00,category_id=category3.id)
+            # service10 = Service(name="Oven",description="Hookup and install an owner supplied gas or electric oven. Installation in same spot as existing and does not include new circuit run to appliance.",cost=250.00,price=350.00,category_id=category3.id)
+            # service11 = Service(name="Built-in Microwave",description="Demo and remove old range hood. Install new owner supplied range hood.",cost=150.00,price=200.00,category_id=category3.id)
 
-            db.session.add(service1)
-            db.session.add(service2)
-            db.session.add(service3)
-            db.session.add(service4)
-            db.session.add(service5)
-            db.session.add(service6)
-            db.session.add(service7)
-            db.session.add(service8)
-            db.session.add(service9)
-            db.session.add(service10)
-            db.session.add(service11)
-            db.session.commit()
+            # db.session.add(service1)
+            # db.session.add(service2)
+            # db.session.add(service3)
+            # db.session.add(service4)
+            # db.session.add(service5)
+            # db.session.add(service6)
+            # db.session.add(service7)
+            # db.session.add(service8)
+            # db.session.add(service9)
+            # db.session.add(service10)
+            # db.session.add(service11)
+            # db.session.commit()
 
 
 

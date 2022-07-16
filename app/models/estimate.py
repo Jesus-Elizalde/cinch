@@ -1,13 +1,16 @@
 from .db import db
 from datetime import datetime
-from .job_discount import job_discount
+from .estimate_discount import estimate_discount
 
-class Job(db.Model):
-    __tablename__ = "jobs"
+class Estimate(db.Model):
+    __tablename__ = "estimates"
 
     id = db.Column(db.Integer, primary_key=True)
-    from_date_time = db.Column(db.DateTime,nullable=False)
-    to_date_time = db.Column(db.DateTime,nullable=False)
+    title = db.Column(db.String)
+    message = db.Column(db.Text)
+    due = db.Column(db.String,nullable=False,default="Due upon invoice date")
+    service_date = db.Column(db.DateTime,nullable=False)
+    total= db.Column(db.String)
     status = db.Column(db.String(255),nullable=False,default="pending")
     note = db.Column(db.Text)
     archive = db.Column(db.Boolean,nullable=False,default=False)
@@ -18,12 +21,11 @@ class Job(db.Model):
 
     customer_id = db.Column(db.Integer,db.ForeignKey("customers.id"), nullable=False)
 
-    customers = db.relationship("Customer",back_populates="jobs")
+    customers = db.relationship("Customer",back_populates="estimates")
 
-    job_items = db.relationship("JobItem",back_populates="jobs")
+    estimates_items = db.relationship("EstimateItem",back_populates="estimates")
 
-    job_discounts = db.relationship("Discount",secondary=job_discount,back_populates="job_discounts")
-
+    estimate_discounts = db.relationship("Discount",secondary=estimate_discount,back_populates="estimate_discounts")
 
     def to_dict(self):
         return {

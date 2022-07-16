@@ -12,8 +12,7 @@ from .api.business_routes import business_routes
 from .api.customer_routes import customer_routes
 from .api.key_routes import key_routes
 from .api.job_routes import job_routes
-from .api.service_routes import service_routes
-from .api.category_routes import category_routes
+
 
 
 from .seeds import seed_commands
@@ -41,8 +40,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(business_routes, url_prefix='/api/businesses')
 app.register_blueprint(customer_routes, url_prefix='/api/customers')
 app.register_blueprint(key_routes, url_prefix='/api/key')
-app.register_blueprint(category_routes,url_prefix="/api/categories")
-app.register_blueprint(service_routes,url_prefix="/api/services")
+
 app.register_blueprint(job_routes,url_prefix="/api/jobs")
 db.init_app(app)
 Migrate(app, db)

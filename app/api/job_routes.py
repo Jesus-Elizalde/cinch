@@ -1,5 +1,5 @@
 from flask import Blueprint,jsonify,request
-from app.models import Job, db , Service
+from app.models import Job, db
 from app.forms import JobForm
 from app.utils import validation_errors_to_error_messages
 
@@ -10,70 +10,70 @@ def get_all_job():
     jobs = Job.query.all()
     return jsonify([job.to_dict() for job in jobs])
 
-@job_routes.route("/",methods=["POST"])
-def new_job():
-    form = JobForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
+# @job_routes.route("/",methods=["POST"])
+# def new_job():
+#     form = JobForm()
+#     form["csrf_token"].data = request.cookies["csrf_token"]
+#     if form.validate_on_submit():
 
-        job = Job(
-            from_date_time = form.data["from_date_time"],
-            to_date_time = form.data["to_date_time"],
-            message = form.data["message"],
-            customer_id = form.data["customer_id"]
-        )
+#         job = Job(
+#             from_date_time = form.data["from_date_time"],
+#             to_date_time = form.data["to_date_time"],
+#             message = form.data["message"],
+#             customer_id = form.data["customer_id"]
+#         )
 
-        db.session.add(job)
-        db.session.commit()
+#         db.session.add(job)
+#         db.session.commit()
 
-        service_ids = form.data["job_ids"].split("-")
+#         service_ids = form.data["job_ids"].split("-")
 
-        for id in service_ids:
-           service = Service.query.get(int(id))
-           job.job_services.append(service)
+#         for id in service_ids:
+#            service = Service.query.get(int(id))
+#            job.job_services.append(service)
 
-        db.session.commit()
-
-
+#         db.session.commit()
 
 
-        return job.to_dict()
-    return {"errors":validation_errors_to_error_messages(form.errors)},401
 
-@job_routes.route("/<int:id>",methods=["PUT"])
-def edit_job(id):
 
-    form = JobForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
-        job = Job.query.get(id)
+#         return job.to_dict()
+#     return {"errors":validation_errors_to_error_messages(form.errors)},401
 
-        job.from_date_time = form.data["from_date_time"]
-        job.to_date_time = form.data["to_date_time"]
-        job.message = form.data["message"]
-        job.customer_id = form.data["customer_id"]
+# @job_routes.route("/<int:id>",methods=["PUT"])
+# def edit_job(id):
 
-        job.job_services = []
-        service_ids = form.data["job_ids"].split("-")
+#     form = JobForm()
+#     form["csrf_token"].data = request.cookies["csrf_token"]
+#     if form.validate_on_submit():
+#         job = Job.query.get(id)
 
-        for id in service_ids:
-           service = Service.query.get(int(id))
-           job.job_services.append(service)
+#         job.from_date_time = form.data["from_date_time"]
+#         job.to_date_time = form.data["to_date_time"]
+#         job.message = form.data["message"]
+#         job.customer_id = form.data["customer_id"]
 
-        db.session.commit()
+#         job.job_services = []
+#         service_ids = form.data["job_ids"].split("-")
 
-        db.session.commit()
-        return job.to_dict()
-    return {"errors":validation_errors_to_error_messages(form.errors)},401
+#         for id in service_ids:
+#            service = Service.query.get(int(id))
+#            job.job_services.append(service)
 
-@job_routes.route('/<int:id>',methods=["DELETE"])
-def delete_job(id):
-    job = Job.query.get(id)
+#         db.session.commit()
 
-    if job:
-        db.session.delete(job)
-        db.session.commit()
+#         db.session.commit()
+#         return job.to_dict()
+#     return {"errors":validation_errors_to_error_messages(form.errors)},401
 
-        return str(id)
+# @job_routes.route('/<int:id>',methods=["DELETE"])
+# def delete_job(id):
+#     job = Job.query.get(id)
 
-    return {"error": "customer doesn't exists"}, 401
+#     if job:
+#         db.session.delete(job)
+#         db.session.commit()
+
+#         return str(id)
+
+#     return {"error": "customer doesn't exists"}, 401
