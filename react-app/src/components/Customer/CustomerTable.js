@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 
 const CustomerTable = () => {
-  const [checkedFirstName, setCheckedFirstName] = useState(true);
-  const [checkedLastName, setCheckedLastName] = useState(true);
-  const [checkedDisplayName, setCheckedDisplayName] = useState(true);
-  const [checkedAddress, setCheckedAddress] = useState(true);
-  const [checkedMobileNumber, setCheckedMobileNumber] = useState(true);
-  const [checkedHomeNumber, setCheckedHomeNumber] = useState(true);
-  const [checkedEmail, setCheckedEmail] = useState(true);
-  const [checkedCompany, setCheckedCompany] = useState(true);
-  const [checkedJobTitle, setCheckedJobTitle] = useState(true);
-  const [checkedWorkNumber, setCheckedWorkNumber] = useState(true);
+  // const [checkedFirstName, setCheckedFirstName] = useState(true);
+  // const [checkedLastName, setCheckedLastName] = useState(true);
+  // const [checkedDisplayName, setCheckedDisplayName] = useState(true);
+  // const [checkedAddress, setCheckedAddress] = useState(true);
+  // const [checkedMobileNumber, setCheckedMobileNumber] = useState(true);
+  // const [checkedHomeNumber, setCheckedHomeNumber] = useState(true);
+  // const [checkedEmail, setCheckedEmail] = useState(true);
+  // const [checkedCompany, setCheckedCompany] = useState(true);
+  // const [checkedJobTitle, setCheckedJobTitle] = useState(true);
+  // const [checkedWorkNumber, setCheckedWorkNumber] = useState(true);
 
-  const states = {
-    checkedFirstName,
-    checkedLastName,
-    checkedDisplayName,
-    checkedAddress,
-    checkedMobileNumber,
-    checkedHomeNumber,
-    checkedEmail,
-    checkedCompany,
-    checkedJobTitle,
-    checkedWorkNumber,
-  };
+  // const states = {
+  //   checkedFirstName,
+  //   checkedLastName,
+  //   checkedDisplayName,
+  //   checkedAddress,
+  //   checkedMobileNumber,
+  //   checkedHomeNumber,
+  //   checkedEmail,
+  //   checkedCompany,
+  //   checkedJobTitle,
+  //   checkedWorkNumber,
+  // };
   return (
     <table>
       <thead>

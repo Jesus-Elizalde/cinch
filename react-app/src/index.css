@@ -39,6 +39,10 @@ body {
   align-items: center;
 }
 
+.primary_color {
+  color: var(--primary-color);
+}
+
 .home,
 .about,
 .contact {
@@ -47,4 +51,9 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+.logo_name_group {
+  gap: 10px;
+  align-items: center;
 }

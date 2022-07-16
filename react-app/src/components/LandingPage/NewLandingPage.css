@@ -4,6 +4,8 @@
 
 .middle_group_landing_page {
   padding-left: 100px;
+  margin-top: 30px;
+  gap: 20px;
 }
 
 .images_landing_page {
@@ -13,7 +15,7 @@
 }
 
 .main_header_landing_page {
-  font-size: 86px;
+  font-size: 65px;
 }
 
 .secound_button_group_landing_page {
@@ -23,4 +25,16 @@
 
 .nav_bar_landing_page {
   padding-right: 25px;
+}
+
+.sign_in_landing_page {
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.title_button_group {
+  margin-top: 25px;
 }
