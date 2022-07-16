@@ -34,8 +34,6 @@ const NavBar = () => {
         lat: position.coords.latitude,
         lang: position.coords.longitude,
       });
-      console.log("Latitude is :", position);
-      console.log("Longitude is :", position.coords.longitude);
     });
   }, [dispatch]);
 
@@ -53,7 +51,6 @@ const NavBar = () => {
     await dispatch(logout());
   };
 
-  console.log(window.navigator);
   return (
     <>
       <IconContext.Provider value={{ color: "#0bbbd4" }}>

@@ -13,6 +13,7 @@ import Jobs from "./pages/Jobs";
 import Invoices from "./pages/Invoices";
 import Estimates from "./pages/Estimates";
 import Settings from "./pages/Settings";
+import CustomerPage from "./pages/Customer";
 import { getKeyDetails } from "./store/apiKey";
 
 function App() {
@@ -47,6 +48,11 @@ function App() {
             path="/dashboard"
             exact={true}
             component={DashBoard}
+          />
+          <ProtectedRoute
+            path="/customers"
+            exact={true}
+            component={CustomerPage}
           />
           <ProtectedRoute path="/jobs" exact={true} component={Jobs} />
           <ProtectedRoute path="/invoices" exact={true} component={Invoices} />

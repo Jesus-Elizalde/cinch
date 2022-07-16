@@ -1,0 +1,26 @@
+.main_button {
+  font-size: 14px;
+  height: 48px;
+  min-width: 80px;
+  padding: 0px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+}
+
+.button_main {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.button_simple {
+  background-color: var(--button-background-color);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.button_inverse {
+  background-color: var(--button-background-color);
+  color: var(--primary-color);
+}

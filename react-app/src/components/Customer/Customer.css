@@ -1,0 +1,11 @@
+.customers_button_group {
+  gap: 10px;
+}
+
+.customer_total_group {
+  margin-top: 15px;
+  border-top: 0.8px solid var(--border-bottom-color);
+  padding-top: 30px;
+  padding-left: 4px;
+  border: 1px solid var(--border-bottom-color);
+}
