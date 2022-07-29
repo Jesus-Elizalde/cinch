@@ -44,7 +44,7 @@ function App() {
         <Switch>
           <Route path="/welcome" exact={true}>
             {user && <Redirect to="/dashboard" />}
-            {/* <LandingPage />
+            {/* <LandingPage /> this is just for a update
              */}
             <LandingPage />
           </Route>
