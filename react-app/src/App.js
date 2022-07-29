@@ -17,6 +17,7 @@ import CustomerPage from "./pages/Customer";
 import { getKeyDetails } from "./store/apiKey";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import WorkingInProgress from "./components/Working";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,9 +45,8 @@ function App() {
         <Switch>
           <Route path="/welcome" exact={true}>
             {user && <Redirect to="/dashboard" />}
-            {/* <LandingPage /> this is just for a update
-             */}
-            <LandingPage />
+            <WorkingInProgress />
+            {/* <LandingPage /> */}
           </Route>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
