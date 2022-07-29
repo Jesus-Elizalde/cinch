@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 
-import "./Navbar.css";
+import "./NavBar.css";
 import { SidebarData } from "./SidebarData";
 
 import { IconContext } from "react-icons/lib";
