@@ -42,7 +42,7 @@ class Business(db.Model):
             'coords': [self.lat,self.long],
             'website_url':self.website_url,
             'email':self.email,
-            'license_num':self.license_num,
+            'license_num':self.license_number,
             'logo':self.logo,
             'profile':self.profile,
             'message':self.message,

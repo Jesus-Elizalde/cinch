@@ -23,7 +23,7 @@ class Estimate(db.Model):
 
     customers = db.relationship("Customer",back_populates="estimates")
 
-    estimates_items = db.relationship("EstimateItem",back_populates="estimates")
+    estimate_items = db.relationship("EstimateItem",back_populates="estimates")
 
     estimate_discounts = db.relationship("Discount",secondary=estimate_discount,back_populates="estimate_discounts")
 

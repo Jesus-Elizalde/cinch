@@ -45,8 +45,8 @@ function App() {
         <Switch>
           <Route path="/welcome" exact={true}>
             {user && <Redirect to="/dashboard" />}
-            <WorkingInProgress />
-            {/* <LandingPage /> */}
+            {/* <WorkingInProgress /> */}
+            <LandingPage />
           </Route>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />

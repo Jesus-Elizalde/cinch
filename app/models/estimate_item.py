@@ -13,6 +13,7 @@ class EstimateItem(db.Model):
     item_id = db.Column(db.Integer,db.ForeignKey("items.id"), nullable=False)
 
     estimates = db.relationship("Estimate",back_populates="estimate_items")
+
     items = db.relationship("Item",back_populates="estimate_items")
 
     def to_dict(self):
