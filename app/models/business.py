@@ -46,7 +46,7 @@ class Business(db.Model):
             'logo':self.logo,
             'profile':self.profile,
             'message':self.message,
-            'number':self.number,
+            'phone_number':self.phone_number,
             'created_at':self.created_at,
             'updated_at':self.updated_at,
         }

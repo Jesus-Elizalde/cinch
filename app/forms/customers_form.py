@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField , IntegerField
+from wtforms import StringField , IntegerField, DateTimeField
 from wtforms.validators import DataRequired,ValidationError,Length
 from app.models import Customer
 import re
@@ -21,39 +21,21 @@ def customer_exists(form, field):
 class CustomerForm(FlaskForm):
     first_name=StringField("first_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
     last_name=StringField("last_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    display_name=StringField("display_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    street=StringField("street",validators=[DataRequired()])
-    city=StringField("city",validators=[DataRequired()])
-    state=StringField("state",validators=[DataRequired()])
-    country=StringField("country",validators=[DataRequired()])
-    postal_code=StringField("postal_code",validators=[DataRequired()])
-    lat=StringField("lat")
-    long=StringField("long")
-    mobile_number=StringField("mobile_number",validators=[Length(min=7,message="At least 7 digits")])
+    mobile_number=StringField("mobile_number",validators=[DataRequired(),Length(min=7,message="At least 7 digits")])
     home_number=StringField("home_number",)
     email=StringField("email",validators=[DataRequired(),is_email,customer_exists])
-    company=StringField("company")
-    job_title=StringField("job_title")
-    work_number=StringField("work_number")
+    note=StringField("note")
+    edited_by=StringField("edited_by",validators=[DataRequired()])
     business_id=IntegerField("business_id",validators=[DataRequired()])
     id=IntegerField("id")
 
 class EditCustomerForm(FlaskForm):
     first_name=StringField("first_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
     last_name=StringField("last_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    display_name=StringField("display_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    street=StringField("street",validators=[DataRequired()])
-    city=StringField("city",validators=[DataRequired()])
-    state=StringField("state",validators=[DataRequired()])
-    country=StringField("country",validators=[DataRequired()])
-    postal_code=StringField("postal_code",validators=[DataRequired()])
-    lat=StringField("lat")
-    long=StringField("long")
-    mobile_number=StringField("mobile_number",validators=[Length(min=7,message="At least 7 digits")])
+    mobile_number=StringField("mobile_number",validators=[DataRequired(),Length(min=7,message="At least 7 digits")])
     home_number=StringField("home_number",)
-    email=StringField("email",validators=[DataRequired(),is_email])
-    company=StringField("company")
-    job_title=StringField("job_title")
-    work_number=StringField("work_number")
+    email=StringField("email")
+    note=StringField("note")
+    edited_by=StringField("edited_by",validators=[DataRequired()])
     business_id=IntegerField("business_id",validators=[DataRequired()])
     id=IntegerField("id")

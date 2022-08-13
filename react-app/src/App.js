@@ -17,7 +17,7 @@ import CustomerPage from "./pages/Customer";
 import { getKeyDetails } from "./store/apiKey";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import WorkingInProgress from "./components/Working";
+// import WorkingInProgress from "./components/Working";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,8 +48,12 @@ function App() {
             {/* <WorkingInProgress /> */}
             <LandingPage />
           </Route>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login}>
+            {user && <Redirect to="/dashboard" />}
+          </Route>
+          <Route path="/signup" component={Signup}>
+            {user && <Redirect to="/dashboard" />}
+          </Route>
           <ProtectedRoute
             path="/dashboard"
             exact={true}

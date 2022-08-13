@@ -3,8 +3,6 @@ from .config import Config
 
 gmaps = googlemaps.Client(key=Config.MAPS_KEY)
 
-geocode_result = gmaps.geocode('1600 Amphitheatre Parkway')
-
 def geocode(address):
 
     results = gmaps.geocode(address)

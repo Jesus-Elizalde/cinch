@@ -18,20 +18,20 @@ const Customer = () => {
 
   return (
     <div className="flex_column">
-      <div className="flex_row space_between ">
+      {/* <div className="flex_row space_between ">
         <SearchBar input={searchCustomer} setInput={setSearchCustomer} />
         <div className="flex_row customers_button_group">
           {/* <Button style={1} value="Import Customers" onClickFunc={""} />
           <Button style={1} value="Export Customers" onClickFunc={""} /> */}
-          {/* <Button style={2} value="Create Customer" onClickFunc={""} /> */}
-        </div>
-      </div>
-      <div className="customer_total_group">
-        {customers.length} Total Customers
-      </div>
-      <div>
-        <CustomerTable />
-      </div>
+      {/* <Button style={2} value="Create Customer" onClickFunc={""} /> */}
+      {/* </div>
+      </div> */}
+      {/* // <div className="customer_total_group">
+      //   {customers.length} Total Customers
+      // </div>
+      // <div>
+      //   <CustomerTable />
+      // </div> */}
     </div>
   );
 };
