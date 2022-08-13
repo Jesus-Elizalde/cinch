@@ -29,16 +29,13 @@ const CustomerTable = () => {
       <thead>
         <tr>
           <input type="checkbox" />
-          <th>Display Name</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Address</th>
           <th>Mobile Number</th>
           <th>Home Number</th>
           <th>Email</th>
-          <th>Company</th>
-          <th>Job Title</th>
-          <th>Work Number</th>
+          <th>Note</th>
         </tr>
       </thead>
       <tbody>

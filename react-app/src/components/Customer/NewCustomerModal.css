@@ -1,0 +1,9 @@
+.new_customer_modal {
+  background-color: var(--body-color);
+  border-radius: 15px;
+}
+
+.upper_group {
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--lighter-bottom-color);
+}
