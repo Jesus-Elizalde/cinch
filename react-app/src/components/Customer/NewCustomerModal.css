@@ -5,5 +5,42 @@
 
 .upper_group {
   padding: 10px 15px;
+  gap: 50px;
   border-bottom: 1px solid var(--lighter-bottom-color);
+  align-items: center;
+}
+.upper_group h1 {
+  margin-right: 50px;
+}
+.middle_group {
+  padding: 10px 30px;
+  border-bottom: 1px solid var(--lighter-bottom-color);
+}
+
+.lower_group {
+  padding: 10px 15px;
+  justify-content: space-between;
+}
+
+.input_groups {
+  justify-content: space-between;
+  background-color: var(--box-color);
+  border: 0.5px solid var(--lighter-bottom-color);
+}
+
+.input_groups input {
+  border: none;
+  margin: 10px;
+}
+
+.x_box {
+  background-color: var(--button-background-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.x_box:hover {
+  background-color: var(--lighter-primary-color);
 }

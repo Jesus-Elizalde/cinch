@@ -5,106 +5,124 @@ import { ReactComponent as Xlogo } from "../../static/svg/xbutton.svg";
 import "./NewCustomerModal.css";
 
 const NewCustomerModal = ({ onClose }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [homeNumber, setHomeNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
-  const [note, setNote] = useState("");
+  const [customer, setCustomer] = useState({
+    first_name: "",
+    last_name: "",
+    mobile_number: "",
+    home_number: "",
+    email: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+    note: "",
+  });
+
+  const updateCustomer = (e) => {
+    setCustomer((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   const submitForm = (e) => {
     e.preventDefault();
   };
+
   return (
     <Modal onClose={onClose}>
       <form className="new_customer_modal">
         <div className="flex_column">
           <div className="flex_row upper_group">
-            <div onClick={onClose}>
+            <div onClick={onClose} className="x_box">
               <Xlogo />
             </div>
             <h1>Create Customer</h1>
           </div>
-          <div>
-            <div className="flex_row">
+          <div className="middle_group">
+            <div className="flex_row input_groups">
               <label>First Name</label>
               <input
                 type="text"
                 placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                name="first_name"
+                value={customer.first_name}
+                onChange={updateCustomer}
               />
             </div>
-            <div className="flex_row">
+            <div className="flex_row input_groups">
               <label>Last Name</label>
               <input
                 placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                name="last_name"
+                value={customer.last_name}
+                onChange={updateCustomer}
               />
             </div>
-            <div className="flex_row">
+            <div className="flex_row input_groups">
               <label>Phone Number</label>
               <input
                 placeholder="000-000-0000"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                name="mobile_number"
+                value={customer.mobile_number}
+                onChange={updateCustomer}
               />
             </div>
-            <div className="flex_row">
+            <div className="flex_row input_groups">
               <label>Home Number</label>
               <input
                 placeholder="000-000-0000"
-                value={homeNumber}
-                onChange={(e) => setHomeNumber(e.target.value)}
+                name="home_number"
+                value={customer.home_number}
+                onChange={updateCustomer}
               />
             </div>
-            <div className="flex_row">
+            <div className="flex_row input_groups">
               <label>Email</label>
               <input
                 placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                value={customer.email}
+                onChange={updateCustomer}
               />
             </div>
-            <div className="flex_row">
+            <div className="flex_row input_groups">
               <label>Address</label>
               <div className="flex_column">
                 <input
                   placeholder="Street"
-                  value={street}
-                  onChange={(e) => setStreet(e.target.value)}
+                  name="street"
+                  value={customer.street}
+                  onChange={updateCustomer}
                 />
                 <input
                   placeholder="City"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  name="city"
+                  value={customer.city}
+                  onChange={updateCustomer}
                 />
                 <input
                   placeholder="State"
-                  value={state}
-                  onChange={(e) => setState(e.target.value)}
+                  name="state"
+                  value={customer.state}
+                  onChange={updateCustomer}
                 />
                 <input
                   placeholder="ZIP"
-                  value={zip}
-                  onChange={(e) => setZip(e.target.value)}
+                  name="zip"
+                  value={customer.zip}
+                  onChange={updateCustomer}
                 />
               </div>
             </div>
-            <div className="flex_row">
+            <div className="flex_row input_groups">
               <label>Note</label>
               <textarea
                 placeholder="Customer Notes"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
+                name="note"
+                value={customer.note}
+                onChange={updateCustomer}
               />
             </div>
           </div>
-          <div className="flex_row">
+          <div className="flex_row lower_group">
             <button type="button">Cancel</button>
             <button type="submit" onClick={submitForm}>
               Save
