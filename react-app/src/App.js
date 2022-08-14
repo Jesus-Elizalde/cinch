@@ -21,7 +21,7 @@ import Signup from "./pages/Signup";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  // testing function
+
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
