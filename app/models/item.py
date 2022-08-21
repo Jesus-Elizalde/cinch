@@ -15,6 +15,9 @@ class Item(db.Model):
     created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
     updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now())
 
+    business_id = db.Column(db.Integer,db.ForeignKey("businesses.id"),nullable=False)
+
+    business = db.relationship("Business",back_populates="items")
     job_items = db.relationship("JobItem",back_populates="items")
     invoice_items = db.relationship("InvoiceItem",back_populates="items")
     estimate_items = db.relationship("EstimateItem",back_populates="items")

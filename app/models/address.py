@@ -21,7 +21,7 @@ class Address(db.Model):
 
     customer_id = db.Column(db.Integer,db.ForeignKey("customers.id"),nullable=False)
 
-    # customers = db.relationship("Customer",back_poplates="addresses")
+    customers = db.relationship("Customer",back_populates="addresses")
 
     def to_dict(self):
         return {

@@ -29,6 +29,7 @@ class Business(db.Model):
 
     users = db.relationship("User",back_populates="businesses")
     customers = db.relationship("Customer",back_populates="businesses")
+    items = db.relationship("Item",back_populates="business")
 
     def to_dict(self):
         return {
