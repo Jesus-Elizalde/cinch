@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session";
-import businesses from "./business";
+import business from "./business";
 import keys from "./apiKey";
 import categories from "./category";
 import services from "./service";
@@ -10,7 +10,7 @@ import customers from "./customer";
 
 const rootReducer = combineReducers({
   session,
-  businesses,
+  business,
   customers,
   keys,
   categories,

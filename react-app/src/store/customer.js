@@ -7,10 +7,10 @@ const getCustomers = (customers) => ({
   customers,
 });
 
-// const editCustomer = (customer) => ({
-//   type: EDIT_CUSTOMER,
-//   customer,
-// });
+const editCustomer = (customer) => ({
+  type: EDIT_CUSTOMER,
+  customer,
+});
 
 // const deleteCustomer = (customerId) => ({
 //   type: DELETE_CUSTOMER,
@@ -25,6 +25,27 @@ export const getCustomersDetails = () => async (dispatch) => {
       return;
     }
     dispatch(getCustomers(data));
+  }
+};
+
+export const newCustomer = (customer) => async (dispatch) => {
+  const response = await fetch("/api/customers/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(customer),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editCustomer(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again"];
   }
 };
 

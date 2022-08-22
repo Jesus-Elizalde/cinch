@@ -21,7 +21,7 @@ class Customer(db.Model):
 
     businesses = db.relationship("Business",back_populates = "customers")
 
-    addresses = db.relationship("Address",back_populates="customers")
+    addresses = db.relationship("Address",back_populates="customer")
 
     jobs = db.relationship("Job",back_populates = "customers",cascade='all, delete-orphan')
 

@@ -19,20 +19,24 @@ def customer_exists(form, field):
         raise ValidationError('Email address is already in use.')
 
 class CustomerForm(FlaskForm):
-    first_name=StringField("first_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    last_name=StringField("last_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    mobile_number=StringField("mobile_number",validators=[DataRequired(),Length(min=7,message="At least 7 digits")])
+    first_name=StringField("first_name")
+    last_name=StringField("last_name")
+    mobile_number=StringField("mobile_number")
     home_number=StringField("home_number",)
-    email=StringField("email",validators=[DataRequired(),is_email,customer_exists])
+    email=StringField("email")
     note=StringField("note")
-    edited_by=StringField("edited_by",validators=[DataRequired()])
     business_id=IntegerField("business_id",validators=[DataRequired()])
-    id=IntegerField("id")
+    street=StringField("street")
+    city=StringField("city")
+    state=StringField("state")
+    country=StringField("country")
+    postal_code=StringField("postal_code")
+
 
 class EditCustomerForm(FlaskForm):
-    first_name=StringField("first_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    last_name=StringField("last_name",validators=[DataRequired(),Length(min=3,message="At least 3 chars")])
-    mobile_number=StringField("mobile_number",validators=[DataRequired(),Length(min=7,message="At least 7 digits")])
+    first_name=StringField("first_name")
+    last_name=StringField("last_name")
+    mobile_number=StringField("mobile_number")
     home_number=StringField("home_number",)
     email=StringField("email")
     note=StringField("note")

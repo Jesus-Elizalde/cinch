@@ -10,7 +10,7 @@ import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons/lib";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
-import { getBusinessesDetails } from "../../store/business";
+import { getBusinessDetails } from "../../store/business";
 import { getCustomersDetails } from "../../store/customer";
 
 import ReactWeather, { useWeatherBit } from "react-open-weather";
@@ -24,7 +24,7 @@ const NavBar = () => {
   const [coords, setCoords] = useState({ lat: "", lang: "" });
 
   useEffect(() => {
-    dispatch(getBusinessesDetails());
+    dispatch(getBusinessDetails());
     dispatch(getCustomersDetails());
   }, [dispatch]);
 
