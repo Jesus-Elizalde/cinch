@@ -3,8 +3,16 @@ import { Modal } from "../Context/Modal";
 import { ReactComponent as Xlogo } from "../../static/svg/xbutton.svg";
 
 import "./NewCustomerModal.css";
+import { newCustomer } from "../../store/customer";
+import { useDispatch } from "react-redux";
 
 const NewCustomerModal = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const [errors, setErrors] = useState([]);
+  console.log(
+    "🚀 ~ file: NewCustomerModal.js ~ line 12 ~ NewCustomerModal ~ errors",
+    errors
+  );
   const [customer, setCustomer] = useState({
     first_name: "",
     last_name: "",
@@ -22,8 +30,15 @@ const NewCustomerModal = ({ onClose }) => {
     setCustomer((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
+
+    const data = await dispatch(newCustomer(customer));
+    if (data) {
+      setErrors(data);
+      return;
+    }
+    onClose();
   };
 
   return (

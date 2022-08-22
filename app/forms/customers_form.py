@@ -19,13 +19,12 @@ def customer_exists(form, field):
         raise ValidationError('Email address is already in use.')
 
 class CustomerForm(FlaskForm):
-    first_name=StringField("first_name")
+    first_name=StringField("first_name",validators=[DataRequired()])
     last_name=StringField("last_name")
     mobile_number=StringField("mobile_number")
     home_number=StringField("home_number",)
     email=StringField("email")
     note=StringField("note")
-    business_id=IntegerField("business_id",validators=[DataRequired()])
     street=StringField("street")
     city=StringField("city")
     state=StringField("state")
@@ -41,5 +40,4 @@ class EditCustomerForm(FlaskForm):
     email=StringField("email")
     note=StringField("note")
     edited_by=StringField("edited_by",validators=[DataRequired()])
-    business_id=IntegerField("business_id",validators=[DataRequired()])
     id=IntegerField("id")

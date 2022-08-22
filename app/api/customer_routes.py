@@ -12,7 +12,10 @@ customer_routes = Blueprint("customer",__name__)
 @customer_routes.route("/")
 @login_required
 def get_all_customers():
-    customers = Customer.query.all()
+    user_id = current_user.to_dict()['id']
+    user = User.query.get(user_id)
+
+    customers = Customer.query.filter(Customer.business_id == user.business_id).all()
     return jsonify([customer.to_dict() for customer in customers])
 
 
@@ -44,7 +47,6 @@ def new_customer():
             state = form.data["state"],
             country = form.data["country"],
             postal_code = form.data["postal_code"],
-            note = form.data["note"],
             edited_by = f"{user_id}",
 
             customer = new_customer

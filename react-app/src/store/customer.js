@@ -62,7 +62,7 @@ export default function reducer(state = initialState, action) {
       return newState;
     case EDIT_CUSTOMER:
       newState = { ...state };
-      newState[action.customer] = action.customer;
+      newState[action.customer.id] = action.customer;
       return newState;
     default:
       return state;

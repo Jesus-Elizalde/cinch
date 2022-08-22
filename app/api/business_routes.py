@@ -11,11 +11,3 @@ def get_all_business():
 
     business = Business.query.get(user.business_id)
     return jsonify([business.to_dict()])
-
-@business_routes.route("/<int:id>")
-def get_single_business(id):
-    business = Business.query.get(id)
-    print(business,"===="*100)
-    if business:
-        return jsonify([business.to_dict()])
-    return {"error": f'no business with id: {id}'}
