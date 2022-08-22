@@ -37,7 +37,7 @@ def new_customer():
             home_number = form.data["home_number"],
             email = form.data["email"],
             note = form.data["note"],
-            edited_by = f"{user_id}",
+            edited_by = f"{user.username}",
             business_id = user.business_id
         )
 
@@ -47,7 +47,7 @@ def new_customer():
             state = form.data["state"],
             country = form.data["country"],
             postal_code = form.data["postal_code"],
-            edited_by = f"{user_id}",
+            edited_by = f"{user.username}",
 
             customer = new_customer
         )

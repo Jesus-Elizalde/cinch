@@ -42,4 +42,5 @@ class Customer(db.Model):
             'created_at':self.created_at,
             'updated_at':self.updated_at,
             'business_id':self.business_id,
+            'addresses':[add.to_dict() for add in self.addresses]
         }

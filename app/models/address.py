@@ -25,5 +25,17 @@ class Address(db.Model):
 
     def to_dict(self):
         return {
-            "id":self.id
+            "id":self.id,
+            "street":self.street,
+            "city":self.city,
+            "state":self.state,
+            "country":self.country,
+            "postal_code":self.postal_code,
+            "lat":self.lat,
+            "long":self.long,
+            "billing":self.billing,
+            "note":self.note,
+            "edited_by":self.edited_by,
+            "created_at":self.created_at,
+            "updated_at":self.updated_at
         }
