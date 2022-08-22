@@ -59,11 +59,7 @@ function App() {
             exact={true}
             component={DashBoard}
           />
-          <ProtectedRoute
-            path="/customers"
-            exact={true}
-            component={CustomerPage}
-          />
+          <ProtectedRoute path="/customers" component={CustomerPage} />
           <ProtectedRoute path="/jobs" exact={true} component={Jobs} />
           <ProtectedRoute path="/invoices" exact={true} component={Invoices} />
           <ProtectedRoute

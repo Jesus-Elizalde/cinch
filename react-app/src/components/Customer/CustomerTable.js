@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Switch } from "react-router-dom";
+import ProtectedRoute from "../auth/ProtectedRoute";
+import CustomerEditSidebar from "./CustomerEditSidebar";
+import SingleCustomer from "./SingleCustomer";
 
 const CustomerTable = () => {
   const customersObj = useSelector((state) => state.customers);
   const customers = Object?.values(customersObj);
-  console.log(
-    "🚀 ~ file: CustomerTable.js ~ line 7 ~ CustomerTable ~ customers",
-    customers
-  );
 
   // const [checkedFirstName, setCheckedFirstName] = useState(true);
   // const [checkedLastName, setCheckedLastName] = useState(true);
@@ -32,6 +32,7 @@ const CustomerTable = () => {
   //   checkedJobTitle,
   //   checkedWorkNumber,
   // };
+
   return (
     <table>
       <thead>
@@ -48,26 +49,14 @@ const CustomerTable = () => {
       </thead>
       <tbody>
         {customers.map((customer) => (
-          <tr key={customer.id}>
-            <input type="checkbox" />
-            <td>{customer.first_name}</td>
-            <td>{customer.last_name}</td>
-            <td>
-              {customer.addresses[0].street +
-                " " +
-                customer.addresses[0].city +
-                " " +
-                customer.addresses[0].state +
-                " " +
-                customer.addresses[0].postal_code}
-            </td>
-            <td>{customer.mobile_number}</td>
-            <td>{customer.home_number}</td>
-            <td>{customer.email}</td>
-            <td>{customer.note}</td>
-          </tr>
+          <SingleCustomer customer={customer} key={customer.id} />
         ))}
       </tbody>
+      <Switch>
+        <ProtectedRoute path={"/customers/:id"} exact={true}>
+          <CustomerEditSidebar />
+        </ProtectedRoute>
+      </Switch>
     </table>
   );
 };
