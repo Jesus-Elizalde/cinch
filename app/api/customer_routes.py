@@ -61,11 +61,16 @@ def new_customer():
 
 @customer_routes.route("/<int:id>",methods=["PUT"])
 def edit_customer(id):
+    user_id = current_user.to_dict()['id']
+    user = User.query.get(user_id)
+
     form = EditCustomerForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
         edit_customer = Customer.query.get(id)
+        address = Address.query.filter(Address.customer_id == id).all()[0]
+        print(form.data,"***" * 1000)
 
         edit_customer.first_name = form.data["first_name"],
         edit_customer.last_name = form.data["last_name"],
@@ -73,8 +78,14 @@ def edit_customer(id):
         edit_customer.home_number = form.data["home_number"],
         edit_customer.email = form.data["email"],
         edit_customer.note = form.data["note"],
-        edit_customer.edited_by = form.data["edited_by"],
-        edit_customer.business_id = form.data["business_id"]
+        edit_customer.edited_by = f"{user.username}",
+
+        address.street = form.data["street"],
+        address.city = form.data["city"],
+        address.state = form.data["state"],
+        address.country = form.data["country"],
+        address.postal_code = form.data["postal_code"],
+        address.edited_by = f"{user.username}",
 
         db.session.commit()
         return edit_customer.to_dict()

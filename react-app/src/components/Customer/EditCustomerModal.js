@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { Modal } from "../Context/Modal";
+
 import { ReactComponent as Xlogo } from "../../static/svg/xbutton.svg";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { editCustomerDetails } from "../../store/customer";
 
-import "./NewCustomerModal.css";
-import { newCustomer } from "../../store/customer";
-import { useDispatch } from "react-redux";
-
-const NewCustomerModal = ({ onClose }) => {
+const EditCustomerModal = ({ onClose }) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
+  const dbCustomer = useSelector((state) => state.customers[id]);
+
   const [errors, setErrors] = useState([]);
   console.log(
-    "🚀 ~ file: NewCustomerModal.js ~ line 12 ~ NewCustomerModal ~ errors",
+    "🚀 ~ file: EditCustomerModal.js ~ line 15 ~ EditCustomerModal ~ errors",
     errors
   );
   const [customer, setCustomer] = useState({
-    first_name: "",
-    last_name: "",
-    mobile_number: "",
-    home_number: "",
-    email: "",
-    street: "",
-    city: "",
-    state: "",
-    postal_code: "",
-    note: "",
+    id: id,
+    first_name: dbCustomer?.first_name,
+    last_name: dbCustomer?.last_name,
+    mobile_number: dbCustomer?.mobile_number,
+    home_number: dbCustomer?.home_number,
+    email: dbCustomer?.email,
+    street: dbCustomer?.addresses[0].street,
+    city: dbCustomer?.addresses[0].city,
+    state: dbCustomer?.addresses[0].state,
+    postal_code: dbCustomer?.addresses[0].postal_code,
+    note: dbCustomer?.note,
   });
+  console.log(
+    "🚀 ~ file: EditCustomerModal.js ~ line 32 ~ EditCustomerModal ~ customer",
+    customer
+  );
 
   const updateCustomer = (e) => {
     setCustomer((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -32,24 +40,23 @@ const NewCustomerModal = ({ onClose }) => {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    const data = await dispatch(editCustomerDetails(customer));
 
-    const data = await dispatch(newCustomer(customer));
     if (data) {
       setErrors(data);
-      return;
     }
     onClose();
   };
 
   return (
-    <Modal onClose={onClose}>
+    <Modal>
       <form className="new_customer_modal">
         <div className="flex_column">
           <div className="flex_row upper_group">
             <div onClick={onClose} className="x_box">
               <Xlogo />
             </div>
-            <h1>Create Customer</h1>
+            <h1>Edit Customer</h1>
           </div>
           <div className="middle_group">
             <div className="flex_row input_groups">
@@ -151,4 +158,4 @@ const NewCustomerModal = ({ onClose }) => {
   );
 };
 
-export default NewCustomerModal;
+export default EditCustomerModal;

@@ -49,6 +49,26 @@ export const newCustomer = (customer) => async (dispatch) => {
   }
 };
 
+export const editCustomerDetails = (customer) => async (dispatch) => {
+  const response = await fetch(`/api/customers/${customer["id"]}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(customer),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(editCustomer(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again"];
+  }
+};
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
