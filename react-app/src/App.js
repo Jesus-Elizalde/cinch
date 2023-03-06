@@ -8,6 +8,7 @@ import { ModalProvider } from "./components/Context/Modal";
 import LandingPage from "./pages/LandingPage";
 import NavBar from "./components/NavBar";
 
+<<<<<<< HEAD
 import DashBoard from "./pages/DashBoard";
 import Jobs from "./pages/Jobs";
 import Invoices from "./pages/Invoices";
@@ -19,6 +20,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 // import WorkingInProgress from "./components/Working";
 
+=======
+>>>>>>> parent of 762f367 (added color change)
 function App() {
   const [loaded, setLoaded] = useState(false);
 
@@ -38,6 +41,14 @@ function App() {
     return null;
   }
 
+<<<<<<< HEAD
+=======
+  document.documentElement.style.setProperty("--users-color", "#00314a");
+  if (user) {
+    document.documentElement.style.setProperty("--users-color", user?.color);
+  }
+
+>>>>>>> parent of 762f367 (added color change)
   return (
     <ModalProvider>
       <BrowserRouter>

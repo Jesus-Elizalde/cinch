@@ -6,12 +6,15 @@
   --primary-color: #0bbbd4;
   --lighter-primary-color: #a1e9f3;
   --box-color: white;
+<<<<<<< HEAD
   --svg-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%)
     hue-rotate(299deg) brightness(113%) contrast(100%);
   --border-bottom-color: grey;
   --lighter-bottom-color: lightgrey;
   --button-background-color: #d5d5d0;
   --cancel--color: red;
+=======
+>>>>>>> parent of 762f367 (added color change)
 }
 
 body {

@@ -70,6 +70,111 @@ span {
   margin-left: 16px;
 }
 
+<<<<<<< HEAD
 .weather-api {
   margin: 10px;
+=======
+.right_icons button {
+  width: 95px;
+  height: 36px;
+  border: none;
+  color: white;
+  background-color: #2196f3;
+  border-radius: 4px;
+}
+
+.new_button {
+  align-items: center;
+}
+
+.profile_circle {
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.user_dropdown {
+  position: absolute;
+  right: 16px;
+  margin-top: 6px;
+  /* width: 300px; */
+  background-color: white;
+  box-shadow: 0px 0px 12px black;
+  border-radius: 5px;
+}
+
+.user_dropdown_info {
+  align-items: center;
+  padding: 15px;
+  background-color: lightgrey;
+}
+
+.user_dropdown_circle {
+  margin-right: 15px;
+}
+
+/* .user_dropdown_details {
+  height: 10px;
+  overflow-y: scroll;
+} */
+
+.user_dropdown_pair {
+  align-items: center;
+}
+
+.space_margin {
+  margin: 0px 15px 0px 15px;
+}
+
+.new_button_container {
+  position: absolute;
+  margin-top: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 4px black;
+  right: 163px;
+  width: 150px;
+  border-radius: 4px;
+}
+
+.new_button_container a {
+  text-decoration: none;
+  color: black;
+}
+
+.align_items {
+  align-items: center;
+}
+.align_items p {
+  margin-left: 15px;
+}
+.align_items svg {
+  margin-left: 8px;
+}
+
+.new_customer_pointer {
+  cursor: pointer;
+}
+
+.info_modal_container {
+  align-items: center;
+}
+
+.info_modal_container div {
+  margin-bottom: 25px;
+}
+
+.info_modal_title {
+  align-items: center;
+}
+
+.info_modal_title p {
+  margin-right: 15px;
+  cursor: pointer;
+>>>>>>> parent of 762f367 (added color change)
 }
