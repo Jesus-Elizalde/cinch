@@ -1,4 +1,5 @@
 import React from "react";
+import LoginForm from "../auth/LoginForm";
 
 import "./LandingPage.css";
 const LandingPage = () => {
@@ -7,6 +8,7 @@ const LandingPage = () => {
       <div className="banner_container">
         <img
           src="https://i0.wp.com/hcpmktsite.wpcomstaging.com/wp-content/uploads/2022/01/home-hero-static-desktop_compressed.webp?w=799&ssl=1"
+          alt=""
           className="banner_img"
         />
         <div className="banner_text_container flex_column">
@@ -26,6 +28,7 @@ const LandingPage = () => {
           workforce or grow revenue, we have a solution.
         </h4>
       </div>
+      <LoginForm />
     </div>
   );
 };

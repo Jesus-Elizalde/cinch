@@ -21,11 +21,7 @@ import {
   ConfirmationDialog,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteJobDetails,
-  editJobDetails,
-  getJobsDetailts,
-} from "../../store/job";
+import { deleteJobDetails, editJobDetails } from "../../store/job";
 import { getBusinessesDetails } from "../../store/business";
 
 const Schedule = () => {
@@ -33,9 +29,11 @@ const Schedule = () => {
   const user = useSelector((state) => state.session.user);
 
   const rawJobs = useSelector((state) => Object.values(state.jobs));
+  console.log("🚀 ~ file: index.js ~ line 30 ~ Schedule ~ rawJobs", rawJobs);
   const business = useSelector((state) => state.businesses[user?.business_id]);
   const filteredArr = [];
   business?.customers.forEach((customer) => filteredArr.push(...customer.jobs));
+  console.log(filteredArr);
 
   const jobs = filteredArr?.map((job) => {
     return {
@@ -48,48 +46,50 @@ const Schedule = () => {
       job_ids: job.services.map((service) => service.id).join("-"),
     };
   });
+  console.log("🚀 ~ file: index.js ~ line 49 ~ jobs ~ jobs", jobs);
+
+  const [data, setData] = useState([]);
 
   const [currentViewName, setCurrentViewName] = useState("work-week");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [render, setRedner] = useState(false);
 
   useEffect(() => {
     dispatch(getBusinessesDetails());
-    dispatch(getJobsDetailts());
-  }, [dispatch, render]);
+  }, [dispatch]);
 
-  const commitChanges = async ({ added, changed, deleted }) => {
+  const commitChanges = ({ added, changed, deleted }) => {
     if (added) {
-      // console.log("WNP");
-      return;
+      // const startingAddedId =
+      //   data.length > 0 ? data[data.length - 1].id + 1 : 0;
+      // setData([...data, { id: startingAddedId, ...added }]);
+      console.log("WNP");
     }
 
     if (changed) {
-      // const jobId = +Object.keys(changed)[0];
-      // const editedJob = {
-      //   ...jobs?.filter((appointment) => +appointment.id === jobId)[0],
-      //   ...changed[jobId],
-      // };
-      // dispatch(
-      //   editJobDetails({
-      //     id: editedJob.id,
-      //     from_date_time: editedJob.startDate,
-      //     to_date_time: editedJob.endDate,
-      //     message: editedJob.notes,
-      //     customer_id: "1",
-      //     job_ids: editedJob.job_ids,
-      //   })
-      // );
-      return;
+      const jobId = +Object.keys(changed)[0];
+
+      const editedJob = {
+        ...jobs?.filter((appointment) => +appointment.id === jobId)[0],
+        ...changed[jobId],
+      };
+
+      dispatch(
+        editJobDetails({
+          id: editedJob.id,
+          from_date_time: editedJob.startDate,
+          to_date_time: editedJob.endDate,
+          message: editedJob.notes,
+          customer_id: "1",
+          job_ids: editedJob.job_ids,
+        })
+      );
     }
 
     if (deleted !== undefined) {
       //   setData(data.filter((appointment) => appointment.id !== deleted));
-      const data = await dispatch(deleteJobDetails(deleted));
-      setRedner(true);
-      setRedner(false);
+      dispatch(deleteJobDetails(deleted));
     }
-    return { filteredArr };
+    return { data };
   };
 
   const currentViewNameChange = (currentViewName) => {

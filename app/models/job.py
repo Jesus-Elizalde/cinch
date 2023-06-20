@@ -1,6 +1,6 @@
 from .db import db
-from .job_service import job_service
 from datetime import datetime
+from .job_discount import job_discount
 
 class Job(db.Model):
     __tablename__ = "jobs"
@@ -8,30 +8,24 @@ class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     from_date_time = db.Column(db.DateTime,nullable=False)
     to_date_time = db.Column(db.DateTime,nullable=False)
-    message = db.Column(db.Text)
-    customer_id = db.Column(db.Integer,db.ForeignKey("customers.id"), nullable=False)
+    status = db.Column(db.String(255),nullable=False,default="pending")
+    note = db.Column(db.Text)
+    archive = db.Column(db.Boolean,nullable=False,default=False)
+
+    edited_by = db.Column(db.String(10))
     created_at = db.Column(db.DateTime,nullable=False,default=datetime.now)
     updated_at= db.Column(db.DateTime,nullable=False,default=datetime.now,onupdate=datetime.now)
 
-    customer = db.relationship("Customer",back_populates="job")
+    customer_id = db.Column(db.Integer,db.ForeignKey("customers.id"), nullable=False)
 
-    job_services = db.relationship(
-        "Service",
-        secondary=job_service,
-        back_populates="job_services"
-    )
+    customers = db.relationship("Customer",back_populates="jobs")
+
+    job_items = db.relationship("JobItem",back_populates="jobs")
+
+    job_discounts = db.relationship("Discount",secondary=job_discount,back_populates="job_discounts")
 
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'from_date_time':self.from_date_time,
-            'to_date_time':self.to_date_time,
-            'message':self.message,
-            'customer_id':self.customer_id,
-            'customer_name': self.customer.first_name+ " "+self.customer.last_name,
-            'created_at':self.created_at,
-            'updated_at':self.updated_at,
-            "services": [service.to_dict() for service in self.job_services]
-
+            "id":self.id
         }

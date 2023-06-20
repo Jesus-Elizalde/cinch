@@ -1,28 +1,34 @@
 /* TODO Add site wide styles */
 :root {
   --users-color: #00314a;
-  --hover-color: #2764ba;
-  --body-color: #e0e0e0;
+  --hover-color: lightgrey;
+  --body-color: #edede9;
+  --primary-color: #0bbbd4;
+  --lighter-primary-color: #a1e9f3;
   --box-color: white;
+<<<<<<< HEAD
   --svg-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%)
     hue-rotate(299deg) brightness(113%) contrast(100%);
+  --border-bottom-color: grey;
+  --lighter-bottom-color: lightgrey;
+  --button-background-color: #d5d5d0;
+  --cancel--color: red;
+=======
+>>>>>>> parent of 762f367 (added color change)
 }
 
 body {
   margin: 0px;
   width: 100%;
   font-family: Georgia, "Times New Roman", Times, serif;
-  /* background-color: var(--body-color); */
+  background-color: var(--body-color);
 }
 
-button {
-  border: none;
-  background-color: #2764ba;
-  color: white;
-  margin: 0px 15px 0px 15px;
-  border-radius: 4px;
-  height: 25px;
-  cursor: pointer;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .flex_row {
@@ -34,29 +40,26 @@ button {
   flex-direction: column;
 }
 
-.modal_container {
-  width: 745px;
-  height: 680px;
-  padding: 0px 25px 0px 25px;
+.space_between {
+  justify-content: space-between;
+  align-items: center;
 }
 
-.link {
-  color: #2764ba;
-  cursor: pointer;
+.primary_color {
+  color: var(--primary-color);
 }
 
-th,
-td {
-  padding-top: 5px;
-  padding-bottom: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
+.home,
+.about,
+.contact {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
 }
 
-.clicker {
-  cursor: pointer;
-}
-
-.modal_padding {
-  padding: 0px 25px 10px 25px;
+.logo_name_group {
+  gap: 10px;
+  align-items: center;
 }

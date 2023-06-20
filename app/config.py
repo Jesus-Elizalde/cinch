@@ -13,3 +13,4 @@ class Config:
     SQLALCHEMY_ECHO = True
     GEOCODER_KEY=os.environ.get("GOOGLE_GEOCODER_API_KEY")
     MAPS_KEY=os.environ.get("GOOGLE_MAPS_API_KEY")
+    WEATHER_KEY=os.environ.get("WEATHER_API_KEY")

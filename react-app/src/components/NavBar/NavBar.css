@@ -1,64 +1,79 @@
-nav {
-  justify-content: space-between;
-  background-color: var(--users-color);
-  /* background-color: transparent; */
-  padding: 0px 15px 0px 15px;
-  height: 74px;
-  position: sticky;
-  top: 0px;
-  z-index: 10000000;
+.navbar {
+  background-color: var(--body-color);
+  border-bottom: 1px solid grey;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.login_signup_button {
-  width: 65px;
-  height: 35px;
-  color: #fff;
-  background-color: transparent;
-  border: 3.7px solid #fff;
-  border-radius: 40px;
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+}
+
+.nav-menu {
+  background-color: var(--body-color);
+  border-right: 1px solid grey;
+  width: 250px;
+  height: 100vh;
   display: flex;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+.nav-text {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  margin-left: 15px;
-  cursor: pointer;
+  padding: 8px 0px 8px 0px;
+  list-style: none;
+  height: 60px;
 }
 
-.login_signup_button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.auth_bar_container {
-  width: 100%;
-  height: 100%;
-  justify-content: space-between;
-}
-
-.main_icons {
-  align-items: center;
-}
-
-.main_icons a {
+.nav-text a {
   text-decoration: none;
-  color: white;
-  margin: 0px 15px 0px 15px;
-  width: 65px;
-  height: 43px;
-}
-
-.main_icons a:active {
-  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--primary-color);
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
   border-radius: 4px;
 }
 
-.main_icons a span {
-  justify-content: center;
-  align-items: center;
+.nav-text a:hover {
+  background-color: var(--hover-color);
+}
+.nav-menu-items {
+  width: 100%;
 }
 
-.right_icons {
+.navbar-toggle {
+  background-color: var(--body-color);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
+span {
+  margin-left: 16px;
+}
 
+<<<<<<< HEAD
+.weather-api {
+  margin: 10px;
+=======
 .right_icons button {
   width: 95px;
   height: 36px;
@@ -161,8 +176,5 @@ nav {
 .info_modal_title p {
   margin-right: 15px;
   cursor: pointer;
-}
-
-.svgIcon {
-  filter: var(--svg-color);
+>>>>>>> parent of 762f367 (added color change)
 }

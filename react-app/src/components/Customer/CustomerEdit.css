@@ -1,0 +1,18 @@
+.customer-nav-menu {
+  background-color: var(--body-color);
+  border-left: 1px solid grey;
+  width: 500px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 80px;
+  right: -100%;
+  transition: 850ms;
+}
+
+.customer-nav-menu.active {
+  right: 0;
+  transition: 350ms;
+}

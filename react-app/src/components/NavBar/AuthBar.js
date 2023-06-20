@@ -13,7 +13,6 @@ import { ReactComponent as InfoIcon } from "../../static/svg/infoicon.svg";
 import { ReactComponent as LinkinIcon } from "../../static/svg/linkin.svg";
 import { ReactComponent as GithubIcon } from "../../static/svg/github.svg";
 import { ReactComponent as XIcon } from "../../static/svg/xicon.svg";
-import { ReactComponent as CustomerMIcon } from "../../static/svg/moneycustomer.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../Context/Modal";
 import NewCustomer from "../Customers/NewCustomer";
@@ -78,23 +77,16 @@ const AuthBar = () => {
           </span>
         </NavLink> */}
         <NavLink to="/customers">
-          <span className="flex_column svgIcon">
+          <span className="flex_column">
             <CustomerIcon />
             Customers
           </span>
         </NavLink>
         <NavLink to="/jobs">
-          <span className="flex_column svgIcon">
-            <CustomerMIcon />
-            {/* Schedule */}
-            Jobs
-          </span>
-        </NavLink>
-        <NavLink to="/schedule">
-          <span className="flex_column svgIcon">
+          <span className="flex_column">
             <ScheduleIcon />
             {/* Schedule */}
-            Schedule
+            Jobs
           </span>
         </NavLink>
       </div>
@@ -125,14 +117,12 @@ const AuthBar = () => {
           )}
         </div>
         <NavLink to="/map" className="space_margin">
-          <span className="flex_column svgIcon">
+          <span className="flex_column">
             <MapIcon />
           </span>
         </NavLink>
         <div onClick={() => setShowInfoModal(true)}>
-          <span className="flex_column svgIcon">
-            <InfoIcon />
-          </span>
+          <InfoIcon />
         </div>
         <div>
           <div

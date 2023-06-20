@@ -1,0 +1,25 @@
+.SearchBar {
+  border: 1px solid var(--box-color);
+  width: 256px;
+  height: 48px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  padding: 10px;
+}
+.SearchBar:focus-within {
+  border: 1.2px solid var(--primary-color);
+}
+.SearchBar:focus-within svg {
+  fill: var(--primary-color);
+}
+
+.SearchBar input {
+  width: 181px;
+  height: 46px;
+  border: none;
+  background: none;
+}
+.SearchBar input:focus {
+  outline: none;
+}
